@@ -1,0 +1,10 @@
+asciidoc notes
+--------------
+
+
+Automatic adsense header in html-pages
+--------------------------------------
+
+The file /etc/asciidoc/xhtml11.conf defines the header
+to all xhtml11 generated pages, so I pasted the adsense
+javascript in under the header section here.

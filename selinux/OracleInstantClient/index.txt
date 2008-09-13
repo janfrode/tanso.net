@@ -1,0 +1,46 @@
+Oracle (not so) Instant Client and SElinux execheap
+===================================================
+Jan-Frode Myklebust <janfrode@tanso.net>
+
+Oracle Instant Client on RHEL5/SElinux
+--------------------------------------
+I'm not too happy with the oracle instant client rpms... They don't
+include the needed dependencies (compat-libstdc++-33), they
+don't "provide" any libraries and a few libraries needs to 
+be labeled as "textrel_shlib_t" to work.
+
+
+---------------------------------------------------
+perl /tmp/dbtest.pl 
+install_driver(Oracle) failed: Can't load '/usr/lib64/perl5/vendor_perl/5.8.8/x86_64-linux-thread-multi/auto/DBD/Oracle/Oracle.so' for module DBD::Oracle: /usr/lib/oracle/10.2.0.3/client64/lib/libocijdbc10.so: cannot restore segment prot after reloc: Permission denied at /usr/lib64/perl5/5.8.8/x86_64-linux-thread-multi/DynaLoader.pm line 230.
+ at (eval 3) line 3
+Compilation failed in require at (eval 3) line 3.
+Perhaps a required shared library or dll isn't installed where expected
+ at /tmp/dbtest.pl line 112
+---------------------------------------------------
+
+Same in the audit.log:
+
+---------------------------------------------------
+type=AVC msg=audit(1208951106.913:47191): avc:  denied  { execmod } for  pid=16949 comm="perl" path="/usr/lib/oracle/10.2.0.3/client64/lib/libocijdbc10.so" dev=dm-0 ino=425999 scontext=user_u:system_r:unconfined_t:s0 tcontext=system_u:object_r:lib_t:s0 tclass=file
+type=AVC msg=audit(1208951265.745:47199): avc:  denied  { execmod } for  pid=16955 comm="perl" path="/usr/lib/oracle/10.2.0.3/client64/lib/libociei.so" dev=dm-0 ino=425998 scontext=user_u:system_r:unconfined_t:s0 tcontext=system_u:object_r:lib_t:s0 tclass=file
+type=AVC msg=audit(1208951286.805:47207): avc:  denied  { execmod } for  pid=16961 comm="perl" path="/usr/lib/oracle/10.2.0.3/client64/lib/libocci.so.10.1" dev=dm-0 ino=425997 scontext=user_u:system_r:unconfined_t:s0 tcontext=system_u:object_r:lib_t:s0 tclass=file
+type=AVC msg=audit(1208951306.766:47215): avc:  denied  { execmod } for  pid=16967 comm="perl" path="/usr/lib/oracle/10.2.0.3/client64/lib/libnnz10.so" dev=dm-0 ino=425996 scontext=user_u:system_r:unconfined_t:s0 tcontext=system_u:object_r:lib_t:s0 tclass=file
+type=AVC msg=audit(1208951330.259:47223): avc:  denied  { execmod } for  pid=16973 comm="perl" path="/usr/lib/oracle/10.2.0.3/client64/lib/libclntsh.so.10.1" dev=dm-0 ino=425995 scontext=user_u:system_r:unconfined_t:s0 tcontext=system_u:object_r:lib_t:s0 tclass=file
+---------------------------------------------------
+
+
+-----------------------------------------------------------------------
+# semanage fcontext -a -t textrel_shlib_t /usr/lib/oracle/10.2.0.3/client64/lib/libocijdbc10.so
+# restorecon /usr/lib/oracle/10.2.0.3/client64/lib/libocijdbc10.so
+# semanage fcontext -a -t textrel_shlib_t /usr/lib/oracle/10.2.0.3/client64/lib/libociei.so
+# restorecon /usr/lib/oracle/10.2.0.3/client64/lib/libociei.so
+# semanage fcontext -a -t textrel_shlib_t /usr/lib/oracle/10.2.0.3/client64/lib/libocci.so.10.1
+# restorecon /usr/lib/oracle/10.2.0.3/client64/lib/libocci.so.10.1
+# semanage fcontext -a -t textrel_shlib_t /usr/lib/oracle/10.2.0.3/client64/lib/libnnz10.so
+# restorecon /usr/lib/oracle/10.2.0.3/client64/lib/libnnz10.so
+# semanage fcontext -a -t textrel_shlib_t /usr/lib/oracle/10.2.0.3/client64/lib/libclntsh.so.10.1
+# restorecon /usr/lib/oracle/10.2.0.3/client64/lib/libclntsh.so.10.1
+-----------------------------------------------------------------------
+
+

@@ -1,0 +1,82 @@
+Linux on Dell Latitude D400
+===========================
+
+It works, but needs some flickering at the moment. If you have any
+hints to how I can make this laptop work better or any other comments 
+to this page, please email mailto:janfrode@tanso.net[janfrode@tanso.net]
+
+RedHat 9 needs to be installed from CDROM or separate PCMCIA
+network card, since the internal broadcom gigabit NIC isn't supported
+(yet). 
+
+Drivers to make the internal broadcom card work can be downloaded from 
+
+* http://www.broadcom.com/docs/driver-download.html[]
+
+These are GPL'ed, so they will hopefully appear in a standard kernel soon.
+
+[BUG] The internal Dell TrueMobil 1400 doesn't work, and probably woun't work for
+a while.. :(
+
+The BIOS didn't want to give XFree86 more than 832KB memory and 
+resolution of 640x480, so a small hack was needed:
+
+	* http://www.chzsoft.com.ar/855patch.tar.gz[]
+	* http://www.mail-archive.com/devel@xfree86.org/msg02247.html[]
+
+I put this into /etc/rc.local:
+
+------------------------------------------------------------------
+echo "FIXME: Stealing 32MB memory by possibly dangerous BIOS hack"
+sleep 1
+/root/855patch/855patch 32768
+sleep 3
+------------------------------------------------------------------
+
+This might be dangerous, but it worked for me.. Hopefully, if it's a safe
+hack, it will be included in the XFree86 driver.
+
+I also upgraded to the latest kernel (2.4.22-pre8) to get better support
+for the Centrino chipset. Not sure if this was strictly necessary..
+
+I'll try to look into power management and other features of the
+laptop later, and post my findings here.
+
+ACPI
+----
+
+Rebuilt a new kernel (2.4.22-pre9) with ACPI support. Installed acpid, 
+chkconfig apmd off, chkconfig acpid on. Made a simple /etc/acpi/events/power
+looking like:
+
+----------------------------------------
+event=button/power.*
+action=/usr/local/sbin/power.sh "%e"
+----------------------------------------
+
+And /usr/local/sbin/power.sh containing:
+
+------------------
+#! /bin/sh 
+/sbin/halt -p
+------------------
+
+Restarted acpid, and tried the powerbutton. Nice! 
+
+The suspend-button sends a button/sleep to ACPI, but doesn't do 
+anything. Need to figure out what it should do here... I tried to tell it
+to go into sleep state http://acpi.sourceforge.net/documentation/sleep.html[S1], but the monitor didn't go off. Had to push the powerbutton to get it back on.
+
+[BUG]: Closing the lid sends a button/lid to ACPI and turns off the screen
+automatically. To get it back on I have to switch between X and
+console-mode using Ctrl-Alt-F1/Ctrl-Alt-F7.
+
+The volume buttons doesn't send anything to ACPI. Looks like these are sending normal keycodes
+and need to be programmed that way.
+
+Todo: 
+
+	* build new slimmer kernel with ACPI, builtin i830 support and possibly builtin broadcom driver?
+	*  More acpi configs, http://www.tldp.org/HOWTO/ACPI-HOWTO/[]
+	* Check for BIOS upgrades from Dell.
+

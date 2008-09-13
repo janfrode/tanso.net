@@ -1,0 +1,7 @@
+GPFS, selinux, linux-ha and dm-multipath for webserver cluster
+==============================================================
+Jan-Frode Myklebust <janfrode@tanso.net>
+
+
+Install notes for new webserver cluster
+---------------------------------------

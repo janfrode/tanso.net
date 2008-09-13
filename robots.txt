@@ -1,0 +1,5 @@
+#
+# Welcome robots!
+
+User-agent: *
+Disallow: /books

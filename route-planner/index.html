@@ -1,0 +1,807 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- $Id: index.html,v 1.2 2007/02/25 01:24:02 mcd Exp $ -->
+<!-- Copyright 2007 Marengo Ltd.  This code (not the GMaps API) is released under the GPL -->
+<!-- Martyn Davis www.marengo-ltd.com -->
+<!-- the xmlns:v reference to M$ below is required for IE compatibility -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>
+      Marengo GPS Route Planner -- Sandnes
+    </title>
+    <meta name="description" content="Sandnes, Stavanger, Rogaland, Cycle Satnav, cycling, gps, running, garmin gps, running shoes, running shorts, cycling shoes, cycling shorts, running training, marathon running, bicycling, cycling apparel, cycling tights, cycle trader, moto gp, magellan gps, gps tracking, cycling short, gps software, cycling bike, bluetooth gps, carbon cycle, gps navigation, women's cycling, cycle world, free running, gps systems, motor cycles, gps receiver, gps reviews, cycle gear, gps coordinates, gps system, gps review, motor cycle, portable gps, handheld gps, garmin edge, cycling jersey, cycling news, gps maps, running shoe, car gps, bicycling magazine, best gps, cycling jerseys, gps map, gps locator, gps units, usb gps, tom tom gps, pda gps, cycle news, gps antenna, custom cycles, lowrance gps, palm gps, running gear, pro cycling, running track, laptop gps, cycle salvage, gps navigator, running program, gps watch, cycling tv, pocket pc gps, marine gps, gps navigation system, gps phone, bluetooth gps receiver, tomtom gps, cycle parts" />
+<style>
+body {
+  font-family:tahoma,sans-serif;
+  font-size:10pt;
+  overflow:hidden;
+}
+.xmlload-box{
+  background: #eee;
+  border: 1px solid black;
+  padding: 5px;
+  position: absolute;
+  left: 50px;
+  top: 60px;
+  width: 600px;
+  height: 500px;
+  visibility: hidden;
+  z-index:99;
+  overflow:auto;
+}
+.xmlsave-box{
+  background: #eee;
+  border: 1px solid black;
+  padding: 5px;
+  position: absolute;
+  left: 50px;
+  top: 60px;
+  width: 600px;
+  height: 500px;
+  visibility: hidden;
+  z-index:99;
+  overflow:auto;
+}
+.about-box{
+  background: #FFFF00;
+  border: 1px solid black;
+  padding: 15px;
+  position: absolute;
+  left: 50px;
+  top: 60px;
+  width: 500px;
+  height: 380px;
+  visibility: hidden;
+  z-index:99;
+  overflow:hidden;
+}
+.wait-box{
+  background: #FFFF00;
+  color: #FF0000;
+  border: 4px solid black;
+  padding: 15px;
+  position: absolute;
+  left: 50px;
+  top: 60px;
+  width: 160px;
+  height: 20px;
+  visibility: hidden;
+  z-index:99;
+}
+.options-box{
+  background: #eee;
+  border: 1px solid black;
+  padding: 20px;
+  position: absolute;
+  left: 50px;
+  top: 60px;
+  width: 500px;
+  height: 270px;
+  visibility: hidden;
+  z-index:99;
+  overflow:auto;
+}
+#coords{
+  font-family:tahoma,sans-serif;
+  font-size:8pt;
+}
+.waypoint_text{
+  font-family:tahoma,sans-serif;
+  font-size:7pt;
+}
+.idDivDonatePopUp{
+  float:right;
+  margin: 0 8px 0 0;
+}
+button{
+    width:60px;
+}
+v\:* {
+  behavior:url(#default#VML);
+}
+</style>
+
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAABKwnvse1Y2SfpZCKpmWR4xS1EQv73mEsnQqnX6UdLRpIKBhvMxTeqNNdMrnv8-8l4CPPpXMLht2OUA"
+    type="text/javascript"></script>
+
+<script type="text/javascript">
+
+//<![CDATA[
+
+var map;
+var ov_map;
+var arPoints = new Array();
+var arMarkers = new Array();
+var arComments = new Array();
+var gLine = new GPolyline();
+var l;
+var gsUnits;
+var gbLines=true;
+
+function load() {
+    if (GBrowserIsCompatible()) {
+        map = new GMap2(document.getElementById("map"), {draggableCursor: 'crosshair', draggingCursor: 'crosshair'});
+        goHome();
+        gsUnits=getCookie('mgoUnits')||'k';
+        updateToolsDialogUnits();
+        map.addControl( new GLargeMapControl());
+        map.addControl( new GScaleControl() );
+        map.addControl( new GMapTypeControl() );
+        overview = new GOverviewMapControl(new GSize(264,(screen_height/2)-50));
+
+        map.addControl(overview);
+        ov_map = overview.getOverviewMap();
+        ov_map.addControl( new GMapTypeControl() );
+
+        GEvent.addListener(map, "click", function(marker, point) {
+            close_popup('xmlsave-box');
+            close_popup('about-box');
+            close_popup('xmlload-box');
+                if (marker) {
+                    showBalloon(marker);
+                } else {
+                    if (arPoints.length<1000){ //optimistic :)
+                        // add a marker
+                        point.array_index = arPoints.length;
+                        arPoints.push(point);
+                        var sWaypointName;
+                        arComments.push("");
+                        var marker=createMarker(point, arPoints.length-1);
+                        arMarkers.push(marker);
+                        map.addOverlay(marker);
+                        marker.enableDragging();
+                        changeText();
+                        focusTextBox(marker.MCD_ID);
+                    }
+                }
+        });
+        setTimeout("positionOverview("+(screen_width-410)+","+ ((screen_height/2)-10) +")",1);
+    }else{
+      alert("Sorry, the Google Maps API is not compatible with this browser");
+    }
+    obj=document.getElementById("txtRouteName");
+    obj.focus();
+    obj.select();
+}
+
+function deleteMarker(marker_id){
+    map.closeInfoWindow();
+    map.removeOverlay(arMarkers[marker_id]);
+    map.removeOverlay(gLine);
+    arPoints.splice(marker_id,1);
+    arMarkers.splice(marker_id,1);
+    arComments.splice(marker_id,1);
+    // reset the marker IDs
+    for(i=0; i<arMarkers.length; i++){
+        arMarkers[i].MCD_ID=i;
+    }
+    changeText();
+    drawRoute();
+}
+
+function showBalloon(marker){
+    var sHTML="Waypoint " + marker.MCD_ID;
+    if(arComments[marker.MCD_ID].length>0) sHTML += ": " + arComments[marker.MCD_ID];
+    sHTML += "<BR><BR><a href='javascript:deleteMarker(" + marker.MCD_ID + ");'>Delete this waypoint</a>";
+    if(marker.MCD_ID < (arMarkers.length-1)){
+        sHTML += "<BR><a href='javascript:insertMarkerAfter(" + marker.MCD_ID + ");'>Insert waypoint after this one</a>";
+    }
+    sHTML += "<BR><a href='javascript:centreMap(" + marker.MCD_ID + ");'>Centre map around here</a>";
+    marker.openInfoWindowHtml(sHTML);
+}
+
+function centreMap(markerID){
+    map.setCenter(new GLatLng(arPoints[markerID].y, arPoints[markerID].x));
+}
+
+function positionOverview(x,y) {
+    var omap=document.getElementById("map_overview");
+    omap.style.left = x+"px";
+    omap.style.top = y+"px";
+            
+    // == restyling ==
+    omap.firstChild.style.border = "1px solid gray";
+
+    omap.firstChild.firstChild.style.left="4px";
+    omap.firstChild.firstChild.style.top="4px";
+    omap.firstChild.firstChild.style.width="280px";
+    omap.firstChild.firstChild.style.height=(screen_height/2)-30+"px";
+}
+
+function drawRoute(){
+    map.removeOverlay(gLine);
+    if(!gbLines) return;
+    gLine=new GPolyline(arPoints);
+    try{
+      map.addOverlay(gLine);
+    }
+    catch(e){
+      //The above line dies in IE...
+    }
+}
+
+
+function save_text(nIndex, sText){
+    arComments[nIndex]=sText.toUpperCase();
+}
+
+function find_waypoint(n){
+    map.setCenter(new GLatLng(arPoints[n].y, arPoints[n].x));
+    showBalloon(arMarkers[n]);
+    focusTextBox(n);
+}
+
+function changeText() {
+    var sHTML="<table cellspacing='0px'>";
+    var totalKs=0;
+    var totalMs=0;
+    for(var i=0; i<arPoints.length; i++){
+        var maxCmtLen;
+        if (i<10) {
+            maxCmtLen=6;
+        }else if(i<100){
+            maxCmtLen=5;
+        }else{
+            maxCmtLen=4;
+        }
+        sHTML+="<tr><td align='left'>";
+        if (i>0){
+            var metres=arMarkers[i].getPoint().distanceFrom(arMarkers[i-1].getPoint());
+            totalKs+=(metres * 0.001);
+            totalMs=(totalKs * 0.621371192);
+        }
+        sHTML += "<a href='javascript:find_waypoint(" + i + ");' title='Click to locate waypoint on map'> " +
+        (i) + "</a></td><td>:  <input type='text' " +
+        " id='txtWaypoint" + i + "' " +
+        " class='waypoint_text' name='waypoint_" + i + "' " +
+        "onkeyup=save_text(" + i + ",this.value) " +
+        "onfocus=highlightTextBox(this) " +
+        "onblur=highlightTextBox(this) " +
+        "size='8' maxlength='" + maxCmtLen + "' " +
+        "value='" + arComments[i] + "'>";
+        if(gsUnits=='m'){
+            sHTML+="<span title='" + totalKs.toFixed(2) + " Km'> (" + totalMs.toFixed(2) + " miles)</span><br>";
+        }else{
+            sHTML+="<span title='" + totalMs.toFixed(2) + " miles'> (" + totalKs.toFixed(2) + " Km)</span><br>";
+        }
+        sHTML+="</td></tr>";
+    }
+    sHTML+="</table>";
+    var coords=document.getElementById('coords');
+    coords.innerHTML="<b>Waypoints:</b><br>" + sHTML;
+    //focusTextBox(arPoints.length-1);
+}
+
+function generate_gpx(nFlag){
+    show_popup("xmlsave-box");
+    var txt = document.getElementById("xml-textarea");
+    var sXML= "<?xml version=\"1.0\"?>\n" +
+        "<gpx version=\"1.1\"\n" +
+        "  creator=\"Marengo Route Creator - http://www.marengo-ltd.com/map/\"\n" +
+        "  xmlns=\"http://www.topografix.com/GPX/1/1\"\n" +
+        "  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
+        "  xsi:schemaLocation=\"http://www.topografix.com/GPX/1/1 \n" +
+        "  http://www.topografix.com/GPX/1/1/gpx.xsd\">\n" +
+        "  <rte>\n";
+    var obj=document.getElementById("txtRouteName");
+    var sRouteName = obj.value;
+    if (sRouteName.length==0) sRouteName="MARENGO";
+    sXML+="    <name>" + sRouteName + "</name>\n";
+    if(nFlag==0 || nFlag==2){
+        for(var i=0; i<arPoints.length; i++){
+            if(nFlag==2 && arComments[i].length==0) continue;
+            sXML+="    <rtept lat=\"" + arPoints[i].y + "\" lon=\"" + arPoints[i].x + "\">\n";
+            var sName="";
+            sName+=(i);
+            if (arComments[i].length>0) sName+="-"+arComments[i];
+            sXML+="      <name>" + sName + "</name>\n";
+            sXML+="    </rtept>\n";
+        }
+    }else if(nFlag==1){
+        for(var i=arPoints.length-1; i>=0; i--){
+            sXML+="    <rtept lat=\"" + arPoints[i].y + "\" lon=\"" + arPoints[i].x + "\">\n";
+            var sName="";
+            sName+=(i);
+            if (arComments[i].length>0) sName+="-";
+            if(arComments[i]=='R' || arComments[i]=="RIGHT") {
+                sName+="L";
+            }else if(arComments[i]=='L' || arComments[i]=="LEFT") {
+                sName+="R";
+            }else{
+                sName+=arComments[i];
+            }
+
+            sXML+="      <name>" + sName + "</name>\n";
+            sXML+="    </rtept>\n";
+        }
+    }
+    sXML+="  </rte>\n</gpx>";
+    txt.value=sXML;
+    txt.focus();
+}
+
+function stripSequence(sText, nWaypointNumber) {
+    // Note waypoints can only be 8 chars, and we use the first few of those for the
+    // prefix to ensure that they are unique.  Hence the user has only a few
+    // more to enter stuff, and we have to lose anything over that on an imported GPX.
+    var maxCmtLen=4;
+    if(nWaypointNumber<100) maxCmtLen=5;
+    if(nWaypointNumber<10)  maxCmtLen=6;
+    var ValidChars = "0123456789";
+    for(var n=0; n<3; n++){
+        if(sText.length==n) return "";
+        if(ValidChars.indexOf(sText.charAt(n)) == -1) return sText.substring(0,maxCmtLen);
+        if(sText.charAt(n+1)=='-') return sText.substring(n+2,n+2+maxCmtLen);
+    }
+    // if we get here, we generated the GPX most likely, so we strip off the
+    // guff at the beginning of the waypoint name
+    return sText.substring(3,8);
+}
+
+function createMarker(point,number) {
+    // // Create our "tiny" marker icon
+    // var icon = new GIcon();
+    // icon.image = "http://labs.google.com/ridefinder/images/mm_20_red.png";
+    // icon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
+    // icon.iconSize = new GSize(12, 20);
+    // icon.shadowSize = new GSize(22, 20);
+    // icon.iconAnchor = new GPoint(6, 20);
+    // icon.infoWindowAnchor = new GPoint(5, 1);
+    // var marker = new GMarker(point, {icon:icon, draggable:true, bouncy:false});
+    var marker = new GMarker(point, {draggable:true, bouncy:false});
+    marker.MCD_ID=number;
+    GEvent.addListener(marker, "dragend", function() {
+        arPoints[marker.MCD_ID]=marker.getPoint();
+        changeText();
+        focusTextBox(marker.MCD_ID);
+        drawRoute();
+    });
+    GEvent.addListener(marker, "dragstart", function(){
+        map.removeOverlay(gLine);
+        map.closeInfoWindow();
+    });
+    GEvent.addListener(marker, "mouseover", function() {
+        focusTextBox(marker.MCD_ID);
+    });       
+    drawRoute();
+    return marker;
+}
+
+function focusTextBox(sID){
+    changeText();
+    obj=document.getElementById("txtWaypoint" + sID);
+    if(obj){
+        obj.focus();
+        obj.select();
+        obj.style.backgroundColor = "#FFFF88";
+    }
+}
+
+
+function highlightTextBox(obj){
+    if(obj.style.backgroundColor==""){
+        obj.style.backgroundColor="#FFFF88"
+    }else{
+        obj.style.backgroundColor="";
+    }
+}
+
+function load_gpx(){
+    // clear down old stuff
+    show_popup('wait-box');
+    setTimeout("load_gpx2()",1); // we do this to allow the "please wait" to show
+}
+function load_gpx2(){
+    try{
+        clearRoute();
+        obj=document.getElementById("loadTextArea");
+        var xml=GXml.parse(obj.value);
+        var sRouteName=xml.documentElement.getElementsByTagName("rte")[0].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+        var txtRouteName=document.getElementById("txtRouteName");
+        txtRouteName.value=sRouteName;
+        var waypoints = xml.documentElement.getElementsByTagName("rtept");
+        for (var i = 0; i < waypoints.length; i++) {
+            var waypointName=waypoints[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+            arComments.push(stripSequence(waypointName, i));
+            var y=parseFloat(waypoints[i].getAttribute("lat"));
+            var x=parseFloat(waypoints[i].getAttribute("lon"));
+            var point=new GPoint(x,y);
+            arPoints.push(point);
+            var mk=createMarker(point, i, waypointName);
+            arMarkers.push(mk);
+            map.addOverlay(mk);
+            mk.enableDragging();
+        }
+        drawRoute();
+        changeText();
+        if(arPoints.length>0) map.setCenter(new GLatLng(arPoints[0].y, arPoints[0].x));
+    }
+    catch(e){
+        alert("Failed to load the route... maybe the text was incomplete?");
+    }
+    close_popup("wait-box");
+}
+
+function close_popup(sID) {
+    if(document.layers) //NN4+
+    {
+       document.layers[sID].visibility = "hide";
+    }
+    else if(document.getElementById) //gecko(NN6) + IE 5+
+    {
+        var obj = document.getElementById(sID);
+        obj.style.visibility = "hidden";
+        obj.style.display = "none";
+    }
+    else if(document.all) // IE 4
+    {
+        document.all[sID].style.visibility = "hidden";
+    }
+}
+
+function check_for_escape(e, sPopupID){
+    if (e.keyCode==27) {
+        close_popup(sPopupID);
+        obj=document.getElementById("gpxButton");
+        obj.focus();
+    }
+}
+
+
+function show_popup(sID) {
+    if(sID!="about-box")    close_popup("about-box");
+    if(sID!="xmlload-box")  close_popup("xmlload-box");
+    if(sID!="xmlsave-box")  close_popup("xmlsave-box");
+    if(sID!="wait-box")     close_popup("wait-box");
+    if(sID!="options-box")  close_popup("options-box");
+    if(document.layers) //NN4+
+    {
+       document.layers[sID].visibility = "show";
+    }
+    else if(document.getElementById)  //gecko(NN6) + IE 5+
+    {
+        var obj = document.getElementById(sID);
+        obj.style.visibility = "visible";
+        obj.style.display = "inline";
+    }
+    else if(document.all) // IE 4
+    {
+        document.all[sID].style.visibility = "visible";
+    }
+}
+
+function show_help(){
+    show_popup("about-box");
+    var obj = document.getElementById("aboutClose");
+    obj.focus();
+}
+
+function show_load(){
+    show_popup("xmlload-box");
+    var obj = document.getElementById("loadTextArea");
+    obj.focus();
+}
+
+function show_menu(){
+    show_popup("options-box");
+    var obj = document.getElementById("optionsCloseButton");
+    obj.focus();
+}
+
+function clearRoute(bConfirm){
+    if(bConfirm){
+        if(! confirm("Are you sure you want to delete all the waypoints?")) return;
+    }    
+    
+    arComments.length=0;
+    arPoints.length=0;
+    arMarkers.length=0;
+    changeText();
+    close_popup('options-box');
+    var obj=document.getElementById("txtRouteName");
+    if(obj){
+        obj.value="New Route";
+        obj.focus();
+        obj.select();
+    }
+    map.clearOverlays();
+}
+
+function saveMapPosition(){
+    setCookie("mgoMapPosX",map.getCenter().x, 365);
+    setCookie("mgoMapPosY",map.getCenter().y, 365);
+    setCookie("mgoMapZoom",map.getZoom(), 365);
+    alert("Position saved.");
+    close_popup('options-box');
+}
+
+
+function goHome(){
+    map.setCenter(new GLatLng(Number(getCookie('mgoMapPosY')||58.85923765827256), Number(getCookie('mgoMapPosX')||5.7132820129394531)), Number(getCookie('mgoMapZoom')||13));
+}
+
+function getCookie( name ) {
+    var start = document.cookie.indexOf( name + "=" );
+    var len = start + name.length + 1;
+    if ((!start) && (name != document.cookie.substring(0, name.length))) {
+        return null;
+    }
+    if ( start == -1 ) return null;
+    var end = document.cookie.indexOf( ";", len );
+    if ( end == -1 ) end = document.cookie.length;
+    return unescape( document.cookie.substring( len, end ) );
+}
+
+function setCookie( name, value, expires, path, domain, secure ) {
+    var today = new Date();
+    today.setTime( today.getTime() );
+    if ( expires ) {
+        expires = expires * 1000 * 60 * 60 * 24;
+    }
+    var expires_date = new Date( today.getTime() + (expires) );
+    document.cookie = name+"="+escape( value ) +
+        ( ( expires ) ? ";expires="+expires_date.toGMTString() : "" ) + 
+            ( ( path ) ? ";path=" + path : "" ) +
+                ( ( domain ) ? ";domain=" + domain : "" ) +
+                ( ( secure ) ? ";secure" : "" );
+}
+
+function insertMarkerAfter(afterWaypoint){
+    // this routine inserts a waypoint after another waypoint 
+    var newX=arPoints[afterWaypoint].x + (arPoints[afterWaypoint+1].x-arPoints[afterWaypoint].x)/2;
+    var newY=arPoints[afterWaypoint].y + (arPoints[afterWaypoint+1].y-arPoints[afterWaypoint].y)/2;
+    var point=new GPoint(newX, newY);
+    arPoints.splice(afterWaypoint+1, 0,  point);
+    arComments.splice(afterWaypoint+1, 0,  "");
+    var mk=createMarker(point, afterWaypoint+1);
+    arMarkers.splice(afterWaypoint+1, 0, mk);
+    for(var i=0; i<arMarkers.length; i++){
+        arMarkers[i].MCD_ID=i;
+    }
+    map.addOverlay(mk);
+    mk.enableDragging();
+    changeText();
+    focusTextBox(mk.MCD_ID);
+    showBalloon(mk);
+    //arMarkers[afterWaypoint+1].openInfoWindowHtml("New waypoint");
+    drawRoute();
+    close_popup("options-box");
+}
+
+
+function changeUnits(){
+    // toggle the displayed distances from miles to Kms or vice versa
+    if(gsUnits=='m'){
+        setCookie("mgoUnits",'k', 365);
+        gsUnits='k';
+    }else{
+        setCookie("mgoUnits",'m', 365);
+        gsUnits='m';
+    }
+    updateToolsDialogUnits();
+    changeText();
+    close_popup("idDivOptionsPopUp");
+}
+
+function updateToolsDialogUnits(){
+    obj=document.getElementById("unitToggleStatus");
+    if(obj){
+        obj.innerHTML=(gsUnits=="m"?"Miles":"Kms");
+    }
+}
+
+function toggleLines(){
+    gbLines=!gbLines;
+    obj=document.getElementById("lineToggleStatus");
+    if(obj){
+        obj.innerHTML=(gbLines==true?"ON":"OFF");
+    }
+    drawRoute();
+}
+
+function geocoderCheckForEnter(e){
+    if(e.keyCode==13){
+        geoCode();
+    }
+}
+
+function geoCode(){
+    var address;
+    obj=document.getElementById("txtGeocoder");
+    if(obj){
+        address=obj.value;
+    }
+    if(address=="") return;
+    var geocoder = new GClientGeocoder();
+    geocoder.getLatLng(
+        address,
+        function(point) {
+            if (!point) {
+                alert("\n'" + address + "' not found.\n\nPlease note that there are currently legal/contractual reasons why Google cannot search in the UK, Japan and China, amongst other countries.");
+            } else {
+                map.setCenter(point, 13);
+            }
+        }
+    );
+}
+
+//]]>
+</script>
+</head><body onload="load()" onunload="GUnload()">
+<a href="http://www.marengo-ltd.com/map/"><img alt='Marengo GPX Route Planner (BETA)' src='http://www.marengo-ltd.com/map/logo.png' border="0"></a>
+<button id='gpxButton' type='button' title='Generate route for upload to your GPS' onclick='generate_gpx(0)' >GPX</button>&nbsp;
+<button type='button' title='Load a GPX file' onclick='show_load()' >Load</button>&nbsp;
+<button type='button' title='Extra Tools and Options' onclick='javascript:show_menu()' >Tools</button>&nbsp;
+<button type='button' title='Show quick help' onclick='javascript:show_help()' >Help</button>&nbsp;
+Route Name: <input id="txtRouteName" type="text" size="12" maxlength="10" value="New Route">
+&nbsp;
+<!-- geocoding: -->
+Search: <input id="txtGeocoder" type="text" size="12" maxlength="255" onkeypress='geocoderCheckForEnter(event)'>
+
+<table>
+<tr>
+<td width='120'>
+<!-- adsense ====== -->
+<script type="text/javascript"><!--
+    google_ad_client = "pub-1355075937253040";
+    google_ad_width = 120;
+    google_ad_height = 600;
+    google_ad_format = "120x600_as";
+    google_ad_type = "text_image";
+    //2007-02-24: GPS Mapper
+    google_ad_channel = "7893150759";
+    //--></script>
+    <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<!-- =============== -->
+</td>
+<td valign='top'>
+<script language="javascript">
+<!--
+var screen_width = (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
+var screen_height = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
+document.write("<div id='map' style='width: " + (screen_width-420) + "px;height:" + (screen_height-60) + "px'>") ;
+// -->
+</script>
+</div>
+</td>
+<td valign='top'>
+<script language="javascript">
+<!--
+  var coords_height=(screen_height/2)-20;
+  if (coords_height<0) coords_height=100;
+  document.write("<div id='coords' style='background:#eee;padding-left:20px;width:250px;height:" + coords_height + "px;overflow:auto'>");
+// -->
+</script>
+</div>
+</td>
+
+</tr></table>
+
+<!--  --- SHOW OPTIONS BOX --- -->
+</div>
+<div class="options-box" id="options-box" onkeypress='check_for_escape(event, "options-box")'>
+<h3>Tools and Options</h3>
+<hr>
+<table>
+    <tr>
+        <td>
+            <button type='button' onclick='javascript:saveMapPosition()' id='cmdSavePosition'>Save</button>
+        </td>
+        <td>
+            Saves the current map position as your "home" location
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type='button' onclick='javascript:goHome(); close_popup("idDivOptionsPopUp")' id='cmdGoHome'>Home</button>
+        </td>
+        <td>
+            Moves the map to your "home" location 
+        </td>
+    </tr>    
+    <tr>
+        <td>
+            <button type='button' onclick='javascript:clearRoute(true)' id='cmdClearRoute'>Clear</button>
+        </td>
+        <td>
+            Clear down the current map and start a new route
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type='button' onclick='javascript:toggleLines()' id='cmdDrawRoute'>Lines</button>
+        </td>
+        <td>
+            Toggle lines between waypoints. Currently <b><span id='lineToggleStatus'>OFF</span></b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type='button' onclick='javascript:changeUnits()' id='cmdChangeUnits'>Units</button>
+        </td>
+        <td>
+            Toggle the distance units.  Currently <b><span id='unitToggleStatus'>Miles</span></b>
+        </td>
+    </tr>
+</table>
+<p style="text-align: right;">
+<button type='button' id='optionsCloseButton' onclick='javascript:close_popup("options-box")' >Close</button>
+</p>
+</div>
+
+
+
+<!--  --- SHOW GPX LOAD BOX --- -->
+</div>
+<div class="xmlload-box" id="xmlload-box" onkeypress='check_for_escape(event, "xmlload-box")'>
+To import a GPX file, paste its contents here and click OK.
+
+<textarea id="loadTextArea" style='width:590px;height:430px' onkeypress='check_for_escape(event, "xmlload-box")'>
+</textarea>
+<p style="text-align: right;">
+<button type='button' onclick='javascript:load_gpx()' id='loadOKButton'>OK</button> &nbsp;
+<button type='button' onclick='javascript:close_popup("xmlload-box")' >Cancel</button>
+</p>
+</div>
+
+
+<!--  --- SHOW GPX SAVE BOX --- -->
+<div class="xmlsave-box" id="xmlsave-box">
+To save, copy the text below, paste it into a text editor, and save from there.
+<textarea id="xml-textarea" style='width:590px;height:430px' onkeypress='check_for_escape(event, "xmlsave-box")'>
+
+</textarea>
+<p style="text-align: right;">
+<button type='button' onclick='javascript:generate_gpx(2)' title='Strip non-commented waypoints'>Strip</button> &nbsp;
+<button type='button' onclick='javascript:generate_gpx(1)' title='Reverse the waypoints for a return route'>Reverse</button> &nbsp;
+<button type='button' onclick='javascript:close_popup("xmlsave-box")' >Close</button>
+</p>
+</div>
+
+
+<!--  --- SHOW HELP BOX --- -->
+<div class="about-box" id="about-box" onkeypress='check_for_escape(event, "about-box")'>
+<b>Marengo GPS Route Planner $Revision: 1.2 $</b><BR>
+Copyright &copy; 2007 Marengo Ltd (by Martyn Davis)<BR>
+<BR>This program (not Google Maps) is released under the 
+<a target='_new' href='http://www.gnu.org/licenses/gpl.txt'>GPL</a><BR><HR>
+
+Special thanks to the Javascript guru <a target='_new' href='http://dean.edwards.name'>Dean Edwards</a>
+for his assistance with my newbie javascript questions... I owe him another beer.<BR><BR>
+Thanks also to Google, of course, for GMaps upon which this is based.
+<hr>
+Quick Help:
+<ul>
+    <li>Click on the map to add a waypoint.  Enter some text against it on the list to the right of the map.
+    Click the waypoint again to remove it.</li>
+    <li>To save a GPX file, press "Display GPX" and copy and paste the displayed XML to a text editor, and then save it.</li>
+    <li>To upload a GPX file to your GPS, you will need a copy of
+    <a target='_new' href='http://www.gpsbabel.org'>gpsbabel</a> (tested with v1.2.8 beta) and
+    <a href='gps_upload.sh'>my upload script</a>.</li>
+
+    <li>You can load a previously-saved GPX file by pressing the "Load" button and pasting its contents into the dialog.</li>
+    <li><a target='_new' href='help.html'>See here for the full help page</a></li>
+    <li><a target='_new' href='http://www.marengo-ltd.com/blog/'>See here for blog</a></li>
+</ul>
+<p style="text-align: right;">
+<a id="aboutClose" href="javascript:close_popup('about-box');">close</a>&nbsp;
+</p>
+</div>
+
+<div class="wait-box" id="wait-box">
+
+<b>PLEASE WAIT...</b>
+</div>
+<BR><BR>
+<p style="font-size:1%;color:white">
+<!-- google_ad_section_start -->
+Cycle Satnav, cycling, gps, running, garmin gps, running shoes, running shorts, cycling shoes, cycling shorts, running training, marathon running, bicycling, cycling apparel, cycling tights, cycle trader, moto gp, magellan gps, gps tracking, cycling short, gps software, cycling bike, bluetooth gps, carbon cycle, gps navigation, women's cycling, cycle world, free running, gps systems, motor cycles, gps receiver, gps reviews, cycle gear, gps coordinates, gps system, gps review, motor cycle, portable gps, handheld gps, garmin edge, cycling jersey, cycling news, gps maps, running shoe, car gps, bicycling magazine, best gps, cycling jerseys, gps map, gps locator, gps units, usb gps, tom tom gps, pda gps, cycle news, gps antenna, custom cycles, lowrance gps, palm gps, running gear, pro cycling, running track, laptop gps, cycle salvage, gps navigator, running program, gps watch, cycling tv, pocket pc gps, marine gps, gps navigation system, gps phone, bluetooth gps receiver, tomtom gps, cycle parts, sandnes, Rogaland, sykkel
+<!-- google_ad_section_end -->
+</p>
+</span>
+</body>
+
+</html>
+
+

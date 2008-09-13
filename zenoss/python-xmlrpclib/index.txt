@@ -1,0 +1,155 @@
+Using python xmlrpclib to interface with zenoss
+===============================================
+
+Managing zenoss trough web interface quickly gets tedious when one need to do
+the same or similar updates on many hosts. Luckily zenoss is based on Zope,
+and all Zope objects are accessible trough http://en.wikipedia.org/wiki/XML-RPC[XML-RPC].
+
+http://www.zenoss.com/community/docs/zenoss-api-docs/[Zenoss API]
+
+First simple example
+--------------------
+
+Python script listing all /Devices/Server/Linux devices:
+
+----
+#! /usr/bin/env python
+from xmlrpclib import ServerProxy
+ZenossURL = 'http://admin:zenoss@localhost:8080/'
+deviceTree = ServerProxy(ZenossURL + 'zport/dmd/Devices/Server/Linux/devices/')
+for device in deviceTree.objectIds():
+	print device
+
+----
+
+Rename devices
+--------------
+
+Our server naming standard is a bit confused.. so some hosts are discovered as
+short hostname, some as public FQDN and some as private FQDNs (and more). I'd
+prefer them all to be presented as short hostname in zenoss, so I need to
+rename lots of objects:
+
+----
+#! /usr/bin/env python
+from xmlrpclib import ServerProxy
+ZenossURL = 'http://admin:zenoss@localhost:8080/'
+deviceTree = ServerProxy(ZenossURL + 'zport/dmd/Devices/Server/Linux/devices/')
+for device in deviceTree.objectIds():
+	shortName = device.split('.')[0]
+        if device != shortName :
+		print device
+		print shortName
+		node = ServerProxy(ZenossURL + 'zport/dmd/Devices/Server/Linux/devices/' + device)
+		node.renameDevice(shortName)
+----
+
+That almost worked, except I get an exception when the first device gets
+renamed:
+
+----
+firsthostname.mydomain.net
+firsthostname
+Traceback (most recent call last):
+  File "<stdin>", line 7, in ?
+  File "/usr/lib64/python2.4/xmlrpclib.py", line 1096, in __call__
+    return self.__send(self.__name, args)
+  File "/usr/lib64/python2.4/xmlrpclib.py", line 1383, in __request
+    verbose=self.__verbose
+  File "/usr/lib64/python2.4/xmlrpclib.py", line 1137, in request
+    headers
+xmlrpclib.ProtocolError: <ProtocolError for
+admin:zenoss@localhost:8080/zport/dmd/Devices/Server/Linux/devices/firsthostname.mydomain.net:
+302 Moved Temporarily>
+----
+
+Seems it's confused when the object isn't there anymore, so I'll need to add
+some exception "handling" around the renameDevice:
+
+----
+#! /usr/bin/env python
+from xmlrpclib import ServerProxy
+ZenossURL = 'http://admin:zenoss@localhost:8080/'
+deviceTree = ServerProxy(ZenossURL + 'zport/dmd/Devices/Server/Linux/devices/')
+for device in deviceTree.objectIds():
+	shortName = device.split('.')[0]
+        if device != shortName :
+		print device
+		print shortName
+		node = ServerProxy(ZenossURL + 'zport/dmd/Devices/Server/Linux/devices/' + device)
+		try:
+			node.renameDevice(shortName)
+		except Exception, reason:
+			print reason
+----
+
+Now all my Linux-devices has short names in zenoss.
+
+
+Zenoss /Location based on SNMP syslocation
+------------------------------------------
+
+I wnt Zenoss to automatically organize my devices into the right location
+(/Locations/RoomX/RackY) based on the SNMPv2-MIB::sysLocation.0 setting.
+So I've defined that all hosts should follow a strict format for defining
+"syslocation" in /etc/snmp/snmpd.conf. The format should be "/Room/RackName"
+followed by a "space" and possibly the rack unit number. 
+
+----
+	% grep syslocation /etc/snmp/snmpd.conf
+	syslocation /Stavanger/BuildingX/Rack9 11
+----
+
+Then I can update the zenoss /Location automatically trough this script:
+
+----
+#! /usr/bin/env python
+from xmlrpclib import ServerProxy
+ZenossURL = 'http://admin:zenoss@localhost:8080/'
+deviceTree = ServerProxy(ZenossURL + 'zport/dmd/Devices/Server/Linux/devices/')
+for device in deviceTree.objectIds():
+        node = ServerProxy(ZenossURL + 'zport/dmd/Devices/Server/Linux/devices/' + device)
+        snmpLocation    = node.getProperty('snmpLocation')
+        if snmpLocation[0] == '/':
+                if snmpLocation.split()[0] != node.getLocationName() :
+                        print "Updating " + device + ' to '+ snmpLocation.split()[0]
+                        node.setLocation(snmpLocation.split()[0])
+        else:
+                if node.getLocationName() != '/Unknown' :
+                        print 'Setting ' + device + ' to /Unknown'
+                        node.setLocation('/Unknown')
+----
+
+All nodes with a snmpLocation string starting with "/" is put in
+the correct zenoss /Location, and other nodes are put in the /Unknown 
+location. 
+
+
+Rack Slot
+---------
+
+Next step is also getting the rack slot number from SNMPv2-MIB::sysLocation.0
+into the zope property "rackSlot".
+
+FIXME -- Verify that it's an integer before adding:
+
+----
+node.setZenProperty('rackSlot',snmpLocation.split()[1])
+----
+
+FIXME -- Pull out ascii-art drawings of all racks.
+
+Setting HW vendor, HW type, serial numbers, etc. from enterprise mibs
+---------------------------------------------------------------------
+
+Directly a'la
+http://permalink.gmane.org/gmane.comp.monitoring.zenoss.user/12642[] 
+or ?
+
+FIXME
+
+Adding custom properties
+------------------------
+
+FIXME -- Log bios version, used/unused DIMM slots and more in custom
+properties.

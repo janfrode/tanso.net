@@ -1,0 +1,5 @@
+# policyd labeling policy
+# file: policyd.fc 
+/usr/sbin/policyd   --   gen_context(system_u:object_r:policyd_exec_t, s0)
+/etc/policyd\.conf   --   gen_context(system_u:object_r:policyd_conf_t, s0)
+/var/run/policyd\.pid --   gen_context(system_u:object_r:policyd_var_run_t, s0)

@@ -1,0 +1,146 @@
+policy_module(googleearth,1.0.0)
+
+########################################
+#
+# Declarations
+#
+
+type googleearth_t;
+type googleearth_exec_t;
+domain_type(googleearth_t)
+#jfm: init_daemon_domain(googleearth_t, googleearth_exec_t)
+
+########################################
+#
+# googleearth local policy
+#
+# Check in /etc/selinux/refpolicy/include for macros to use instead of allow rules.
+
+# Some common macros (you might be able to remove some)
+files_read_etc_files(googleearth_t)
+libs_use_ld_so(googleearth_t)
+libs_use_shared_libs(googleearth_t)
+miscfiles_read_localization(googleearth_t)
+## internal communication is often done using fifo and unix sockets.
+allow googleearth_t self:fifo_file { read write };
+allow googleearth_t self:unix_stream_socket create_stream_socket_perms;
+
+# Init script handling
+#jfm: init_use_fds(googleearth_t)
+#jfm: init_use_script_ptys(googleearth_t)
+#jfm: domain_use_interactive_fds(googleearth_t)
+
+# Transition from unconfined_t to googleearth_t:
+type_transition unconfined_t googleearth_exec_t : process googleearth_t;
+allow unconfined_t googleearth_exec_t : file execute;
+allow unconfined_t googleearth_t : process transition;
+allow googleearth_t googleearth_exec_t : file entrypoint ;
+
+#
+# Fixing denials from auditd.log:
+require {
+        class chr_file { getattr read write }; 
+        class dir { add_name getattr search create remove_name rmdir write}; 
+        class file { create unlink execute execute_no_trans getattr ioctl lock read write }; 
+        class filesystem getattr;
+        class lnk_file read;
+        class process { execmem execstack }; 
+        class sock_file write;
+        class tcp_socket name_connect;
+        class unix_stream_socket connectto;
+        type bin_t; 
+        type default_t; 
+        type devpts_t; 
+        type dri_device_t; 
+        type fonts_t; 
+        type fs_t; 
+        type googleearth_exec_t; 
+        type googleearth_t; 
+        type http_port_t; 
+        type nscd_var_run_t; 
+        type proc_t; 
+        type sysctl_kernel_t; 
+        type sysctl_t; 
+        type tmpfs_t; 
+        type unconfined_t; 
+        type urandom_device_t; 
+        type usr_t; 
+        type var_t; 
+        type xdm_t; 
+        type xdm_tmp_t; 
+        role system_r; 
+	class process execheap;
+        class chr_file { getattr ioctl }; 
+        class dir { add_name getattr remove_name search write }; 
+        class fifo_file getattr;
+        class file { append getattr read unlink write }; 
+        class lnk_file { create getattr read unlink }; 
+        class packet { recv send }; 
+        class tcp_socket { connect create getopt read write }; 
+        class udp_socket { connect create getattr read write }; 
+        class unix_stream_socket connectto;
+        type default_t; 
+        type dri_device_t; 
+        type fonts_t; 
+        type googleearth_t; 
+        type home_root_t; 
+        type net_conf_t; 
+        type tmp_t; 
+        type tmpfs_t; 
+        type unconfined_t; 
+        type unlabeled_t; 
+        type user_home_dir_t; 
+        type user_home_t; 
+        type xdm_tmp_t; 
+        role system_r; 
+};
+
+allow googleearth_t bin_t:dir search;
+allow googleearth_t bin_t:file { execute execute_no_trans getattr read };
+allow googleearth_t default_t:lnk_file read;
+allow googleearth_t devpts_t:chr_file { read write };
+allow googleearth_t devpts_t:dir search;
+allow googleearth_t dri_device_t:chr_file { read write };
+allow googleearth_t fonts_t:dir getattr;
+allow googleearth_t fonts_t:file { getattr read };
+allow googleearth_t fs_t:filesystem getattr;
+allow googleearth_t googleearth_exec_t:file { execute execute_no_trans getattr ioctl read };
+allow googleearth_t self:process { execmem execstack };
+allow googleearth_t http_port_t:tcp_socket name_connect;
+allow googleearth_t nscd_var_run_t:dir search;
+allow googleearth_t proc_t:file { getattr read };
+allow googleearth_t sysctl_kernel_t:dir search;
+allow googleearth_t sysctl_kernel_t:file { getattr read };
+allow googleearth_t sysctl_t:dir search;
+allow googleearth_t tmpfs_t:dir add_name;
+allow googleearth_t tmpfs_t:file { create lock read write };
+allow googleearth_t tmpfs_t:filesystem getattr;
+allow googleearth_t urandom_device_t:chr_file { getattr read };
+allow googleearth_t usr_t:file { execute getattr read };
+allow googleearth_t var_t:file { getattr read };
+allow googleearth_t xdm_t:unix_stream_socket connectto;
+allow googleearth_t xdm_tmp_t:sock_file write;
+allow unconfined_t googleearth_exec_t:file read;
+allow googleearth_t self:process execheap;
+allow googleearth_t usr_t:dir { add_name create remove_name rmdir write };
+allow googleearth_t default_t:lnk_file getattr;
+allow googleearth_t dri_device_t:chr_file { getattr ioctl };
+allow googleearth_t fonts_t:dir search;
+allow googleearth_t self:fifo_file getattr;
+allow googleearth_t self:tcp_socket { connect create getopt read write };
+allow googleearth_t self:udp_socket { connect create getattr read write };
+allow googleearth_t home_root_t:dir { getattr search };
+allow googleearth_t net_conf_t:file { getattr read };
+allow googleearth_t tmp_t:dir search;
+allow googleearth_t tmpfs_t:dir { remove_name search write };
+allow googleearth_t tmpfs_t:file unlink;
+allow googleearth_t unconfined_t:unix_stream_socket connectto;
+allow googleearth_t unlabeled_t:packet { recv send };
+allow googleearth_t user_home_dir_t:dir { getattr search };
+allow googleearth_t user_home_t:dir { add_name getattr remove_name search write };
+allow googleearth_t user_home_t:file { append getattr read write };
+allow googleearth_t user_home_t:lnk_file { create read unlink };
+allow googleearth_t xdm_tmp_t:dir search;
+allow googleearth_t xdm_tmp_t:file { getattr read };
+allow googleearth_t user_home_t:file { create unlink };
+

@@ -1,0 +1,22 @@
+Visited countries
+=================
+
+Maps over places I've visited. I try to also visit the highpoints -- So on
+Greenland I climbed the highest point in the Arctic. In Alaska I climbed the
+highest point in North America. In Guatemala I climbed the highest point in
+Central America. On Borneo I climbed the highest point in South-East Asia..
+
+World
+-----
+
+image:http://www.world66.com/community/mymaps/worldmap?visited=FRDKDECHGRNLNOEGCAGTSMISITCZATGLIEESSGUSUKMYSE[]
+
+Europe
+------
+
+image:http://www.world66.com/community/mymaps/visitedEurope/countrymap?visited=AUCZDKENFRGEGRICIEITNLNINOSASCSPSESW[]
+
+US States
+---------
+
+image:http://www.world66.com/community/mymaps/visitedStates/statemap?visited=AKCOWA[]

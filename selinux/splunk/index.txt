@@ -1,0 +1,221 @@
+SElinux policy for Splunk
+=========================
+
+``splunk who'll tear your legs off and stick them in your ears!''
+
+Module goal:
+------------
+
+* splunkd daemon should be confined to only have access to the minimum require
+d to work properly.
+* configuration files must be protected from being modified by splunkd domain.
+* splunkd should be allowed to bind to splunkd port.
+* splunkd should be allowed to resolve names
+* splunkd should be allowed to read log files.
+* splunkd should be allowed to eat files dumped to /opt/splunk/var/spool/splunk/DirectoryMonitor/
+
+
+------------------------------cut-----------------
+
+Type declarations
+-----------------
+
+We'll need at least the following types:
+
+* policyd_t               -- Domain type
+* policyd_exec_t          -- entry point for the policyd executable (/usr/sbin/policyd)
+* policyd_var_run_t       -- pid file for policyd (/var/run/policyd.pid)
+* policyd_conf_t          -- configuration file (/etc/policyd.conf)
+* policyd_port_t          -- listening port (10031/tcp)
+
+So we define these in
+http://tanso.net/selinux/policyd/policyd.te[policyd.te]
+
+----------------------------------------------------
+policy_module(policyd, 1.0)
+
+#####################
+# Type declarations #
+#####################
+
+# Policyd domain:
+type policyd_t;
+
+# executable entry point:
+type policyd_exec_t;
+
+# Port for policyd to bind:
+type policyd_port_t;
+
+# mark policyd_t as a domain and policyd_exec_t as an entrypoint into that domain
+init_daemon_domain(policyd_t, policyd_exec_t)
+
+# PID file /var/run/policyd.pid
+type policyd_var_run_t;
+files_pid_file(policyd_var_run_t)
+
+# configuration files
+type policyd_conf_t;
+files_config_file(policyd_conf_t)
+----------------------------------------------------
+
+
+Initial restrictive access
+--------------------------
+
+Next we try try do grant the permissions we know we need:
+
+* Read configuration files (policyd_conf_t).
+* Create, read, write pid file (policyd_var_run_t).
+* Network access, bind to policyd_port_t. 
+* Use shared libraries.
+* Read common directories/files like proc, /dev/null, sysctl.
+* More.. 
+
+----------------------------------------------------
+########################
+# policyd -- core access #
+########################
+
+# Configuration files - read
+allow policyd_t policyd_conf_t : dir r_dir_perms;
+allow policyd_t policyd_conf_t : file r_file_perms;
+allow policyd_t policyd_conf_t : lnk_file { getattr read };
+
+# PID file - create, read, and write
+allow policyd_t policyd_var_run_t : dir rw_dir_perms;
+allow policyd_t policyd_var_run_t : file create_file_perms;
+files_pid_filetrans(policyd_t, policyd_var_run_t, file)
+
+# Network access - the policyd daemon is allowed to send
+# and receive network data to all nodes and ports over
+# all network interfaces (FIXME?). Additionally, it can name_bind
+# to the policyd port (policyd_port_t)
+allow policyd_t self : tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_all_if(policyd_t)
+corenet_tcp_sendrecv_all_nodes(policyd_t)
+corenet_tcp_sendrecv_all_ports(policyd_t)
+corenet_non_ipsec_sendrecv(policyd_t)
+corenet_tcp_bind_all_nodes(policyd_t)
+#FIXME: corenet_tcp_bind_policyd_port(policyd_t)
+sysnet_dns_name_resolve(policyd_t)
+
+# use shared libraries
+libs_use_ld_so(policyd_t)
+libs_use_shared_libs(policyd_t)
+
+# read common directories / files including
+#       * /etc (search)
+# * system variables
+#files_search_etc(policyd_t)
+#kernel_read_kernel_sysctls(policyd_t)
+#kernel_read_system_state(policyd_t)
+#kernel_read_all_sysctls(policyd_t)
+----------------------------------------------------
+
+Create labeling policy
+----------------------
+
+We define the labeling policy in policyd.fc:
+
+-------------------------------------------------------------------
+# policyd labeling policy
+# file: policyd.fc
+/usr/sbin/policyd   --   gen_context(system_u:object_r:policyd_exec_t, s0)
+/etc/policyd.conf   --   gen_context(system_u:object_r:policyd_conf_t, s0)
+/var/run/policyd.pid    gen_context(system_u:object_r:policyd_var_run_t, s0)
+-------------------------------------------------------------------
+
+Build module
+------------
+
+Then we build and load the module, then see if we get any failures from
+policyd:
+
+-------------------------------------------------------------------
+# make -f /usr/share/selinux/devel/Makefile
+Compiling targeted policyd module
+/usr/bin/checkmodule:  loading policy configuration from tmp/policyd.tmp
+/usr/bin/checkmodule:  policy configuration loaded
+/usr/bin/checkmodule:  writing binary representation (version 6) to
+tmp/policyd.mod
+Creating targeted policyd.pp policy package
+rm tmp/policyd.mod tmp/policyd.mod.fc
+# semodule -i policyd.pp 
+
+## Label the policyd files:
+# restorecon /etc/policyd.conf /usr/sbin/policyd /var/run/policyd.pid 
+# ls -Z /etc/policyd.conf /usr/sbin/policyd /var/run/policyd.pid 
+-rw-------  root root system_u:object_r:policyd_conf_t /etc/policyd.conf
+-rwxr-xr-x  root root system_u:object_r:policyd_exec_t /usr/sbin/policyd
+-rw-r--r--  root root system_u:object_r:policyd_var_run_t /var/run/policyd.pid
+
+## Label the policyd port:
+# semanage port -a -t policyd_port_t -p tcp 10031
+# semanage port -l|grep polic
+policyd_port_t                 tcp      10031
+
+-------------------------------------------------------------------
+
+
+Then we start/stop policyd a few times, analyzing the AVC denials
+recorded in /var/log/audit/audit.log and add rules to the policyd.te
+until it can run without any denials.
+
+Manual install of this policy
+-----------------------------
+
+To manually install this policy:
+
+* download http://tanso.net/selinux/policyd/policyd.te[policyd.te] and and http://tanso.net/selinux/policyd/policyd.fc[policyd.fc]
+
+* Make sure you have selinux-policy-devel installed (rpm -q selinux-policy-devel)
+
+* Build the module:
+-----------------------------------------
+make -f /usr/share/selinux/devel/Makefile
+-----------------------------------------
+
+* Install the module:
+---------------------------
+semodule -i policyd.pp
+---------------------------
+
+* Correct the file labels: 
+-------------------------------------------------------------------
+restorecon /etc/policyd.conf /usr/sbin/policyd /var/run/policyd.pid
+-------------------------------------------------------------------
+
+* Label the policyd port:
+-----------------------------------------------
+semanage port -a -t policyd_port_t -p tcp 10031
+-----------------------------------------------
+
+* Start policyd
+-------------------------
+/etc/init.d/policyd start
+-------------------------
+
+* Watch out for AVC denials in /var/log/audit/audit.log.
+
+
+If something breaks, (it woun't since selinux has a deny-by-default policy,
+and we're just opening it up, the only thing affected will be the 3 files we
+label and 10031/tcp) you can always back out all changes by:
+
+-------------------------------------------------------------------
+/etc/init.d/policyd stop
+semanage port -d -t policyd_port_t -p tcp 10031
+semodule -r policyd
+restorecon /etc/policyd.conf /usr/sbin/policyd /var/run/policyd.pid
+/etc/init.d/policyd start
+-------------------------------------------------------------------
+
+Included in reference policy?
+-----------------------------
+
+I converted the policy to use refpolicy interfaces, instead
+of allow rules directly, and created the module as a patch against
+the latest reference policy in hopes of getting it merged:
+
+http://thread.gmane.org/gmane.comp.security.selinux/4326[]

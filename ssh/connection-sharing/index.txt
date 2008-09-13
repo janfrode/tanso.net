@@ -1,0 +1,81 @@
+Connection multiplexing with OpenSSH
+====================================
+Jan-Frode Myklebust <janfrode@tanso.net>
+
+Starting with OpenSSH v3.9 there was a new feature that allowed 
+one to run several sessions over the same ssh connection. The benefit
+of connection sharing is that only the first time you connect to a host
+you'll need to exchange keys, authenticate, negotiate encryption, etc.
+
+Skipping all this initial connection setup, makes any additional sessions
+to a host you've already connected to very quick.
+
+Config
+------
+
+The easiest way to use connection sharing is to put the following 
+in your ~/.ssh/config -- and session multiplexing will be automatic.
+
+--------
+Host *
+	ControlMaster auto
+	ControlPath ~/.ssh/sockets/%r@%h:%p
+--------
+
+"ControlMaster auto" means ssh will try to use an existing socket if 
+available, or set up a new one if none exists.
+
+ControlPath specifies where to put the socket file that any additional
+sessions will use. I put this in my ~/.ssh/sockets/ directory, to avoid
+potential problems/races on shared /tmp directories. Please remember to
+create this directory by running:
+
+--------
+	mkdir -m 700 -p ~/.ssh/sockets/
+--------
+
+Benchmark
+---------
+
+To see the benefit of this, try connecting two sessions to a server. The 
+the second connection should be a lot quicker than the initial one. 
+
+Here's a sample towards one of my slower machines, a 1.25GHz Mac Mini:
+
+-----------------------------
+shell1% time ssh minimac /bin/true
+
+real    0m8.391s
+user    0m0.022s
+sys	0m0.016s
+
+shell1% ssh minimac
+<leave this shell running>
+
+shell2% time ssh minimac /bin/true
+
+real	0m0.028s
+user	0m0.004s
+sys	0m0.003s
+
+-----------------------------
+
+So 8+ seconds to log in to this host normally, and 0.028s for any
+additional multiplexed session!
+
+Risk
+----
+
+The risk with using session multiplexing is that anyone who can read/write 
+your ControllPath, will be able to use them to log in to the same hosts as 
+you're logged in to. So, only use it on machines where you trust everyone
+with root-access. You might also consider setting "ControlMaster autoask", 
+to confirm every connection trough the SSH_ASKPASS program before they're
+allowed to use the socket.
+
+On my laptop I've always been running an ssh-agent, which has this same
+problem, and worse, since it will let anyone with root-access use it to
+authenticate agains any machine I have access to. I've tried telling the
+agent it should ask for confirmation trough the SSH_ASKPASS program each
+time my key was used (ssh-add -c), but that got too tedious. Maybe with
+session multiplexing I can turn on key-usage confirmations again.

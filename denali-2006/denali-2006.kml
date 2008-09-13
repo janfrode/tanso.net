@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+<Document>
+	<name>~GERbiiBR.kmz</name>
+	<Style id="waypoint_h">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal4/icon61.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="waypoint_n">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal4/icon61.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<StyleMap id="waypoint">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#waypoint_n</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#waypoint_h</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder>
+		<name>Denali 2006</name>
+		<Placemark>
+			<name>Anchorage, Earth B&amp;B</name>
+			<open>1</open>
+			<description>2006-05-29,   17:44:03
+
+http://www.earthbb.com/</description>
+			<Style>
+				<IconStyle>
+					<scale>1.2</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pal2/icon28.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>-149.902033,61.210617,34</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Talkeetna Air Taxi (TAT)</name>
+			<open>1</open>
+			<description>2006-05-30,  13:58:08</description>
+			<Style>
+				<IconStyle>
+					<scale>1.2</scale>
+					<Icon>
+						<href>http://maps.google.com/mapfiles/kml/pal2/icon48.png</href>
+					</Icon>
+				</IconStyle>
+			</Style>
+			<Point>
+				<coordinates>-150.098217,62.321483,106</coordinates>
+			</Point>
+		</Placemark>
+		<Folder>
+			<name>Day 1</name>
+			<Placemark>
+				<name>South fork Base Camp</name>
+				<open>1</open>
+				<description>2006-06-01,   12:25:30
+0.00 km,   0.00 km,   NA</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.172183,62.967833,2141</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Low point, Kahiltna glacier.</name>
+				<open>1</open>
+				<description>2006-06-01,   14:47:25
+1.61 km,   1.61 km,   -5 degrees</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.198617,62.975917,2006</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<open>1</open>
+				<description>2006-06-01,   16:02:50
+2.13 km,   3.74 km,   2 degrees
+Short rest.</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.208883,62.994483,2098</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<open>1</open>
+				<description>2006-06-01,   17:15:30
+1.35 km,   5.09 km,   3 degrees
+Short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.193183,63.00428300000001,2158</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<open>1</open>
+				<description>2006-06-01,   17:50:50
+0.309 km,   5.40 km,   7 degrees
+Short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.187617,63.00916700000001,2196</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<open>1</open>
+				<description>2006-06-01,   18:45:56
+0.678 km,   6.08 km,   6 degrees
+Short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.18785,63.01525000000002,2270</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<open>1</open>
+				<description>2006-06-01,   19:09:07
+0.514 km,   6.59 km,   4 degrees
+Short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.18625,63.0198,2307</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Ski Hill Camp</name>
+				<open>1</open>
+				<description>2006-06-01,   19:37:03
+0.758 km,   7.35 km,   2 degrees</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal3/icon56.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.1806,63.02611700000001,2338</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Day 2</name>
+			<Placemark>
+				<open>1</open>
+				<description>2006-06-02,   12:03:49 
+1.18 km,   8.53 km,   4 degrees
+Short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.17885,63.036717,2425</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<open>1</open>
+				<description>2006-06-02,   13:28:34
+0.861 km,   9.39 km,   12 degrees
+Short rest.</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.182717,63.04425,2602</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-02,   14:39:31
+0.900 km,   10.29 km,   8 degrees
+Short rest.</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.18315,63.052333,2727</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<open>1</open>
+				<description>2006-06-02,   16:34:16
+0.694 km,   10.98 km,   10 degrees
+Short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.183717,63.058567,2848</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-02,   17:15:04
+0.595 km,   11.58 km,   8 degrees
+Short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.181183,63.06378300000001,2933</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Intermediate Camp</name>
+				<description>2006-06-02,   19:57:47
+0.517 km,   12.10 km,   4 degrees</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal3/icon56.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.1768,63.06798300000001,2973</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Day 3</name>
+			<Placemark>
+				<description>2006-06-03,   09:53:38
+0.743 km,   12.84 km,   6 degrees
+Short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.170333,63.07398300000001,3052</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-03,   10:35:18
+0.497 km,   13.34 km,   14 degrees
+Short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.16135,63.075817,3178</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-03,   11:20:27
+0.399 km,   13.74 km,   12 degrees
+Short rest.</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.15455,63.07398300000001,3265</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Motorcycle Hill Camp</name>
+				<description>2006-06-03,   12:31:18
+0.452 km,   14.19 km,   13 degrees 	 </description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal3/icon56.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.145683,63.0746,3373</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Day 4</name>
+			<description>Carry load past Windy Corner. Sleep another night at Motorcycle Hill.</description>
+			<Placemark>
+				<name>Top of Motorcycle Hill</name>
+				<description>2006-06-04,   10:52:56
+0.530 km,   14.72 km,   19 degrees</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.13565,63.076017,3559</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description> 2006-06-04,   11:34:48 
+0.355 km,   15.07 km,   20 degrees
+short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.129233,63.07471700000001,3690</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-04,   12:02:17
+0.240 km,   15.31 km,   17 degrees
+short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.12475,63.074,3764</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Windy Corner</name>
+				<description>2006-06-04,   13:27:38
+1.09 km,   16.40 km,   13 degrees
+Windy Corner</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.108017,63.06785,4025</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Cache</name>
+				<description> 2006-06-04/6,   14:24:01
+0.584 km,   16.99 km,   9 degrees
+Cache</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.096883,63.068067,4119</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Day 5</name>
+			<description>Move camp from Motorcycle Hill to Basin Camp.</description>
+			<Placemark>
+				<description>2006-06-05,   15:07:37
+0.239 km,   17.23 km,   18 degrees
+short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.092367,63.06873300000001,4195</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-05,   15:40:41
+0.197 km,   17.42 km,   22 degrees
+ short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.090483,63.07028300000001,4275</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-05,   16:06:07
+0.346 km,   17.77 km,   5 degrees 
+short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.0838,63.071,4307</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Basin Camp</name>
+				<description>2006-06-05/6,   16:57:06
+0.416 km,   18.18 km,   5 degrees 
+Basin Camp</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal3/icon56.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.075783,63.07015,4346</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Day 6</name>
+			<open>1</open>
+			<description>Fetch cache.</description>
+		</Folder>
+		<Folder>
+			<name>Day 7</name>
+			<description>Acclimatization trip up to headwall.</description>
+			<Placemark>
+				<description>2006-06-07,   12:25:030.225 km,   18.41 km,   2 degrees
+Start of Hill</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.075117,63.07215,4354</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-07,   12:45:09
+0.184 km,   18.59 km,   28 degrees 
+Top of First slope</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.07395,63.07371700000001,4450</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Below Headwall</name>
+				<description>2006-06-07,   13:58:13
+0.222 km,   19.20 km,   28 degrees
+Below headwall</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.069817,63.078883,4753</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Day 10</name>
+			<open>1</open>
+			<description>Carry cache to West Buttress.</description>
+			<Placemark>
+				<name>Cache on West Buttress</name>
+				<description>2006-06-10,   17:32:34
+0.219 km,   19.42 km,   42 degrees
+Cache on West Buttress</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.0711,63.080767,4949</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-10,   19:03:02
+0.389 km,   18.98 km,   26 degrees 
+Top of Second slope</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.07125,63.077,4637</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Day 12</name>
+			<open>1</open>
+			<description>Move to High Camp</description>
+			<Placemark>
+				<description>2006-06-12,   13:47:16
+0.114 km,   19.54 km,   27 degrees
+On West Buttress</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.068883,63.08091700000001,5008</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-12,   15:01:58
+0.138 km,   19.68 km,   31 degrees
+On West Buttress</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.066233,63.081267,5090</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-12,   16:42:44
+0.303 km,   19.98 km,   20 degrees
+On West Buttress</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.06025,63.081133,5201</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>High Camp</name>
+				<description> 2006-06-12,   17:43:48
+0.434 km,   20.41 km,   8 degrees
+High Camp</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal3/icon56.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.054083,63.07841700000001,5259</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Day 14</name>
+			<open>1</open>
+			<description>Summit day!</description>
+			<Placemark>
+				<name>Denali Pass</name>
+				<description>2006-06-14,   12:38:13
+1.25 km,   21.66 km,   15 degrees 
+Denali pass</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.03025,63.08145,5591</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-14,   13:25:41
+0.167 km,   21.83 km,   22 degrees
+ short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.029567,63.07998300000001,5659</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-14,   13:45:20
+0.100 km,   21.93 km,   22 degrees 
+ short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.0294,63.0791,5700</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-14,   14:00:20
+0.081 km,   22.01 km,   31 degrees 
+ short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.029533,63.07836700000001,5749</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description> 2006-06-14,   14:47:21
+0.308 km,   22.32 km,   19 degrees
+ short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.030083,63.075617,5853</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description> 2006-06-14,   15:14:30
+ 0.230 km,   22.55 km,   11 degrees 
+ short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.02875,63.073633,5898</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-14,   15:42:05
+ 0.110 km,   22.66 km,   21 degrees 
+ short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.02705,63.073017,5940</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<description>2006-06-14,   16:16:42
+0.479 km,   23.14 km,   2 degrees
+ short rest</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.01925,63.07055,5960</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Top of Pig Hill</name>
+				<description>2006-06-14,   18:11:36
+0.361 km,   23.60 km,   18 degrees
+ Top of Pig Hill</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.012633,63.06765,6088</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Denali summit!</name>
+				<description> 2006-06-14,   19:20:54
+0.346 km,   23.95 km,   17 degrees
+SUMMIT</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal4/icon29.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.0067,63.06921700000001,6194</coordinates>
+				</Point>
+			</Placemark>
+			<Placemark>
+				<name>Football Field</name>
+				<description>2006-06-14,   20:55:14
+0.105 km,   23.24 km,   6 degrees 
+Football Field (on descent)</description>
+				<Style>
+					<IconStyle>
+						<scale>1.2</scale>
+						<Icon>
+							<href>http://maps.google.com/mapfiles/kml/pal2/icon13.png</href>
+						</Icon>
+					</IconStyle>
+				</Style>
+				<Point>
+					<coordinates>-151.017617,63.06998300000001,5971</coordinates>
+				</Point>
+			</Placemark>
+		</Folder>
+	</Folder>
+</Document>
+</kml>

@@ -1,0 +1,86 @@
+j2me-otp: The Java OTP Calculator for cell phones.
+==================================================
+Jan-Frode Myklebust <janfrode@tanso.net>
+
+
+
+Here's a port of http://www.cs.umd.edu/users/harry/jotp/[jotp] to 
+Java 2 Platform Micro Edition (J2ME), so that it can be used on 
+mobile phones that supports Java. I made this so that I can securely 
+connect to our ssh-server from insecure internet cafees, where 
+people might be trying to sniff my passsword. The midlet supports 
+md5-hashing, since that's what I'm using. Adding md4 should be 
+trivial, if anybody needs it.
+
+I use this with an openssh server configured with '--with-skey',
+to securely log into my servers from unsecure terminals.
+
+
+Source and binaries
+-------------------
+
+* Browse the source and history at http://github.com/janfrode/j2me-otp[github]
+* Clone the source tree from git://github.com/janfrode/j2me-otp.git
+* http://tanso.net/j2me-otp/jotp.jad[jotp.jad] Open this URL in your cell phone to install the application.
+* http://tanso.net/j2me-otp/jotp.jar[jotp.jar] (obfuscated to save memory)
+
+
+Building and testing in emulator
+--------------------------------
+
+You will need the 
+http://java.sun.com/products/sjwtoolkit/overview.html[Sun Java Wireless Toolkit for CLDC]
+to build it from source. The Sun Java Wireless Toolkit also includes an
+emulator, so that it's easy to test the application without uploading it
+to the phone. Very handy for development. To test it in the emulator, 
+download the .jad and .jar and execute: 'emulator -Xdescriptor:jotp.jad'. 
+
+Emulator http://tanso.net/j2me-otp/emulator.png[screenshot].
+
+
+Tested phones
+-------------
+
+When I developed this, I had a Nokia 6310, which (un)fortunately didn't
+manage to run j2me-otp because of lack of memory. It only had 128KB static and
+50KB dynamic memory. So I had an excuse to buy a new phone, a Nokia 7310
+series 60 phone, where it worked well. A few other phones reported to work:
+
+* Sony Ericsson Z520i
+* Sony Ericsson K800i
+* Sony Ericsson W810i
+* Sony Ericsson W880i
+* Sony Ericsson T610
+* Siemens SX1
+* Siemens SK65
+* Nokia 7310
+* Nokia 6820
+* Nokia 6600
+* Nokia 6230i
+* Nokia 6021
+* Nokia 3650
+* Nokia 3410
+* Nokia E61
+* Nokia E65 (my new smartphone :-)
+* Nokia Communicator 9300, 9300i and 9500
+* Motorola Razor v3i
+
+But I suspect any modern phone with java support should handle it.
+
+
+Links
+-----
+
+* http://code.google.com/p/j2me-otp/[j2me-otp] project home at
+code.google.com. Report bugs here.
+* http://www.heise.de/security/artikel/87555/0[Heise article on otp], 
+which mentions my j2me-otp. 
+* For more information in otp and jotp, check the original jotp applet 
+authors page at http://www.cs.umd.edu/users/harry/jotp/[]
+* http://en.wikipedia.org/wiki/One-time_password[]
+
+
+Comments?
+----------
+
+Please email any comments to Jan-Frode Myklebust, mailto:janfrode@tanso.net[].

@@ -1,0 +1,51 @@
+Enable squid snmp-functionality on RHEL5/SElinux
+================================================
+Jan-Frode Myklebust <janfrode@tanso.net>
+
+The steps needed to configure squid's snmp mib to be passed trough the 
+systems snmp is:
+
+Label the squid snmp_port for selinux (without this squid woun't 
+be allowed to bind to this port):
+
+--------------------------------------------
+semanage port -a -t http_cache_port_t -p udp 3401
+--------------------------------------------
+
+Configure these settings in /etc/squid/squid.conf:
+
+--------------------------------------------
+acl snmppublic snmp_community squidcommunity
+snmp_port 3401
+snmp_access allow snmppublic localhost
+--------------------------------------------
+
+Configure system snmpd settings in /etc/snmp/snmpd.conf
+--------------------------------------------
+### Squid: ####
+view systemview included .1.3.6.1.4.1.3495.1
+proxy -m /etc/squid/mib.txt -v 1 -c squidcommunity localhost:3401 .1.3.6.1.4.1.3495.1
+### /Squid ####
+--------------------------------------------
+
+Restart squid (service squid restart) and restart snmpd (service snmpd
+restart). You should now be able to walk the squid snmp-mib using snmpwalk:
+
+--------------------------------------------
+% snmpwalk -m /etc/squid/mib.txt -v1 -cpublic localhost .1.3.6.1.4.1.3495.1
+SQUID-MIB::cacheSysVMsize.0 = INTEGER: 264
+SQUID-MIB::cacheSysStorage.0 = INTEGER: 92108
+SQUID-MIB::cacheUptime.0 = Timeticks: (102442) 0:17:04.42
+SQUID-MIB::cacheAdmin.0 = STRING: root
+SQUID-MIB::cacheSoftware.0 = STRING: squid
+SQUID-MIB::cacheVersionId.0 = STRING: "2.6.STABLE6"
+SQUID-MIB::cacheLoggingFacility.0 = STRING: ALL,1
+SQUID-MIB::cacheMemMaxSize.0 = INTEGER: 8
+SQUID-MIB::cacheSwapMaxSize.0 = INTEGER: 100
+SQUID-MIB::cacheSwapHighWM.0 = INTEGER: 95
+SQUID-MIB::cacheSwapLowWM.0 = INTEGER: 90
+SQUID-MIB::cacheUniqName.0 = STRING: via.ormaskogen
+SQUID-MIB::cacheSysPageFaults.0 = Counter32: 0
+SQUID-MIB::cacheSysNumReads.0 = Counter32: 818
+....
+--------------------------------------------

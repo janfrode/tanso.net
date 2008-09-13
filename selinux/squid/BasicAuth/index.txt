@@ -1,0 +1,54 @@
+Enable pam_auth basic authentication in squid
+=============================================
+Jan-Frode Myklebust <janfrode@tanso.net>
+
+To enabel pam_auth basic authentication in squid, squid needs to
+be configured with something like:
+
+-----------------------------------------------
+auth_param basic program /usr/lib64/squid/pam_auth
+auth_param basic children 5
+auth_param basic realm My Proxy Realm
+auth_param basic credentialsttl 1 hours
+
+acl password proxy_auth REQUIRED
+http_access allow password
+-----------------------------------------------
+
+and the selinux policy needs the following modification:
+
+--------------------------------------------------
+# cat << EOF > squid_pam_auth.te
+module squid_pam_auth 1.0;
+
+require {
+        type squid_t;
+        type shadow_t;
+        type chkpwd_exec_t;
+        class file { read execute getattr };
+        class netlink_audit_socket { read create write nlmsg_relay };
+        class capability audit_write;
+}
+
+### Access to /etc/shadow needs special handling: ####
+require {
+    attribute can_read_shadow_passwords;
+}
+
+typeattribute squid_t can_read_shadow_passwords;
+allow squid_t shadow_t:file { read getattr };
+### / ####
+
+#============= squid_t ==============
+allow squid_t chkpwd_exec_t:file execute;
+allow squid_t self:netlink_audit_socket { create write nlmsg_relay read };
+allow squid_t self:capability audit_write;
+EOF
+
+# checkmodule -M -m -o squid_pam_auth.mod squid_pam_auth.te
+# semodule_package -o squid_pam_auth.pp -m squid_pam_auth.mod
+# /usr/sbin/semodule -i squid_pam_auth.pp
+--------------------------------------------------
+
+OBS: This means squid will be allowed to read the shadow-file. That might be
+something one needs to think twice about.. 

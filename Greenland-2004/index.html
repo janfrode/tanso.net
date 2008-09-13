@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>G4 - Bergen Fjellsport to Watkins Bjerge”</title>
+
+<!-- Reklamebanner fra google -->
+<script type="text/javascript"><!--
+google_ad_client = "pub-1355075937253040";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel = "";
+//-->
+</script>
+<!-- End Reklamebanner fra google -->
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAABKwnvse1Y2SfpZCKpmWR4xS1EQv73mEsnQqnX6UdLRpIKBhvMxTeqNNdMrnv8-8l4CPPpXMLht2OUA"
+      type="text/javascript"></script>
+    <script type="text/javascript">
+
+    //<![CDATA[
+
+    function load() {
+      if (GBrowserIsCompatible()) {
+        var map = new GMap2(document.getElementById("map"));
+
+	// Setter senter og zoom level (1=full globe).
+        map.setCenter(new GLatLng(68.9500,-29.5000), 10);
+
+	// Map-typer er G_NORMAL_MAP, G_SATELLITE_MAP, G_HYBRID_MAP
+	map.setMapType(G_SATELLITE_MAP);
+
+	// Laster min kml-fil:
+	var gx = new GGeoXml("http://tanso.net/Greenland-2004/G4.kml");
+	map.addOverlay(gx);
+
+	// Legger til knapper for zoom, og map/satellite/hybrid:
+	map.addControl(new GSmallMapControl());
+	map.addControl(new GMapTypeControl());
+      }
+    }
+
+    //]]>
+    </script>
+  </head>
+  <body onload="load()" onunload="GUnload()">
+	<h1>The 2004 expedition - G4 - Bergen Fjellsport to Watkins Bjerge</h1>
+	<hr/>
+    	<div id="map" style="width: 1000px; height: 600px"></div>
+	<p/>
+	<i>Please click on the markers in the above map, to read details about each mountain.</i>
+	<p />
+	In May 2004 I was on an expedition to the Watkins Mountains on Greenland, with the 
+	aim to climb the 3 highest mountains on Greenland (Mt. Gunnbjorn, Dome, Cone). The 
+	expedition was a major success, and we managed to climb a total of 19 summits, 
+	including what we believe was 10 first ascents! Two of the team members also skied
+	on Telemark down the 3 highest summits, another first achievement.
+	<p />
+	The expedition members were me (Jan-Frode Myklebust), Arnt Flatmo, Torstein Skage, 
+	Per Ove Oppedal, Ståle Grimen and expedition leader Petter Bjørstad.
+	<p />
+	Most memorable summits for me was "Snefjeld" (which was quite exposed) and "Istind" which 
+	was the only roped climb I did. "Istind" looked quite scary from below, and we had to have
+	2 tries to get to the top. Plus of course the hat-trick of Cone,  Dome and Hvitserk which
+	to me was mostly hard work, but still a great way of celebrating May 17th!
+	<p />
+	A detailed report with lots of great pictures can be read at Arnt Flatmo's 
+	<a href="http://www.westcoastpeaks.com/Peaks/g4.html">http://www.westcoastpeaks.com/Peaks/g4.html</a>, 
+	Petter's <a href="http://www.ii.uib.no/~petter/mountains/G4/diary.html">diary</a>, 
+	an official <a href="DPC-report.pdf">report</a> sent to the Danish Polar Center, 
+	and a mention with picture by me in the <a href="AlpineJournal/">Alpine Journal</a>.
+	<p/>
+	KML-file for viewing in google earth can be downloaded <a href="G4.kml">here</a>. 
+	<small>(OBS: The markings in the kml-file are not exact. Read each mark's comment
+	for exact GPS readings.)</small>
+	<hr/>
+  </body>
+</html>
+

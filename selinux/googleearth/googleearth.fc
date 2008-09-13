@@ -1,0 +1,6 @@
+# googleearth executable will have:
+# label: system_u:object_r:googleearth_exec_t
+# MLS sensitivity: s0
+# MCS categories: <none>
+
+/usr/local/google-earth/googleearth		--	gen_context(system_u:object_r:googleearth_exec_t,s0)

@@ -1,0 +1,925 @@
+Prosjektoppgave i Databehandling og samfunn - Handel på Internett (1997)
+========================================================================
+
+1. Innledning
+-------------
+
+Det å handle på Internett er en relativt ny måte å handle på som enda er i
+startfasen og fremdeles sliter med en del barnesykdommer. Det som skiller
+handel på Internett fra tradisjonell handel er at butikkene ofte er virtuelle.
+Slike butikker eksisterer bare på Internett og er ikke en butikk man kan
+besøke og kikke på varene i. Mange butikker aksepterer også bestillinger via
+Internett, men da bare som et supplement til den tradisjonelle driften. Kunden
+kikker på vareutvalget fra hjemmedatamaskinen sin og sender en bestilling til
+butikken. Etter noen dager vil varen bli levert i posten eller per bud, sammen
+med en regning. Det er også mulig å gjøre selve betalingen på Internett med
+kredittkort.
+
+I denne oppgaven vil vi se på hvordan det å handle på Internett foregår og
+ulike former for slik handel. Sikkerhet er et viktig aspekt ved
+Internetthandel og vi ser på de ulike mulighetene som eksisterer og de som
+kommer i fremtiden, samt problemene knyttet til dem. Vi vil også se på hvordan
+det å handle på Internett vil arte seg både fra selgers og kjøpers side. Vi
+vil også belyse ulike sosiale,- og samfunnsmessige konsekvenser som kan oppstå
+når mer og mer av handelen foregår over Internett. Til slutt vil vi oppsummere
+fra de ulike kapitlene og konstatere hvordan det å handle på Internett
+fortoner seg i dag. Vi vil også prøve å se litt inn i fremtiden på hvordan det
+å handle via nettet vil være om noen år fra nå. 
+
+
+2. Generelt om handel på Internett
+----------------------------------
+
+
+Innledning
+~~~~~~~~~~
+Det å handle på Internett er en relativt ny måte å handle på som enda er i
+startfasen og fremdeles sliter med en del barnesykdommer. Det som skiller
+handel på Internett fra tradisjonell handel er at butikkene ofte er virtuelle.
+Slike butikker eksisterer bare på Internett og er ikke en butikk man kan
+besøke og kikke på varene i. Mange butikker aksepterer også bestillinger via
+Internett, men da bare som et supplement til den tradisjonelle driften. Kunden
+kikker på vareutvalget fra hjemmedatamaskinen sin og sender en bestilling til
+butikken. Etter noen dager vil varen bli levert i posten eller per bud, sammen
+med en regning. Det er også mulig å gjøre selve betalingen på Internett med
+kredittkort.
+
+I denne oppgaven vil vi se på hvordan det å handle på Internett foregår og
+ulike former for slik handel. Sikkerhet er et viktig aspekt ved
+Internetthandel og vi ser på de ulike mulighetene som eksisterer og de som
+kommer i fremtiden, samt problemene knyttet til dem. Vi vil også se på hvordan
+det å handle på Internett vil arte seg både fra selgers og kjøpers side. Vi
+vil også belyse ulike sosiale,- og samfunnsmessige konsekvenser som kan oppstå
+når mer og mer av handelen foregår over Internett. Til slutt vil vi oppsummere
+fra de ulike kapitlene og konstatere hvordan det å handle på Internett
+fortoner seg i dag. Vi vil også prøve å se litt inn i fremtiden på hvordan det
+å handle via nettet vil være om noen år fra nå.
+
+2.1 Omfang
+~~~~~~~~~~
+
+Det er svært vanskelig å estimere størrelsen på Internett. Delvis fordi
+tallene endrer seg så fort, og delvis fordi nettet er så lite kontrollert og
+svært åpent. To vanlige måter å estimere størrelsen på Internett er antall
+maskiner tilkoblet nettet, og antall personer med tilgang til nettet. "Network
+Wizards" estimerte antall maskiner på Internett per Januar 1997 til ca. 16
+millioner. Dersom en sammenligner dette med situasjonen i Januar 1993, da det
+var ca. 1,3 millioner maskiner, ser en hvor raskt antallet øker. (Se
+http://www.nw.com/[] for mer informasjon)
+
+Det er enda vanskeligere å finne ut hvor mange mennesker som bruker Internett.
+Som regel har mer enn en person tilgang til en datamaskin, og ofte kan en
+"maskin" på nettet drive "subnetting" for et nettverk av maskiner som er
+usynlige fra utsiden. En vanlig uttalelse er at antall nettbrukere dobles
+hvert år. Denne vekstraten hevdes å ha vært korrekt en del år nå. I Oktober
+1994 ble antall nettbrukere anslått til 13,5 millioner(Matrix Information and
+Directory Services). Dersom antallet dobles hvert år vil det være ca. 105
+millioner nettbrukere i Oktober 1997, eller 1,76 prosent av verdens
+befolkning. (se http://www.mids.org/[] for mer informasjon) Bare i Norge er
+160000 private husstander koblet til Internett, og totalt regner en med ca. 1
+million nordmenn er brukere(BT 10 april).
+
+Utfra disse tallene kunne man tro at Internett er meget godt egnet til å
+markedsføre og selge varer og tjenester. Utviklingen på dette området har
+imidlertid ikke holdt følge med økningen av antall brukere. Den kanskje
+viktigste grunnen til dette er spørsmålet om sikkerheten på Internett. Media
+har fokusert på dette i en tid. Bergens Tidende trykket nettopp en artikkel
+som fortalte om en kvinne som aldri hadde benyttet Internett, men et firma
+hadde belastet VISA-kortet hennes for varer bestilt over nettet.
+
+Med fremveksten av nye betalingsformer og forbedret sikkerhet har markedet og
+forbrukerne i den senere tid fått øynene opp for mulighetene som ligger i
+handel på Internett. "ActiveMedia" har foretatt en del interessant forskning
+på omfanget av handel på Internett. I 1994 ble det solgt for ca. 1 millioner
+dollar, mot ca. 436 millioner dollar i 1995. De anslår salget i 1996 til ca.
+2,8 milliarder dollar, og regner med at salget i 2001 vil være 300 milliarder
+eller 1 prosent av verdens BNP.
+
+Økningen i salget har ført til at flere og flere bedrifter satser på WWW som
+et alternativ til tradisjonelle markeder. ActiveMedia har også prøvd å finne
+ut hvor mange nettsteder som tilbyr varer eller tjenester. Grafen viser
+økningen i antall slike steder, samt økningen av andelen "lønnsomme"
+nettsteder:
+
+Tallene presentert her viser at fenomenet "handel på Internett" vil øke i
+omfang, både når det gjelder personer som er involvert og omsetning. Dette vil
+få økonomiske konsekvenser for de fleste, og kan ha innvirkning på den
+enkeltes sosiale atferdsel. Handel på Internett er uten tvil verdt å studere,
+og i resten av kapittelet vil bli vist hva som selges på Internett, en kort
+oversikt over hvordan en kan betale for det og en diskusjon om
+"globaliseringen" denne handelen medfører.
+
+
+2.2 Varer som selges over Internett
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Det er tilnærmet umulig og lite hensiktsmessig å gi en fullstendig oversikt
+over hva en kan kjøpe på Internett. Derfor nøyer vi oss med noen eksempler i
+dette kapittelet, og prøver å finne fellestrekk ved ulike former for handel på
+Internett.
+
+Det er i denne sammenheng hensiktsmessig å skille mellom to typer varer, siden
+salg av visse varer over Internett impliserer bruk av postvesenet, eller andre
+leveringsmåter utenfor Internetts rekkevidde. Med "elektroniske varer og
+tjenester" menes det her artikler som kan formidles via Internett, mens andre
+varer og tjenester vil i denne oppgaven bli kalt "Tradisjonelle varer og
+tjenester". 
+
+2.2.1 Tradisjonelle varer og tjenester
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ved salg av bøker, CD'er, brunevarer o.l. kan ikke varen leveres over
+Internett. Det vanligste i dag er at varen blir sendt med post, og det er
+nærliggende å spørre seg om denne formen for handel ikke bare er en variasjon
+av postordre, og om det egentlig er noe nytt ved dette. Dette vil bli
+diskutert i kapittel 2.3, der betalingsmåtene blir behandlet.
+
+IT-sektoren har naturlig nok lenge vært representert på WWW. Dersom en skal
+kjøpe f.eks. PC-deler vil det som oftest lønne seg å sjekke prisene i ulike
+"virtuelle butikker". Mange firma har spesialisert seg på Internett-salg,
+kombinert med salg over telefon, og har ikke ordinære utsalgssteder i det hele
+tatt. En undersøkelse foretatt i forbindelse med HERMES-prosjektet viser også
+at dette er svært populært. Hele 80 prosent av de som hadde kjøpt noe over
+Internett de siste 6 månedene hadde kjøpt PC-deler for mer enn 50 $ i løpet av
+denne perioden. Bøker og musikk er to produkter som var like populære. Salget
+av musikk er interessant, fordi butikker over hele USA har opplevd en av de
+dårligste periodene på lang tid, når det gjelder salg av CD'er, mens salget på
+Internett bare øker og øker.
+
+Motivasjonen for å handle på Internett er som regel at så mange tilbud øker
+valgmulighetene og presser prisene ned. Det er også behagelig å ha hele
+verdens butikker enkelt tilgjengelig. Hele HERMES-undersøkelsen om
+forbrukeratferd på Internett finnes på
+http://www-personal.umich.edu/~sgupta/hermes/[].
+
+Det er mulig å kjøpe de fleste tradisjonelle varer og tjenester over
+Internett. Et godt sted å starte for å finne varen en er ute etter er en
+søkemaskin, f.eks. Yahoo
+
+(http://www.yahoo.com/Business_and_Economy/Companies/[]).
+
+
+2.2.2 Elektroniske varer og tjenester
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+En økende del av tilbudene på Internett kan ikke klassifiseres som "handel"
+siden kundene ikke betaler for tjenestene. Flere og flere firma tilbyr
+oppfølging av salg, i form av informasjon og oppdateringer, over Internett.
+Ett eksempel er kjøp av datautstyr som f.eks en skriver. Dersom kjøperen har
+tilgang til Internett trenger han ikke kontakte salgsstedet for å få driver
+til det helt nye operativsystemet, han kan bare laste den ned fra produsentens
+WWW-sted. Dette betaler han ingenting for, men det at denne tjenesten finnes
+kan være avgjørende for at kunden valgte nettopp denne skriveren. Slike, og
+lignende tjenester på Internett vil det ikke bli fokusert på i denne oppgaven.
+Vi vil heller ikke behandle reklame på Internett, som genererer store
+inntekter til eiere av populære WWW-steder. Med handel på Internett mener vi
+situasjoner der en kunde bestiller og/eller betaler en vare eller tjeneste via
+Internett.
+
+En relativt ny tjeneste mange banker nå tilbyr over Internett, er muligheten
+for å betale sine regninger, overføre penger få konto-opplysninger o.l. ved å
+bruke bankens WWW-sted. Dette er et eksempel på en "ren" elektronisk tjeneste
+der ingen andre ledd enn Internett er tilstede mellom kunde og tjenesteyter.
+En annen slik tjeneste er distribusjon og salg av såkalt "Shareware". Dette
+går ut på at en bruker kan laste ned et program han tenker på å kjøpe, prøve
+det ut, og så enten betale for det eller slette det. Internett er ideelt for
+denne handelen, og dette fenomenet er svært utbredt.
+
+Det finnes lite eller ingen forskning på utbredelsen av pornoindustrien på
+Internett, men det er liten tvil om at dette er lukrativ forretning. Dagbladet
+intervjuet en norsk pornoskuespillerinne som fortalte om jobben hennes i
+Nederland, der selskaper satser stort på porno over Internett. Noen mindre
+seriøse undersøkelser har anslått at porno utgjør 10 prosent av all trafikk på
+Internett.
+
+Aviser og magasiner har forlengst gjort sin inntreden på Internett. Av de
+største avisene er det ikke mange som ikke gis ut i elektronisk form på
+Internett. Denne utgaven er som regel gratis, men det er nok bare et
+tidsspørsmål før avisene vil begynne å ta betalt for dem. Gratistrenden henger
+sammen med at det meste har vært tilgjengelig på Internett uten at en trenger
+å betale for det, og dermed har det vært vanskelig å ta betaling for tjenester
+på nettet. Dette er imidlertid i ferd med å endre seg, spesielt når kontrollen
+over og tilgang til Internett overtas av større selskaper som f.eks. America
+Online(AOL).
+
+Fjernsyn over Internett er ikke langt unna. Ettersom kabelnettet bygges ut, og
+virkelig rask tilgang til Internett blir vanlig, øker interessen for
+interaktiv TV, og såkalt "pay per view" der en kun betaler for det en ser.
+Dette kommer til å utgjøre store deler av omsetningen på Internett innen kort
+tid.
+
+Videokonferanser og telefoni over Internett er to andre tjenester som er under
+utvikling, men som allerede nå er i utstrakt bruk. Hastigheten på tilkoblingen
+til nettet begrenser også nytteverdien av disse tjenestene. Hittil er det bare
+store bedrifter, universitet o.l. som har tatt disse i bruk, men også dette
+vil endre seg ettersom private brukere oppnår høyere tilkoblingshastigheter.
+
+I tiden fremover vil det dukke opp utallige nye elektroniske tjenester på
+Internett, og kundene vil helt sikkert vite å sette pris på dem.
+
+
+2.3 Betalingsformer på Internett
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+En vanlig måte å betale for varer bestilt over Internett er former for
+betaling ved levering, f.eks postoppkrav, eller å sette penger inn på selgers
+konto. Når varene også blir levert gjennom posten blir dette en slags
+postordre. I denne oppgaven vil det fokuseres mer på digitale transaksjoner
+som bruk av ``smartcard'', belastning av VISA-konto o.l. I kapittel 2 vil
+disse betalingsformene og sikkerheten ved dem bli diskutert i detalj.
+
+
+2.4 Lokalt/Internasjonalt
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Et interessant aspekt ved handel på Internett er at det fjerner tradisjonelle
+fysiske barrierer. Når en vil kjøpe en vare betyr det lite om butikken er
+lokalisert i samme by som deg, nabolandet, eller på andre siden av jorden.
+Ofte er det ikke lett å finne ut hvor butikken ligger, siden dette ikke er
+relevant for kunden. Det som betyr noe er prisen og kvaliteten på varen. Denne
+``globaliserings-effekten'' kan gjøre at vi kommer nærmere de tilstander som
+ofte beskrives i science fiction, der individet ikke trenger bevege seg
+utenfor hjemmet sitt; hele verden er tilgjengelig fra datamaskinen. Rema 1000
+har til og med gjort det mulig å handle dagligvarer på Internett. Varene
+kjøres med budbil til kunden, som betaler ved leveranse. Denne ordningen har
+imidlertid ikke slått an, og har til nå ikke vært lønnsom for Rema.
+
+Heldigvis er dagens situasjon langt fra den beskrevet i science fiction, men
+med farten på utviklingen av Internett kan det være nyttig å prøve og
+analysere de sosiale konsekvenser som handelen her kan ha. Kapittel 4 tar for
+seg både samfunnsmessige og individuelle forhold ved handel på Internett.
+
+3. Betaling ved handel på Internett 
+-----------------------------------
+
+3.1 Innledning
+~~~~~~~~~~~~~~
+
+Det finnes i dag svært mange ulike betalingssystemer på Internett, og vi har
+her tenkt å se konkrete eksempler på de viktigste systemene.
+Betalingssystemene har viktige egenskaper som mulighet for transaksjoner
+mellom privatpersoner, anonymitet, betaling av små beløp og selvsagt
+sikkerhet. Gebyrene ved bruk av betalingssystemene kan være så små at det er
+mulig å utføre små transaksjoner. Betalers identitet kan være skjult for både
+selger, bank og allmennheten. Akkurat som vanlige penger kan utveksles mellom
+privatpersoner, kan enkelte betalingssystemer gjøre dette mulig over
+Internett.
+
+
+3.2 Tradisjonelle betalingsmåter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Her vil vi se på betalingsmåter som ikke egner seg noe godt på Internett. De
+tilbyr liten forenkling av handelen, ingen anonymitet og liten grad av
+sikkerhet.
+
+3.2.1 Postordre/betaling ved levering
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Den enkleste betalingsmåten på Internett er postordre. Kunden bestiller en
+vare fra selgers WWW side. Selger pakker varen, og sender varen i postoppkrav
+til kunden, eller leverer varen på døren.
+
+Her løper kjøper ingen risiko, men selger har ingen garanti for at kjøperen
+virkelig har tenkt å kjøpe varen. Selgeren kan risikere at varen aldri blir
+hentet på posten, og vil da tape fortjeneste. Kjøper har ingen anonymitet.
+
+
+3.2.2 Kredittkort
+^^^^^^^^^^^^^^^^^
+
+Kredittkort er ett av de betalingssystemene som kan brukes over hele verden.
+Dette gjør bruk av kredittkort til en enkel betalingsmåte for handel over
+Internett. De to største kredittkort selskapene er MasterCard og VISA. De
+fraråder bruk av kort over åpne nettverk som Internett. Skal en handle over
+Internett, råder VISA og MasterCard en til ikke å sende kortnummeret over
+Internett, men heller ringe inn for å gi nummeret.
+
+Ved handel med kredittkort på Internett, sender kjøper kredittkort informasjon
+til selger, som sjekker informasjonen med kredittkortselskapet. For å hindre
+at uvedkommende skal få kredittkort informasjonen under transaksjonen, kan den
+krypteres før den sendes over Internett.
+
+Den største fordelen med denne betalingsmåten er at den er en billig, og mye
+anvendt betalingsmåte over hele verden. Dersom kredittkortnummeret blir sendt
+ukryptert, er der en sjanse for at uvedkommende kan plukke opp nummertet. Ved
+kryptert overføring, kreves det at både sender og mottaker har installert
+samme programvare eller maskinvare for kryptering. Siden kjøper ikke
+verifiserer kjøpet med signatur, eller PIN-kode, er det selger som har hele
+ansvaret ved kjøpet. Kjøper kan i ettertid nekte for å ha bestilt varen, som
+fører til tapt fortjeneste for selger. Tjenesten tilbyr ingen anonymitet, og
+det er ikke mulighet for pengetransaksjoner mellom privatpersoner.
+
+
+3.3 Elektronisk betaling
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Her vil vi se på eksempler på de viktigste elektroniske betalingssystemene.
+Det som kjennetegner en elektronisk betaling, er at hele handelen sluttes
+elektronisk. 
+
+3.3.1 SET (Secure Electronic Transactions)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SET er en teknisk standard for sikker betaling med kredittkort over Internett.
+Standarden utvikles i samarbeid mellom blant annet VISA, MasterCard, Netscape,
+Microsoft og IBM. SET kombinerer flere kryptografi teknikker, som symmetrisk
+kryptering, asymmetrisk kryptering, digitale signaturer og digitale
+sertifikater. Kjøperen kan sjekke om selgeren er autorisert av bank eller
+kortutgiver, noe som øker sannsynligheten for at selger er seriøs. Selgeren
+kan sjekke at kjøperen er eier av kontokortet, og at det er dekning for
+betalingssummen på kortet.
+
+Fordelene med systemet er at det bygger på en velkjent betalingsmåte, og
+pengene ligger trygt i banken. Skulle en miste kortet er det bare å gå til
+banken for å få nytt.
+
+Bakdelen med dette systemet er at det ikke tilbyr kjøper noen anonymitet.
+Selger må være autorisert av bank eller kortutgiver, og det blir ikke mulig
+for transaksjoner mellom privatpersoner.
+
+
+3.3.2 First Virtual
+^^^^^^^^^^^^^^^^^^^
+
+First Virtual er et betalingssystem utviklet og administrert av det
+amerikanske selskapet First Virtual holdings. Det ble tatt i bruk i 1994.
+First Virtual koster 10$ å opprette konto hos, og 2$ per år. For selger er der
+en transaksjonsavgift på 2$ per transaksjon.
+
+For å bruke First Virtual, må en gi sin kontokortsinformasjon over telefon til
+First Virtual, og får siden en personlig kode, kalt VirtualPIN. Ved kjøp
+brukes kun VirtualPIN for å identifisere kjøper, etterpå får kjøper e-post fra
+First Virtual for å bekrefte kjøpet. Han må da svare YES, NO eller FRAUD.
+Svarer han YES blir selger informert om at transaksjonen er godkjent, og
+beløpet blir trukket fra på kontoen hos First Virtual. Svarer han NO, blir
+handelen avbrutt. Dersom det er noen andre som prøver å bruke kjøperens
+VirtualPIN, svarer han FRAUD, som fører til at kontoen sperre og ingen
+kontotrekk skjer. Kjøperen må deretter opprette ny konto dersom han ønsker
+det.
+
+Fordelene med dette systemet er at det ikke kreves noen spesiell programvare,
+er svært enkelt i bruk, og det muliggjør små betalinger. Selger får ikke annen
+informasjon om kjøper enn VirtualPIN, dermed er kjøper sikret anonymitet.
+
+Bakdelene er at det ikke tilbyr selger noen garanti for å få betalt for solgte
+varer.
+
+3.3.3 CyberCash 
+^^^^^^^^^^^^^^^
+
+CyberCash er et amerikansk selskap som har utviklet et system de kaller Secure
+Internet Payment Service, tatt i bruk i 1995.
+
+CyberCash gir kunden programvare for å kryptere kredittkortnummeret, og de
+digitale signaturene for så å sende den krypterte meldingen sammen med
+bestilling til selger. Selger leser bestillingen og sender den krypterte
+meldingen videre til en CyberCash-server, som dekoder informasjonen og sender
+den videre til selgerens bank. Selgeren kan ikke lese noe informasjon om
+brukeren, kun bestillingen.
+
+Fordelen med systemet er at det er enkelt i bruk, og kunden beholder sin
+anonymitet.
+
+Bakdelene med systemet er at det kreves spesiell programvare for å bruke
+systemet. Det er ikke mulig med transaksjoner mellom privatpersoner.
+
+
+3.3.4 Ecash
+^^^^^^^^^^^
+
+Det nederlandske selskapet DigiCash, er trolig det selskapet som har fått mest
+publisitet for sitt Ecash system. Det har vært i bruk siden 1995, da den
+amerikanske banken Mark Twain Bank begynte å gi ut disse elektroniske pengene.
+
+Elektroniske penger er ekvivalent med normale sedler og mynter. For å ta ut et
+beløp av banken, trenger man et program som genererer et 100 siffer nummer for
+den summen en ønsker å bruke. Dette nummer blir signert av en private
+kontonøkkel, og sendt til banken. Banken verifiserer signaturen, fjerner den,
+signerer nummeret med en hemmelig nøkkel som angir beløpets størrelse, trekker
+beløpet fra kjøpers konto og sender det signerte nummeret tilbake. Når en
+bruker ønsker å bruke ønsker å bruke de digitale pengene, sender en bare det
+signerte nummeret til selger via e-post. Selge sjekker bankens signatur og kan
+siden løse inn det signerte nummeret i banken.
+
+Ecash tilbyr full anonymitet ved handel. For å hindre at Ecash beløp blir
+brukt flere ganger, kreves det at hver transaksjon blir sjekket mot banken.
+
+3.3.5 Mondex
+^^^^^^^^^^^^
+
+Utviklingen av Mondex startet i 1990 av den engelske banken Nat-West. Nå er
+der mer enn 450 selskaper i over 40 land som er med på utviklingen av
+spesifikasjonene. Testingen av Mondex startet i Swindon i 1995, og siden har
+det startet testprosjekter i Exceter, York, Guelph, San Francisco, Hong Kong
+og på New Zealand. Mondex er basert på bruk av såkalte smartkort, for å lagre
+digitale kontanter. Smartkortet likner et vanlig bankkort, men har innebygd en
+liten mikroprosessor. Penger blir lagret på kortet, og låst med en personlig
+kode slik at kun kortets eier har tilgang til pengene. Alle skal ha hver sin
+``Mondex-lommebok'', som gjør det mulig å sjekke beholdning på kortet, holde
+oversikt over de siste transaksjoner, lagre penger og overføre penger til
+andre kort. Det er tenkt at Mondex skal kunne brukes i alle
+betalingssituasjoner det i dag brukes kontanter. Systemet bygger på system med
+digitale signaturer, som DigiCash, men av sikkerhetsgrunner blir de tekniske
+detaljene i systemet holdt hemmelig,
+
+Betaling vil skje på samme måte som ved bruk av kredittkort. For å ta imot
+betaling kreves det en kortleser. Kortleseren kan være integrert i telefoner
+eller datamaskiner.
+
+Fordelene med Mondex er at systemet skal kunne brukes i alle
+betalingssituasjoner. Flere ulike valuta skal kunne lagres på kortet, slik at
+det kan brukes i alle land. Betaling mellom privatpersoner skal være mulig, og
+det vil også være mulig å handle anonymt. Siden systemet skal kunne brukes
+både på Internett og i vanlige butikker, vil det kunne overta for papirpenger.
+Den største bakdelen er at det kreves spesielle maskiner for å lese kortene.
+Siden kostnadene for kortleserne skal belastes brukerne, kreves det at
+systemet blir å veletablert at det lønner seg for brukerne.
+
+4. Hvordan handel virker for kjøper og selger
+---------------------------------------------
+
+4.1 Salg gjennom Internett
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Omfanget av netthandel i Norge tyder på at dette området ennå er i en slags
+startfase.
+
+Sammenliknet med USA, der alt fra biler til bibler blir solgt gjennom nettet,
+er handelstilbudet på de norske nettsidene ganske beskjedent. Likevel er det
+klart at med den opphopningen av personlige datamaskiner vi har fått i Norge,
+er potensialet for en bred og variert elektronisk handel stort. I Europa er
+det visstnok bare Finland som har flere tilknytninger til Internettet enn
+Norge. Mye av den nødvendige infrastrukturen er altså alt utbygd.
+
+Hva trengs for å utvikle et netthandelstilbud ?
+
+Et nødvendig vilkår for å tilby nettsalg, er selvsagt at man har noe å selge.
+Ikke alle produkter egner seg like bra for nettsalg, men utvalget på nettet
+blir utvilsomt bredere for hver dag som går.
+
+Videre må man ha nødvendig teknologi. Dette trenger ikke koste så mye, men vil
+ofte være avhengig av firmaets omsetning. For mange holder det med en vanlig
+PC med oppringt samband og leid plass hos en profesjonell Internettleverandør.
+
+Foruten selve maskin- og programvaren, trengs det ressurser til å utvikle og
+drive selve nettsiden. Noen firmaer kjøper ferdige pakker hos
+programleverandører eller får til og med andre til å vedlikeholde hele
+tjenesten. Ofte blir bedriftene tilbudt plass i et kjøpesenter på Internett.
+Eksempelvis har giganten Scandinavia Online (Telenor) under utvikling et
+konsept de kaller "SOL-Nærhandel" og Internett Aksess har alt en god stund
+hatt sitt "Handlenett.no" der flere butikker er samlet. En slik løsning har
+den fordelen at den enkelte butikken ikke trenger spisskompetanse på de
+tekniske sidene ved netthandel. Dessuten finner kundene lettere fram og de
+slipper å tilpasse seg ulike brukergrensesnitt i de forskjellige butikkene.
+
+Det er også viktig at satsingen på netthandel smaker mer enn den koster. Man
+bør få igjen noe for de ressursene man legger ned i å stable på beina,
+administrere og oppdatere et tilbud.
+
+De tilbudene som først dukket opp, og som vel fremdeles er de dominerende på
+den norske delen av Internett i dag, er salg av datautstyr og programvare.
+Dette er naturlig siden databedriftene er blant de første til å skaffe seg
+kunnskap om og utstyr til å bygge nettbutikker, og siden kundegruppen deres
+lenge har vært dominerende som nettbrukere.
+
+I følge Barry Wacksman, som driver et amerikansk nettkonsept, er et problem
+når det gjelder direkte markedsføring på nettet at tilbyderne for ensidig har
+satset på den tekniske siden av netthandelen. Man har etter hans mening i for
+stor grad neglisjert de prinsippene og metodene som tradisjonell direkte
+markedsføring som f.eks. postordresalg er tuftet på. Wacksmans hovedpoeng er
+at netthandelen i for stor grad har blitt en boltreplass for de
+teknologifrelste mens de som kan markedsføring er fraværende. Selv om dette er
+uttalelser som gjelder Internettet generelt (det vil for det meste si de
+amerikanske nettsidene) kan det nok være grunn til å tro at dette også være en
+problemstilling som de norske nettselgerne undervurderer.
+
+Likevel kan nok ikke situasjonen i USA og Norge jamføres helt uten videre. I
+Norge er ikke selve konseptet netthandel kommet like langt. Det vil si at for
+de fleste potensielle kunder er det ikke en aktuell problemstilling å kjøpe
+varer via Internettet. Dette får selvsagt betydning for bedriftenes satsing på
+netthandel. Dersom man ikke har noe salgspotensiale på nettet er naturligvis
+slik satsing nokså bortkastet utover den rene blesteffekten av å være i
+forkant av utviklingen.
+
+Rundspørring
+^^^^^^^^^^^^
+
+For å få et inntrykk av hvilke erfaringer bedriftene selv har med
+netthandelen, sendte vi en kort forespørsel (se kap. 4.3) til 27 norske
+firmaer som har tilrettelagt for salg gjennom Internettet. Vi fikk svar fra 7
+av dem mens 4 gav avslag enten av hensyn til "konkurransefaktoren og lignende"
+eller grunnet for liten interesse/kapasitet til å svare. 18 svarte ikke, altså
+fikk vi en nokså beskjeden svarprosent på 26%. Vi var likevel på forhånd
+forberedt på at svarprosenten for en slik rundspørring ville være låg, derfor
+var også spørsmålene slik utformet at de i størst mulig grad skulle kartlegge
+hvordan og hvorfor bedriftene har valgt å satse på Internettet i stedenfor å
+fokusere på kvantitative sider ved handelen. Spørsmålene ble sendt ut og
+mottatt elektronisk i flere puljer, og rask respons gjorde at vi fikk
+anledning til å reformulere og ta bort mindre fruktbare spørsmål fra første
+pulje. Resultatene fra rundspørringen kan altså på langt nær generaliseres til
+å gjelde alle norske nettbutikker, men kan forhåpentligvis gi en indikasjon på
+hvordan erfaringene med nettsalget er.
+
+Spørsmålene i "rundspørringen":
+
+1. Hvorfor har dere tatt i bruk Internettet for å tilby/selge produkter?
+
+2. Hva er den største ulempen med nettsalg sammenliknet med "tradisjonelle"
+salgsmåter?
+
+3. Vurderer dere salg/bestilling via Internettet som den viktigste
+omsetningsmåten eller er det bare et supplement til andre salgsmåter ?
+
+4. Kommer dere til å utvide tilbudet om netthandel i framtida?
+
+5. Tror dere at Internetthandel på sikt vil komme til å dominere over de mer
+tradisjonelle måtene å handle på?
+
+Når det gjelder grunner til å satse på å tilby netthandel, ser det ut til at
+økt tilgjengelighet er den viktigste årsaken til satsing. Markedet blir
+utvidet til i prinsippet å omfatte hele landet, og åpningstiden for "butikken"
+blir nær 24 timer i døgnet. For datafirma er det selvsagt et poeng at særlig
+mange av deres potensielle kunder er nettbrukere.
+
+Videre er mange bedrifter nysgjerrige på det nye mediet og det nye
+salgskonseptet som det åpner for. Det blir pekt på at nettsatsing kan gi et
+konkurransefortrinn overfor etternølerne og at det er viktig å være med fordi
+netthandelen er i sterk vekst.
+
+Her kan det være interessant å vise til en undersøkelse fra Storbritannia
+foretatt blant 100 større selskaper. Det viser seg at bedriftene tror den
+delen av salget deres som går over Internettet vil øke fra i gjennomsnitt 3% i
+dag til 20% om tre år (år 2000). Dette dreier seg riktig nok om svært store
+selskaper sammenliknet med de vi spurte. 80% av disse selskapene hadde så godt
+som ingen elektronisk omsetning og altså liten erfaring med netthandel.
+Andelen av det totale salg som gikk via Internett varierte i "våre" selskaper
+fra 10% og til 100%. Denne variasjonen skyldes nok i stor grad at det er ulike
+typer butikker som inngår. Et datafirma vil eksempelvis ha lettere for å
+reindyrke netthandel enn en bilforhandler.
+
+Rasjonalitetsgevinst ved mindre utsending av kataloger,
+oppdateringsmulighetene og bedre service til kundene ved at de kan søke i
+større databaser blir også framhevet som grunner til Internettsatsing.
+
+Men det finnes også problematiske sider ved netthandel for de som skal selge
+varene sine. I våre svar er det særlig den dårlige kontakten med kunden og
+manglende sikkerhet ved bestillinger (tullebestillinger) og betaling (svindel)
+som blir nevnt. Det er heller ikke sikkert at avkastningen på handelen har
+stått i forhold til de ressursene som har blitt lagt ned for å gjøre seg
+tilgjengelig på veven. Nå svarer riktignok flere at de egentlig ikke har
+satset noe særlig på å profilere seg på nettet.
+
+De fleste tror at netthandelen vil øke i tiden framover og ta over for
+tradisjonell handel på enkelte områder. Det blir imidlertid pekt på at
+Internettet som markedsplass ikke er helt modent, men at det bør utvikle seg
+mer før videre satsing er interessant. Man forventer mellom annet at flere
+skal få tilgang til og begynne å bruke nettet, at sikkerheten ved bestilling
+og betaling skal bli bedre og ikke minst at distribusjonen ut til forbruker
+vil bli utbygd. De selskapene vi har spurt svarer likevel, på ett unntak nær,
+at de kommer til å satse sterkt på Internett-siden av hendelen også i tiden
+framover.
+
+
+4.2 Kjøpssituasjonen for kunden
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For forbrukeren gir netthandel først og fremst muligheten til å sammenlikne
+tilbud hos forskjellige leverandører på en rask og effektiv måte. Man slipper
+å løpe eller ringe rundt for å vurdere tilbudene, og man slipper å ta kontakt
+med selger før man har bestemt seg for å kjøpe en vare.
+
+Dessuten kan man som kjøper få en større valgfrihet når det gjelder produkter.
+Dette fordi en elektronisk bestilling like gjerne kan sendes direkte til
+fabrikken som produserer varen som til en forhandleren eller detaljist. Dermed
+kan man koble sammen bestilling, design og produksjon på en mye lettere måte
+enn i dag. Det vil si at forbrukeren kan få muligheten til selv å bestemme
+f.eks. utforming og farger på det ferdige produktet.
+
+I mange tilfeller gir dessuten Internett muligheter til bedre
+produktinformasjon. Ved å ta i bruk de mulighetene som finnes for
+interaktivitet kan man f.eks. tilrettelegge for å søke i databaser og å se
+resultatet (f.eks. endring i pris) av å endre ulike parametre. Hvor bra dette
+gjøres er selvsagt avhengig av hvor mye ressurser nettbutikkene er villige til
+å legge i nettbutikkene sine.
+
+På den andre siden kan dersom man skal gjøre en investering, utnytte nettet
+til å be om anbud. F.eks. kan man be om tilbud på en bestemt spesifisering for
+en personlig datamaskin ved å sende likelydende spesifikasjoner til flere
+datafirma på nettet. Kunden kan dermed i ro og mak vente på svar, og så velge
+det datafirma som gir det beste tilbudet.
+
+Markedet som man kan handle fra øker også dramatisk. På nettet er det ikke
+noen prinsipielt forskjell mellom å handle fra en lokal butikk eller fra en
+butikk et helt annet sted i verden. På grunn av språk-, betalings-, og
+leveranseproblemer, er likevel markedet ofte nasjonalt avgrenset, men selv det
+er jo ofte en kraftig utvidelse. For personer som vegrer seg for å gå i
+butikker av bekvemmelighetsomsyn eller fordi de har et handicap, vil likeledes
+innkjøp kunne fungere bedre.
+
+Ulempene ved å handle på nettet framfor å gå i butikken går hovedsakelig på
+økt avstand og dårligere menneskelig service. I mange sammenhenger kan det
+være vesentlig for forbrukeren å kunne vurdere varene ved selvsyn (sogar å
+"ta" på dem) før man ønsker å kjøpe dem. Hvilken garanti har man for at
+kjøpmannen selger deg de friskeste tomatene sine dersom du har tinget dem og
+ikke valgt dem ut selv? Dette er jo selvsagt en problem som gjelder spesielt
+for netthandel, men som også rammer telefonbestilling og vanlig postordre.
+
+De sosiale konsekvensene for av økt handel for samfunnet og den enkelte, vil
+vi ta for oss i neste kapittel.
+
+
+5. Sosiale,- og samfunnsmessige konsekvenser
+--------------------------------------------
+
+
+5.1 Innledning
+~~~~~~~~~~~~~~
+
+I dette kapittelet vil vi forsøke å se på hvilke sosiale,- og samfunnsmessige
+konsekvenser handel på Internett vil medføre, både for brukere og tilbydere av
+denne typen handel. Etter utallige telefoner og e-post til ulike firmaer og
+organisasjoner viser det seg imidlertid at dette emnet er et lite debattert og
+gjennomtenkt område. De personene vi var kontakt med som hadde kunnskaper
+ville ikke dele dem med oss, enten fordi de var "veldig opptatt for tiden",
+eller at de skriver bok om emnet selv. Organisasjoner som burde ha slik
+kunnskap (f.eks. NHO) har det ikke, men var svært interessert i å lese den
+ferdige oppgaven... Vi var altså ikke i stand til å finne noe trykt materiell
+om sosiale,- og samfunnsmessige konsekvenser av handel på Internett.
+
+Vi har derfor valgt å se på de ulike konsekvensene slik vi ser dem, og med
+konklusjoner hentet fra våre egne erfaringer og kunnskaper om emnet.
+
+I dag er handel på Internett veldig lite utbredt, men de fleste som benytter
+Internett er klar over denne muligheten som nå etter hvert finnes. Skepsisen
+er derimot stor, spesielt når det gjelder de sikkerhetsmessige sidene ved slik
+handel, som vi har omtalt i tidligere kapittel.
+
+En annen årsak er at dette er noe nytt og uvant, som vi trenger tid til å bli
+fortrolige med. Unge mennesker har lettere for å omstille og tilpasse seg nye
+trender og ny teknologi, noe som gjenspeiler seg i alderen på brukerne av
+Internett. De fleste brukerne er på gymnas, høgskole og universitetsnivå, men
+flere og flere får tilgang til Internett via jobben. Det er enda ikke så mange
+pensjonister som har oppdaget dette relativt nye mediet som Internett er.
+Dette vil også gjenspeile seg i hvem som vil benytte seg av å handle via
+Internett.
+
+
+De yngre brukerne vil nok være de mest aktive til å bruke Internett og å
+oppsøke virtuelle butikker for å se på hva de har å tilby og for å holde seg
+oppdatert på vareutvalget. Når sikkerheten rundt denne typen handel blir god
+nok, vil denne gruppen være den som først vil benytte seg av tilbudet. Gruppen
+vil også lettere bli overbevist om at problemene som hittil har eksistert nå
+er løst, og at det er en trygg måte å handle på. Siden de eldre brukerne i
+utgangspunktet er mer skeptisk til Internett vil de benytte seg av tjenester
+de ser en klar nytteverdi i, slik som å handle matvarer fra REMA og få dem
+levert på døren.
+
+
+5.2 Sosiale konsekvenser
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+5.2.1 Handle via TV kontra Internett
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Det kunne vært fristende å se på undersøkelser gjort om handlevaner og
+konsekvenser for folk etter at TV-Shop og lignende tilbud dukket opp på
+tv-skjermen. Der man kan som kjent ringe til bedriften å bestille varer etter
+å ha fått presentert dem på skjermen. Denne typen handel skiller seg fra
+handel på Internett siden man på Internett må oppsøke den virtuelle butikken
+etter eget ønske, mens TV-Shop blir vist som egen reklamebolk, eller i egne
+program på et par timer før selve tv-sendingen begynner. Dette medfører at
+folk må være hjemme og følge med på TV-en og får ikke selv bestemme hvilke
+varer de skal bli presentert for og hvilke de skal ha muligheten til å
+bestille. Vi mener derfor at det ikke går an å sammenligne disse to typene
+handel.
+
+
+5.2.2 Konsekvenser for enkeltindivider
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Hvilke sosiale konsekvenser vil følge av at flere og flere mennesker går over
+til å handle via Internett? Dette vil avhenge mye av hvordan og i hvilken
+utstrekning folk vil handle via nettet. Etterhvert som flere og flere butikker
+legger varene sine ut til salgs på Internett vil vi som kunder få muligheten
+til å sitte hjemme eller på jobben og kikke på vareutvalget og bestille varer.
+Disse varene kan vi enten hente i butikken på vei hjem fra jobben, eller de
+står på trappen og venter når vi kommer hjem. For en familie som planlegger
+innkjøpene sine kan man altså spare en god del tid og stress ved å bestille
+varer via nettet. Det mest opplagte er matvarer, noe vi går til innkjøp av
+nesten hver dag. En familie som kjøper inn melk, brød og middag hver dag vil
+kunne få dette levert på døren, i stedet for å måtte ta turen innom butikken.
+For mange er det et ork å stampe seg frem i rushtrafikken, krangle om en ledig
+parkeringsplass, gå i kø inne i butikken for så å stå i kø frem til kassen for
+å betale. Det å handle inn for helgen på en fredag eller lørdag kan også være
+en tålmodighetsprøve av de store, så vi tror denne typen handel vil bli den
+mest vanlige formen for handel på Internett. Folk vil altså få tid til overs
+som ellers ville gått med til handling. Hva folk så vil gjøre med den ekstra
+tiden de får ved å handle på denne måten er ikke så godt å forutsi.
+
+Gå du i byen en tidlig formiddag vil du se flest eldre mennesker som rusler
+rundt i gatene og i butikkene og hygger seg med dem de handler med og folk de
+treffer på. Disse menneskene har altså gjort handling til noe sosialt, noe som
+gir dem noe og ikke bare stresser dem. Mange yngre tar seg også en tur til
+byen om ettermiddagen eller på lørdagen, for å kikke i butikkene men også for
+å treffe kjente. Vi kan få et problem der mesteparten av handelen foregår via
+dataskjermen slik at færre og færre gidder å ta turen inn til byen for å
+handle, når de likegodt kan gjøre det hjemmefra. Vi tror ikke dette vil bli et
+problem, siden mennesket er et utpreget sosialt vesen som søker kontakt med
+andre mennesker. Det vil bli mer og mer handling via Internett, men det vil
+aldri helt erstatte den formen for handling vi har i dag. Hvem kunne vel tenke
+seg å kjøpe et klesplagg uten å ha prøvd det på først?
+
+Det å handle på Internett vil også medføre at folk kan oppsøke varer og
+tjenester uten å måtte være der personlig, noe som også medfører økt
+anonymitet. Mange vil føle det lettere å bestille enkelte varer eller søke
+etter informasjon når de ikke trenger å gjøre dette personlig. Dette vil føre
+til at flere vil gjøre nettopp dette og derfor få tilfredsstilt sine behov.
+Det som er bekymringsfullt er at det gjør det lettere for folk å oppsøke
+f.eks. barneporno og annet ulovlig pornografisk materiale.
+
+5.3 Samfunnsmessige konsekvenser
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+5.3.1 Hvordan vil Internettbutikkene være organisert?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+En Internettbutikk krever ingen ansatte som skal ta seg av kundebehandling
+eller ekspedering. Datamaskiner vil ta seg av bestillingene og fakturering,
+slik at det menneskene trenger å gjøre er å finne frem varene som skal pakkes
+ned og kjøre disse ut til kundene. Vi ser etter hvert for oss at
+Internettbutikkene vil bli plassert litt utenfor sentrum og bli mer som store
+lager a la IKEA, der roboter kan finne frem varer og pakke dem klar til
+utkjøring. Det eneste som mennesker trenger å gjøre er å overvåke og
+administrere disse maskinene og å kjøre ut varene. Antall ansatte vil derfor
+bli drastisk redusert og mange vil måtte omstilles til andre yrker. Likevel
+vil dette medføre at flere vil få jobbe med å utvikle slike systemer og det
+vil bli en temmelig omfattende jobb å kjøre ut alle varene til kundene, noe
+som skaper nye jobber. Posten har inngått en samarbeidsavtale med REMA, hvor
+Posten skal kjøre ut REMAs varer på dagtid, mot et gebyr på rundt 50,- kr. Vi
+ser altså at etablerte firmaer oppdager nye arbeidsfelt, men det vil nok dukke
+opp firmaer som spesialiserer seg på nettopp slike oppdrag.
+
+
+5.3.2 Ulik utvikling i byene og i utkantstrøk
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Denne utviklingen vil først komme i de større byene der kundemassen er stor
+nok til å tjene penger på en slik måte å drive butikk på. I mindre byer og i
+utkantstrøk vil butikkene bestå slik vi kjenner dem i dag. Folk i
+utkantstrøkene vil derimot kunne bestille varer via Internett som butikkene i
+bygda ikke har og få dem levert hjem til seg. Utvalget av varer vil øke.
+Konkurransen mellom butikkene vil også øke, siden man nå ganske enkelt kan
+sammenligne prisen på samme varen i mange forskjellige butikker ved enkle
+tastetrykk.
+
+
+5.3.3 Økt bruk av datamaskiner
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Økt bruk av handling via Internett vil også si at flere mennesker vil komme i
+kontakt med datamaskiner og lære seg å bruke dem nå når de kanskje ser den som
+noe mer nyttig enn før. De største kostnadene med datamaskiner i større
+bedrifter ligger som kjent ikke i selve innkjøpskonstnaden, men heller i drift
+av maskinene og ikke minst opplæring av de ansatte som skal bruke
+datamaskinene. Alle større bedrifter har en brukerstøtte-avdeling som primært
+skal ta seg av henvendelser fra de ansatte når datamaskinen ikke lengre
+"virker", eller de har problemer med utskriften i tekstbehandleren. Det er
+helt klart store penger å spare på at de ansatte er fortrolige med
+datamaskiner. Statoil har jo for kort tid siden vedtatt å kjøpe PC'er til sine
+13.000 ansatte for ca 250 millioner kroner, penger som de vil tjene inn igjen
+siden de ansatte kan leke seg frem til kunnskaper på fritiden og ikke i
+arbeidstiden. De ansatte vil også føle at de behersker data bedre og de vil
+forhåpentligvis bli mer fortrolige med denne boksen som til nå bare har vært
+til bryderi. Kanskje vil de oppdage at datamaskinen kan brukes til så mye mer
+enn bare å utføre arbeidsoppgaver på den?
+
+
+6. Oppsummering og framtidsutsikter
+-----------------------------------
+
+Internett vokser for tiden utrolig raskt. En regner med at antall mennesker
+med tilgang til nettet dobles hvert år. Stadig flere tar også i bruk de
+muligheter Internett tilbyr for kjøp og salg av varer, men flere faktorer har
+bremset denne utviklingen. Betaling over Internett har lenge vært, og er
+fremdeles et omdiskutert tema.
+
+Ser en på alle de alternative betalingssystemene, kan en lure på hvilket
+system som kommer til å dominere elektronisk handel, og hvilke system som
+kommer til å forsvinne. Kredittkorthandel har en stor markedsandel i dag, og
+når SET kommer til høsten, støttet av de største kredittkortselskapene, tror
+vi SET vil bli det mest attraktive betalingssystemet på Internett. Folk er
+vant til å handle med kredittkort, og med SET vil de slippe å endre
+handlevaner samtidig som sikkerheten beholdes. Det å skifte ut dagens penger
+med smartkort virker som et stort steg å ta, men det er liten tvil om at
+betaling med kort er en mye bedre betalingsmåte enn dagens sedler og mynter.
+
+Det er imidlertid andre problematiske sider ved netthandel. Av svarene vi fikk
+på
+
+spørreskjemaene vi sendte ut, går det fram at den dårlige kontakten mellom
+selger og kjøper, samt manglende sikkerhet ved bestillinger og betaling er
+problemer mange firma på nettet strir med. Mange pekte på at Internett som
+markedsplass ikke er helt modent, men at det bør utvikle seg mer før det blir
+interessant. De selskapene som svarte på våre spørsmål sier allikevel, nesten
+uten unntak, at de kommer til å satse sterkt på Internetthandel i tiden
+framover.
+
+Flere og flere mennesker vil handle via Internett når den første skepsisen har
+lagt seg, og man finner ut at dette ikke er noe "farlig". Vi vil omstille oss
+til denne nye teknologien og den vil forandre måten vi handler på i større
+eller mindre grad, alt etter hvor mye vi velger å handle via Internett og på
+hvilken måte. De yngste brukerne vil lettest omstille seg, mens de eldre
+trenger mer tid. Handel på Internett vil ikke helt erstatte tradisjonell
+handel, men en større del av dagens handel vil foregå på Internett i årene
+fremover.
+
+
+7. Ordliste
+-----------
+
+Symmetrisk kryptering
+~~~~~~~~~~~~~~~~~~~~~
+
+Symmetrisk kryptering er en krypteringsmetode der det brukes samme nøkkel for
+å kode og å dekode meldingen. Dette er den tradisjonelle måten å kryptere
+meldinger.
+
+Asymmetrisk kryptering
+~~~~~~~~~~~~~~~~~~~~~~
+
+Asymmetrisk kryptering er en krypteringsmetode som bygger på at et par av
+nøkler. En privat (secret key) nøkkel og en offentlig (public key) nøkkel.
+Meldingen krypteres med mottakerens offentlige nøkkel, som kan være
+tilgjengelig for allmennheten, og kan kun dekrypteres med mottakerens private
+nøkkel.
+
+Digitale signaturer
+~~~~~~~~~~~~~~~~~~~
+
+En digital signatur er basert på et kryptografisk system med offentlige
+nøkler, og gjør det mulig å autentisere informasjon. For å lage en digital
+signatur, kombineres krypteringen med en kontrollsum, som er et matematisk
+sammendrag av innholdet i meldingen. Sannsynligheten for at to meldinger skal
+ha samme kontrollsum er mikroskopisk liten. Ved å sammenligne kontrollsummen
+med meldingen, kan mottaker forsikre seg om at meldingen stammer fra den
+meldingen hevder å stamme fra. For å generere signaturen, kreves det tilgang
+til den private nøkkelen, for å sjekke om signaturen er riktig brukes den
+offentlige nøkkelen.
+
+Digitale sertifikater
+~~~~~~~~~~~~~~~~~~~~~
+
+For å forsikre seg om at en offentlig nøkkel virkelig kommer fra den det blir
+hevdet at den kommer fra, kan en få noen til å signere og autentisere nøkkelen
+før den sendes. Dette krever at en har den offentlige nøkkelen til den som
+signerer og autentiserer den nøkkelen som blir sendt. Ved å opprette en
+sertifiserings organisasjon (CA), kan en bruke denne organisasjonen til å
+signere, og dele ut offentlige nøkler.
+
+
+8. Kilder
+---------
+
+1. Internett Aksesses
+
+2. Handlenett, http://handlenett.no/[]
+
+3. Datatid 1/1997.
+
+4. VISA International, http://www.visa.com/[]
+
+5. MasterCard International Incorporated, http://www.mastercard.com[]
+
+6. Mondex International Limited, http://www.mondex.com[]
+
+7. First Virtual Holdings Incorporated, http://www.firstvirtual.com[]
+
+8. Netscape Communications Corporation, http://www.netscape.com[]
+
+9. CyberCash, http://www.cybercash.com[]
+
+10. DigiCash Incorporated, http://www.digicash.com[]
+
+11. Elektronisk betalningssystem på Internet -Om teknisk säkerhet och juridisk
+osäkerhet- av Gustav Winberg (gustavw@wineasy.se)
+
+12. Internationell handel via Internet, av Mathias Holmgren,
+http://www.student.nada.kth.se/~d91-mho/ihand.html[]
+
+13. Sol Nærhandel, http://www.sol.no/handel/[]
+
+14. Barry Wacksman,
+http://pathfinder.com/@@NkFeCAcASaVcqEuG/timevista/articles/internet/dmtool.htm[]
+
+15. Network Wizards, http://www.nw.com/[]
+
+16. Matrix Information and Directory Services, http://www.mids.org/[]
+
+17. Active Media
+
+18. HERMES, http://www-personal.umich.edu/~sgupta/hermes/[]
+
+19. Yahoo, http://www.yahoo.com/Buisiness_and_Economy/Companies/[]
+
+

@@ -1,0 +1,17 @@
+Exercise log 2007
+=================
+
+--------
+20070717	 75m	Gym
+20070718	 40m	Gym
+20070719	 90m	Gym
+20070722	180m	Cycling
+20070724	119m	Cycling
+20070725	 77m	Cycling
+20070729	118m	Cycling
+20070730	 30m	Cycling
+20070730	 37m	Gym
+20070731	 45m	Cycling
+20070731	 10m	Gym
+
+--------

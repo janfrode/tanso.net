@@ -1,0 +1,190 @@
+
+OpenSSH session multiplexing
+----------------------------
+http://tanso.net/ssh/connection-sharing/[ssh/connection-sharing/]
+
+Enable squid snmp-functionality on RHEL5/SElinux
+------------------------------------------------
+http://tanso.net/selinux/squid/[selinux/squid/]
+
+Scripting zenoss trough python xmlrpclib
+----------------------------------------
+Some http://tanso.net/zenoss/python-xmlrpclib/[notes] on how to interface with zenoss trough
+python-xmlrpclib.
+
+Zenoss ZenPack for graphing Squid performance
+---------------------------------------------
+Here's my first attemt at creating a ZenPack. It includes a
+Zenoss template for creating rrd-graphs of various squid performance
+numbers. http://tanso.net/zenoss/squid/[zenoss/squid]
+
+SElinux policy for policyd
+--------------------------
+I've created a SElinux policy for the postfix policy server policyd. Documented at
+http://tanso.net/selinux/policyd/[selinux/policyd/]. After a minor rewrite,
+this module was included in the selinux reference policy.
+
+rsyslog on RHEL5
+----------------
+http://tanso.net/rsyslog/[rsyslog/]
+
+FreeNX on RHEL5
+---------------
+
+http://tanso.net/selinux/freenx/[selinux/freenx/]
+
+Garmin Edge 305
+---------------
+
+I bought myself a new bicycle computer, a Garmin Edge 305, and have
+started logging all my bicycling to http://jan-frode.motionbased.com/[].
+It's quite cool to play each session in Google Earth.
+There's also a http://jan-frode.motionbased.com/rss[rss] feed for it.
+
+
+Building SElinux module for Argus
+---------------------------------
+
+I'm continuing my exploration of selinux, by building a
+http://tanso.net/selinux/argus/[module for argus] using policygentool, 
+and ultimately a complete module from scratch, using the book
+http://www.tresys.com/selinux/selinux-book.html[SELinux by Example: Using 
+Security Enhanced Linux] as a guide.
+
+
+Various RPM packages I maintain for own usage
+---------------------------------------------
+
+I've got a YUM repository at http://tanso.net/yum/[] for various packages
+that are missing in RHEL, and which I find important to install on systems
+I maintain. Most SRPMS will likeliy build on both RHEL4 and RHEL5, but
+I try to label them .el4. or .el5. to indicate what they were build for.
+
+Put http://repo.tanso.net/tansonet.repo[this file] in /etc/yum.repos.d/tansonet.repo
+if you want to install packages from here using YUM.
+
+Administrating SElinux on Red Hat Enterprise Linux
+--------------------------------------------------
+
+Some http://tanso.net/selinux/[notes] about administrating SElinux on RHEL4 and RHEL5.
+
+
+Modsecurity packages for Red Hat Enterprise Linux
+-------------------------------------------------
+
+http://tanso.net/modsecurity/[RPM packages of modsecurity] for RHEL4 and RHEL5.
+
+
+My first accepted linux kernel patch
+------------------------------------
+
+A small documentation patch about how to show and adjust 
+the priority score used when the kernel needs to select which processes
+to kill in an out-of-memory (OOM) situation.
+
+http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=commit;h=d7ff0dbf45ee8a7c4802ff46844e6e8167b7f360[]
+
+
+
+Denali / Mount McKinley 2006
+----------------------------
+
+In 2006 I was on an unguided expedition to Denali national park, and summited the 
+highest mountain in North America. My first mountain on the seven summits list :-)
+View waypoints from the trip plotted with Google maps API,
+should be usefull for anyone wanting to climb Denali's
+http://tanso.net/denali-2006/[West Buttress].
+Full http://www.ii.uib.no/~petter/mountains/Denali/trip-report.html[trip report].
+
+
+Java One-Time Password Calculator for J2ME
+------------------------------------------
+
+http://tanso.net/j2me-otp/[j2me-otp] is a small java application you can use on your 
+cellphone to generate secure one-time-passwords. Great for internet cafe 
+logins to servere you don't want compromised by rouge employees.
+
+
+Greenland-04
+------------
+
+Read about the privately organized Greenland expedition I was on in 2004. 
+We climbed the 3 highest summits (Mt. Gunnbjorn, Dome, Cone), and several 
+other mountains (including 10 first ascents!). For more details on all
+summits climbed, see http://tanso.net/Greenland-2004/[Greenland-2004].
+
+
+ENACTS
+------
+
+European Network for Advanced Computing Technology for Science,
+http://www.epcc.ed.ac.uk/enacts/[ENACTS]
+
+http://tanso.net/papers/enacts-demonstrator.pdf[Feasibility Report]
+
+
+Eurogrid
+--------
+
+Application Testbed for European GRID computing, http://www.eurogrid.org/[Eurogrid].
+
+http://tanso.net/papers/eurogrid-biogrid.pdf[BioGRID - An European grid for molecular biology]
+
+
+
+GRISK -- Search for k-optimal lattice rules
+-------------------------------------------
+
+http://www.ii.uib.no/grisk/[GRISK] was a distributed java-code that was used in 
+searching for "k-optimal lattice rules". The code is in 2 parts, a server and a 
+client. The client automatically connects to the server asking for a task which
+tells it which part of the search to perform, this information is sent
+to a fortran-library (via JNI) that perform the calculations.
+
+http://tanso.net/papers/grisk.pdf[whitepaper]
+
+
+Calculate CPUTime of a Java function
+------------------------------------
+
+Small http://tanso.net/java_cputime.html[howto] for calculating the CPUTime of a Java
+function.
+
+
+Norsk Antarktis Ekspedisjon
+---------------------------
+
+I maintained the website for an expedition that lived at the "Troll"
+base at Queen Maud Land in the Antarctic for 11 months, and the crossed
+the Antarctic continent on skis. The website is at:
+http://www.south-pole.net/[]
+
+
+Kunsthistorie grunnfag som fjernundervisning
+--------------------------------------------
+
+http://kunst.uib.no/[Fjernundervisning i kunsthistorie grunnfag], hvor jeg
+jobbet på webgrensesnittet. Bilder, lyd og tekst hentes ut fra en
+database, og presenteres gjennom en webleser. 
+
+
+Virtuell glassutstilling
+------------------------
+
+Webutstilling av lysekroner, glass og pokaler laget for museumet i Hokksund.
+Utstillingen er på en maskin i museet, hvor besøkende kan 
+klikke seg inn på gjenstandene og lese om dem. 
+
+
+Dragons from the North
+----------------------
+
+http://kunst.uib.no/dragesolv/[Dragons from the North] var en utstilling av norsk sølv med dragemotiv. Utstillingen ble holdt i Kreml museet i Moskva, og samtidig på Internett. 
+Les om utstillingen http://www.uib.no/elin/elpub/ph/11-98/artikkel10.html[På Høyden].
+Noen smakebiter fra utstillingen finner en http://kunst.uib.no/Art/Smak/dragons.html[her].
+
+
+Handel på Internett
+-------------------
+http://tanso.net/I191.html[Prosjektoppgave] (I191) i Databehandling og samfunn, 1997.
+ 

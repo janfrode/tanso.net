@@ -1,0 +1,153 @@
+policy_module(argus, 1.0)
+
+#####################
+# Type declarations #
+#####################
+
+# Argus domain:
+type argus_t;
+
+# executable entry point:
+type argus_exec_t;
+
+# mark argus_t as a domain and argus_exec_t
+# as an entrypoint into that domain
+init_daemon_domain(argus_t, argus_exec_t)
+
+# PID file /var/run/argus.pid
+type argus_var_run_t;
+files_pid_file(argus_var_run_t)
+
+# configuration files
+type argus_conf_t;
+files_config_file(argus_conf_t)
+
+# log files
+type argus_log_t;
+logging_log_file(argus_log_t)
+
+## argus-port:
+#attribute port_type;
+#attribute packet_type;
+#attribute client_packet_type;
+#attribute server_packet_type;
+#type argus_port_t, port_type;
+#type argus_client_packet_t, packet_type, client_packet_type;
+#type argus_server_packet_t, packet_type, server_packet_type;
+#portcon tcp 561 gen_context(system_u:object_r:argus_port_t,s0)
+
+
+### files and directories under /var/lib/argus
+##type argus_var_lib_t;
+##files_type(argus_var_lib_t)
+
+########################
+# argus -- core access #
+########################
+
+# Log files - create, read, and append
+allow argus_t argus_log_t : dir ra_dir_perms;
+allow argus_t argus_log_t : file { create ra_file_perms };
+#FIXME bug in book?: logging_filetrans_log(argus_t, argus_log_t, file)
+logging_log_filetrans(argus_t, argus_log_t, file)
+logging_search_logs(argus_t)
+
+
+# Configuration files - read
+allow argus_t argus_conf_t : dir r_dir_perms;
+allow argus_t argus_conf_t : file r_file_perms;
+allow argus_t argus_conf_t : lnk_file { getattr read };
+
+# PID file - create, read, and write
+allow argus_t argus_var_run_t : dir rw_dir_perms;
+allow argus_t argus_var_run_t : file create_file_perms;
+#FIXME bug in book?: files_filetrans_pid(argus_t, argus_var_run_t, file)
+files_pid_filetrans(argus_t, argus_var_run_t, file)
+
+## /var/lib/argus files/dirs - create, read, write
+#allow argus_t argus_var_lib_t : dir create_dir_perms;
+#allow argus_t argus_var_lib_t : file create_file_perms;
+#files_filetrans_var_lib(argus_t, argus_var_lib_t, { file, dir })
+
+# Network access - the argus daemon is allowed to send
+# and receive network data to all nodes and ports over
+# all network interfaces. Additionally, it can name_bind
+# to the argus port (argus_port_t)
+allow argus_t self : tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_all_if(argus_t)
+corenet_tcp_sendrecv_all_nodes(argus_t)
+corenet_tcp_sendrecv_all_ports(argus_t)
+corenet_non_ipsec_sendrecv(argus_t)
+corenet_tcp_bind_all_nodes(argus_t)
+#FIXME: corenet_tcp_bind_argus_port(argus_t)
+#sysnet_dns_name_resolve(argus_t)
+
+# use shared libraries
+libs_use_ld_so(argus_t)
+libs_use_shared_libs(argus_t)
+
+## read localization data
+#miscfiles_read_localization(argus_t)
+
+# read common directories / files including
+#       * /etc (search)
+# * system variables
+files_search_etc(argus_t)
+kernel_read_kernel_sysctls(argus_t)
+kernel_read_system_state(argus_t)
+kernel_read_all_sysctls(argus_t)
+
+
+###############################################
+#
+# Rules added after looking at denials:
+
+require {
+        class capability { net_bind_service net_raw setuid }; 
+        class chr_file { read write }; 
+        class fifo_file { read write }; 
+        class file { append getattr read write }; 
+        class netlink_route_socket { bind create getattr nlmsg_read read write }; 
+        class packet_socket { bind create getopt ioctl read setopt }; 
+        class process signull;
+        class sock_file write;
+        class tcp_socket name_bind;
+        class udp_socket { create ioctl }; 
+        class unix_dgram_socket { connect create sendto write }; 
+        type argus_t; 
+        type devlog_t; 
+        type devpts_t; 
+        type hi_reserved_port_t; 
+        type locale_t; 
+        type net_conf_t; 
+        type syslogd_t; 
+        type argus_log_t; 
+        type argus_t; 
+        role system_r; 
+};
+
+allow argus_t self:capability { net_bind_service net_raw setuid };
+allow argus_t self:fifo_file { read write };
+allow argus_t self:netlink_route_socket { bind create getattr nlmsg_read read write };
+allow argus_t self:packet_socket { bind create getopt ioctl read setopt };
+allow argus_t self:process signull;
+allow argus_t self:udp_socket { create ioctl };
+allow argus_t self:unix_dgram_socket { connect create write };
+allow argus_t devlog_t:sock_file write;
+allow argus_t devpts_t:chr_file { read write };
+allow argus_t hi_reserved_port_t:tcp_socket name_bind;
+allow argus_t locale_t:file { getattr read };
+allow argus_t net_conf_t:file { getattr read };
+allow argus_t syslogd_t:unix_dgram_socket sendto;
+allow argus_t argus_log_t:file write;
+
+
+# For /etc/hosts.allow/deny:
+
+require {
+        class file { getattr read }; 
+        type argus_t; 
+        type etc_t; 
+};
+
+allow argus_t etc_t:file { getattr read };

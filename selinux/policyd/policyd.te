@@ -1,0 +1,87 @@
+policy_module(policyd, 1.0)
+
+#####################
+# Type declarations #
+#####################
+
+# Policyd domain:
+type policyd_t;
+
+# executable entry point:
+type policyd_exec_t;
+
+# mark policyd_t as a domain and policyd_exec_t as an entrypoint into that domain
+init_daemon_domain(policyd_t, policyd_exec_t)
+
+# PID file /var/run/policyd.pid
+type policyd_var_run_t;
+files_pid_file(policyd_var_run_t)
+
+# configuration files
+type policyd_conf_t;
+files_config_file(policyd_conf_t)
+
+##########################
+# policyd -- core access #
+##########################
+
+# Configuration files - read
+allow policyd_t policyd_conf_t : dir r_dir_perms;
+allow policyd_t policyd_conf_t : file r_file_perms;
+allow policyd_t policyd_conf_t : lnk_file { getattr read };
+
+# PID file - create, read, and write
+allow policyd_t policyd_var_run_t : dir rw_dir_perms;
+allow policyd_t policyd_var_run_t : file create_file_perms;
+files_pid_filetrans(policyd_t, policyd_var_run_t, file)
+
+allow policyd_t self : tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_all_if(policyd_t)
+corenet_tcp_sendrecv_all_nodes(policyd_t)
+corenet_tcp_sendrecv_all_ports(policyd_t)
+corenet_non_ipsec_sendrecv(policyd_t)
+corenet_tcp_bind_all_nodes(policyd_t)
+sysnet_dns_name_resolve(policyd_t)
+
+# use shared libraries
+libs_use_ld_so(policyd_t)
+libs_use_shared_libs(policyd_t)
+
+############### Brute force AVC denials #######
+require {
+        class capability { setgid setuid sys_chroot sys_resource}; 
+        class chr_file { read write getattr}; 
+        class file { read getattr };
+        class process setrlimit;
+        class sock_file write;
+        class tcp_socket { name_bind name_connect name_connect };
+        class unix_dgram_socket { connect create sendto write }; 
+        type devlog_t; 
+        type devpts_t; 
+        type etc_t; 
+        type locale_t; 
+        type mysqld_port_t; 
+        type policyd_t; 
+        type policyd_port_t; 
+        type postfix_smtpd_t; 
+        type syslogd_t; 
+        type usr_t; 
+        role system_r; 
+};
+
+# Write to stdout/stderr:
+allow policyd_t devpts_t:chr_file { getattr read write };
+
+allow policyd_t policyd_port_t:tcp_socket name_bind;
+allow policyd_t mysqld_port_t:tcp_socket name_connect;
+allow policyd_t self:capability { sys_resource sys_chroot setgid setuid };
+allow policyd_t self:process setrlimit;
+allow policyd_t etc_t:file { getattr read };
+allow policyd_t devlog_t:sock_file write;
+allow policyd_t locale_t:file { getattr read };
+allow policyd_t self:unix_dgram_socket { connect create write};
+allow policyd_t syslogd_t:unix_dgram_socket sendto;
+allow policyd_t usr_t:file { getattr read }; # For /usr/share/mysql/charsets/Index.xml.
+
+# Allow postfix to connect to the policy server:
+allow postfix_smtpd_t policyd_port_t:tcp_socket name_connect;

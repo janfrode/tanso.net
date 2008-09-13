@@ -1,0 +1,34 @@
+FreeNX denials
+==============
+Jan-Frode Myklebust <janfrode@tanso.net>
+
+FreeNX on RHEL5/SElinux
+-----------------------
+
+Note to self -- Always have the selinux troubleshooter running. It's
+invaluable when random applications fail to start. F.ex. I was struggeling
+trying to get FreeNX running on a RHEL5 system. It was simply complaining:
+
+---------------------------------------------------
+NX> 1004 Error: NX Agent exited with exit status 1.
+---------------------------------------------------
+
+and after a while I found these in the audit.log:
+
+---------------------------------------------------
+type=AVC msg=audit(1185437241.015:6449): avc:  denied  { execmod } for pid=17465 comm="nxagent" name="libXcomp.so.2" dev=dm-0 ino=1509560 scontext=user_u:system_r:unconfined_t:s0 tcontext=system_u:object_r:lib_t:s0 tclass=file
+type=AVC_PATH msg=audit(1185437241.015:6449): path="/usr/lib/nx/libXcomp.so.2"
+---------------------------------------------------
+
+
+The troubleshooter would have alerted me immediately, if I had been running
+it.. Instead I wasted time thinking this was a problem with me not knowing
+how to set up NX. The workaround was of course to label the
+libXcomp.so-libraries as textrel_shlib_t:
+
+-----------------------------------------------------------------------
+# semanage fcontext -a -t textrel_shlib_t "/usr/lib/nx/libXcomp.so(.*)"
+# restorecon /usr/lib/nx/libXcomp.so.2*
+-----------------------------------------------------------------------
+
+

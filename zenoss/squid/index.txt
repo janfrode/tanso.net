@@ -1,0 +1,40 @@
+Zenoss performance template for Squid
+=====================================
+
+Here's a ZenPack that adds a performance template for monitoring
+Squid in http://zenoss.com/[Zenoss]. To use it, you'll need to
+http://tanso.net/selinux/squid[enable snmp] in your squid.conf
+(/etc/squid/squid.conf):
+
+----
+	acl snmppublic snmp_community mysecretcommunity
+	snmp_port 3401
+	snmp_access allow snmppublic all
+----
+
+And configure the squid server's snmpd.conf (/etc/snmpd/snmpd.conf) to proxy these oids:
+
+----
+	view systemview included .1.3.6.1.4.1.3495.1
+	proxy -m /etc/squid/mib.txt -v 1 -c mysecretcommunity localhost:3401 .1.3.6.1.4.1.3495.1
+----
+
+plus also label port 3401/udp as a http_cache_port_t in the selinux-policy by
+executing:
+
+----
+	semanage port -a -t http_cache_port_t -p udp 3401
+----
+
+Then install this http://tanso.net/zenoss/squid/Squid.zip[Squid Zenpack] into
+zenoss, and bind the "Squid" template to your proxy servers. After a while you 
+should see graphs similar to these:
+ 
+image:squid-traffic.png[]
+image:squid-cache-hit-ratio.png[]
+image:squid-cache-ratio.png[]
+image:squid-client-request-rate.png[]
+image:squid-service-times.png[]
+image:squid-uptime.png[]
+image:squid-cached-objects.png[]
+image:squid-filedescriptors.png[]

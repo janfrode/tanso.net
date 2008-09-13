@@ -1,0 +1,144 @@
+Installing rsyslog under Red Hat Enterprise Linux 5
+===================================================
+Jan-Frode Myklebust <janfrode@tanso.net>
+
+Rsyslog, the enhanced syslogd for Linux and Unix
+------------------------------------------------
+
+rsyslogd has been scheduled to replace sysklogd in
+fedora 8, and I assume it will also be used in RHEL6. 
+Unfortunately RHEL6 is still far away, and it would be
+good to get started with a better syslog ASAP on RHEL5.
+
+Building
+--------
+
+I pulled down the latest SRPM from
+http://people.redhat.com/pvrabec/rpms/rsyslog/[] installed it (as non-root).
+Since this SRPM is lagging a bit behind the fast paced rsyslog-development, 
+I downloaded the latest rsyslog release, updated the version number
+in the rsyslog.spec-file, and built it. The source and binary is available http://tanso.net/yum/repodata/repoview/R.group.html[here].
+
+--------
+% rpm -ba rsyslog.spec
+--------
+
+And then install it as root with:
+
+--------
+# rpm -Uvh ~janfrode/src/redhat/RPMS/i386/rsyslog-1.18.2-1.i386.rpm
+--------
+
+SElinux
+-------
+
+When I launch my newly installed rsyslogd from the initscript, everything
+seemingly works, and no new AVC's are logged to the audit log. Strange. So
+I suspect it might be running as an unconfined process:
+
+---------------------
+# ps -efZ|grep syslog
+root:system_r:initrc_t          root     27263     1  0 12:22 ?  00:00:00 rsyslogd -m 0 -r
+---------------------
+
+Good guess, but not completely right. It's running in "initrc_t", 
+so it hasn't transitioned to the right domain "syslogd_t". And the
+cause is of course that the binary isn't labeled correctly:
+
+----------------------
+# ls -Z /sbin/rsyslogd
+-rwxr-xr-x  root root system_u:object_r:sbin_t         /sbin/rsyslogd
+# chcon -t syslogd_exec_t /sbin/rsyslogd
+# ls -Z /sbin/rsyslogd
+-rwxr-xr-x  root root system_u:object_r:syslogd_exec_t /sbin/rsyslogd
+----------------------
+
+That looks better, and when I restart it, it transitiones to the right domain:
+
+----------------------
+# /etc/init.d/rsyslog stop
+Shutting down kernel logger (rklogd):                      [  OK  ]
+Shutting down system logger (rsyslog):                     [  OK  ]
+# /etc/init.d/rsyslog start
+Starting system logger (rsyslog):                          [  OK  ]
+Starting kernel logger (rklogd):                           [  OK  ]
+# ps -eZ|grep rsyslog
+root:system_r:syslogd_t         31498 ?        00:00:00 rsyslogd
+----------------------
+
+Finally, to make sure I don't loose the label on /sbin/rsyslogd, 
+I add a local labeling rule for it and verify that it works as
+expected:
+
+----------------------
+# semanage fcontext -a -t syslogd_exec_t /sbin/rsyslogd
+# restorecon /sbin/rsyslogd
+# ls -Z /sbin/rsyslogd
+-rwxr-xr-x  root root system_u:object_r:syslogd_exec_t /sbin/rsyslogd
+----------------------
+
+Ooops, there's also a rklogd process that needs to be moved to the
+right domain:
+
+----------------------
+# ps -eZ|grep klogd
+root:system_r:initrc_t          31506 ?        00:00:00 rklogd
+# ls -Z /sbin/rklogd 
+-rwxr-xr-x  root root system_u:object_r:sbin_t         /sbin/rklogd
+# semanage fcontext -a -t klogd_exec_t /sbin/rklogd 
+# restorecon /sbin/rklogd
+# /etc/init.d/rsyslog restart
+Shutting down kernel logger (rklogd):                      [  OK  ]
+Shutting down system logger (rsyslog):                     [  OK  ]
+Starting system logger (rsyslog):                          [  OK  ]
+Starting kernel logger (rklogd):                           [  OK  ]
+# ps -eZ|grep klogd
+root:system_r:klogd_t           31981 ?        00:00:00 rklogd
+----------------------
+
+There's also a "RFC 3195 listener" installed as "/sbin/rfc3195d". I'm not
+currently using this, so i haven't fixed it's label. But I suspect it should
+be labeled the same as "/sbin/rsyslogd".
+
+Configuration
+-------------
+
+By default rsyslogd is configured to do the same simple logging as sysklogd,
+using an identical configuration file. That works, but then what's the
+point of rsyslogd :-)
+
+* We want a directory structure with daily complete logfiles per host:
+--------------
+$template DailyPerHostLogs,"/var/log/rsyslog/%$YEAR%/%$MONTH%/%$DAY%/%HOSTNAME%.log"
+*.* -?DailyPerHostLogs
+--------------
+
+* We want to collect all mail logs from different hosts, to the same file.  Rotated hourly:
+--------------
+$template HourlyMaillog,"/var/log/rsyslog/maillog/%$YEAR%/%$MONTH%/%$DAY%/maillog-%$YEAR%-%$MONTH%-%$DAY%-%$HOUR%.log"
+mail.* -?HourlyMaillog
+--------------
+
+* We want the logs from one specific application to be captured to one log file:
+--------------
+:programname, isequal, "sendmail"  -/var/log/rsyslog/sendmail.log
+:programname, isequal, "kernel"  -/var/log/rsyslog/kernel.log
+--------------
+
+or rather dynamically without knowing every app-name up front:
+--------------
+$template PerAppLogs,"/var/log/rsyslog/apps/%programname%.log"
+*.* -?PerAppLogs
+--------------
+
+
+Todo:
+-----
+
+* Explore rsyslog configuration.
+
+* Collect same service from multiple hosts into the same log file.
+
+* Test http://wiki.rsyslog.com/index.php/FailoverSyslogServer[failover logging].
+
+* Logg to database ?

@@ -1,0 +1,23 @@
+## <summary>policy for googleearth</summary>
+
+########################################
+## <summary>
+##	Execute a domain transition to run googleearth.
+## </summary>
+## <param name="domain">
+## <summary>
+##	Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`googleearth_domtrans',`
+	gen_require(`
+		type googleearth_t, googleearth_exec_t;
+	')
+
+	domain_auto_trans($1,googleearth_exec_t,googleearth_t)
+
+	allow googleearth_t $1:fd use;
+	allow googleearth_t $1:fifo_file rw_file_perms;
+	allow googleearth_t $1:process sigchld;
+')

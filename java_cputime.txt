@@ -1,0 +1,78 @@
+Java CPUTime
+=============
+Jan-Frode Myklebust <janfrode@tanso.net>
+
+How to calculate CPUTime of a function with Java
+--------------------------------------------------
+
+I've wanted to know the cputime used in java functions, but it
+turned out that this was a bit too low level for java. Therefore
+I had to create a JNI (Java Native Interface) function for it. 
+The code for this example is http://tanso.net/CPUtest.tar.gz[here], 
+and here's how to do it:
+
+
+First I define it in my class, CPUtest.java:
+
+--------------------------------
+class CPUtest {
+	public static  native long cpuCount();
+	static {
+		System.loadLibrary("jnicputime");
+	}
+
+	public static void main(String[] args) {
+		long cputime;
+		int i,j;
+		cputime = cpuCount();
+		for (i=0;i<300000000;i++) j = i*7;
+		cputime = cpuCount() - cputime;
+		System.out.print("CPUTIME:\t");
+	}
+}
+--------------------------------
+
+Compile it 'javac CPUtest.java', and create a headerfile for the native
+function 'javah -jni CPUtest'. Then I implement the function defined in 
+CPUtest.h in C using the POSIX times() like this:
+
+-----------------------------------------
+/* Let's try to be portable here */
+#define _POSIX_SOURCE 1
+/* System headers */
+#include &lt;sys/times.h&gt;
+#include &lt;unistd.h&gt;
+
+/* Local headers */
+#include "CPUtest.h"
+
+/* Macros */
+#define CLK_TCK ((clock_t)(sysconf(_SC_CLK_TCK)))
+
+/* Functions */
+
+JNIEXPORT jlong JNICALL Java_CPUtest_cpuCount (JNIEnv *env, jobject obj)
+{
+        struct tms tmsbuff;
+        times(&tmsbuff);
+        return (jlong)tmsbuff.tms_utime/CLK_TCK;
+}
+-----------------------------------------
+
+Then I create the library with 'cc -o libjnicputime.so -O -shared cputime.c
+-I/usr/java/include/ -I/usr/java/include/irix'. On linux this line would be
+something like 'gcc -o libjnicputime.so -O -shared -fPIC cputime.c
+-I/usr/java/include/ -I/usr/java/include/linux', and on solaris it should be
+'gcc -o libjnicputime.so -O -G -fPIC cputime.c -I/usr/java/include/
+-I/usr/java/include/solaris'.
+
+
+Then I have to tell the system where to find libjnicputime.so by 'setenv
+LD_LIBRARY_PATH .' and now I can run my small java program:
+
+----------------------------
+java CPUtest
+CPUTIME:        13
+----------------------------
+
+That's all! Comments? -- mailto:janfrode@tanso.net[]

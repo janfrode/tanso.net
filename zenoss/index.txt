@@ -1,0 +1,6 @@
+Zenoss pages
+============
+
+http://tanso.net/zenoss/squid/[Squid zenpack]
+
+http://tanso.net/zenoss/python-xmlrpclib/[Python scripting with zenoss]

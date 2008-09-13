@@ -1,0 +1,28 @@
+Some links
+==========
+
+* http://tanso.net/books/[Book collection]
+
+* http://www.google.com/analytics/[Google analytics]
+
+* http://www.google.com/adsense/[Google adsense] 
+
+* https://www.google.com/webmasters/tools/siteoverview?hl=en&pli=1[Google webmaster tools]
+
+* http://biloghjem.no/[] -- Hjemmesiden til "Moen Bil og Hjem".
+
+* Tanso.net's http://mail.tanso.net/[webmail].
+
+* http://start.tanso.net/[start.tanso.net] -- startside med epost, nyheter, m.m.
+
+* http://kalender.tanso.net/[]
+
+* http://docs.tanso.net/[]
+
+* http://toolbar.netcraft.com/site_report?url=http://tanso.net[]
+
+* http://www.google.com/codesearch?q=%22Jan-Frode%20Myklebust%22[]
+
+* http://www.krugle.org/kse/files?query=%22Jan-Frode%20Myklebust%22[]
+
+* http://www.koders.com/default.aspx?s=%22Jan-Frode%20Myklebust%22[]

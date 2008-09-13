@@ -1,0 +1,288 @@
+Administrating SElinux on Red Hat Enterprise Linux
+==================================================
+Jan-Frode Myklebust <janfrode@tanso.net>
+
+audit2allow
+-----------
+
+audit2allow is a nice tool for understanding AVC denials. On 
+RHEL4, all AVC denials are logged to the kernel ring buffer.
+The command 'dmesg' will show these, and 'audit2allow -d' will
+interprit them, and output the SELinux rules needed to allow 
+these denials.
+
+On RHEL5, these denials are no longer logged to the kernel ring
+buffer. Now they're only logged to the audit log (/var/log/audit/audit.log),
+so you'll need to feed this file to audit2allow to interpret 
+the denials.
+
+
+Adding SElinux rules on RHEL4
+-----------------------------
+
+On RHEL4 it's very straigthforward to fix simple denials. Run your
+application, and watch 'dmesg' for denials. When you see denials you 
+need to allow to run your application, create rules for these with
+"audit2allow":
+
+--------------------------------------------
+% audit2allow -d
+allow snmpd_t binfmt_misc_fs_t:dir getattr;
+allow snmpd_t boot_t:dir getattr;
+allow snmpd_t usbfs_t:dir getattr;
+--------------------------------------------
+
+To allow these, install the selinux-policy-targeted-sources (up2date -i
+selinux-policy-targeted-sources), add the output from audit2allow to
+/etc/selinux/targeted/src/policy/domains/misc/local.te and update
+the active policy by:
+
+-------------------------------------
+# cd /etc/selinux/targeted/src/policy
+make reload
+-------------------------------------
+
+This often takes a few iterations, since as soon as the application
+here was allowed to "getattr" it will likely try something else on
+the same objects.
+
+
+Building selinux policy module on RHEL5
+---------------------------------------
+
+I was struggeling with getting syslog-ng working on RHEL5, receiving remote 
+logs on 514/udp was no problem, but when I tried to also use
+it for local logging by configuring unix-dgram("/dev/log"), I was getting
+AVC-denials in /var/log/audit/audit.log. To fix it I made a few iterations
+over feeding the avc message to "audit2allow -m local". I did this once for
+a avc on "getattr", and when this was allowed, the second denial came for
+an "unlink".
+
+---------------------------------------
+# audit2allow -m local > local.te
+# checkmodule -M -m -o local.mod local.te
+checkmodule:  loading policy configuration from local.te
+checkmodule:  policy configuration loaded
+checkmodule:  writing binary representation (version 6) to local.mod
+# semodule_package -o local.pp -m local.mod
+# semodule -i ./local.pp
+---------------------------------------
+
+The "local.te" was:
+
+---------------------------------------
+module local 1.0;
+
+require {
+        class sock_file { getattr unlink };
+        type device_t;
+        type syslogd_t;
+        role system_r;
+};
+
+allow syslogd_t device_t:sock_file { getattr unlink };
+---------------------------------------
+
+OBS: Keep the local.te, as it will be needed the next time you want to add
+rules to it. There doesn't seem to be any way to read back the policy from the
+local.pp that's installed.
+
+I've created an rpm for syslog-ng that builds and install the necessary
+selinux module as part of the %post install. You can find this
+http://tanso.net/yum/repodata/repoview/syslog-ng-0-2.0.3-1.el5.html[here].
+The rules it adds to the policy can be seen in
+http://tanso.net/selinux/syslog_ng.te[syslog_ng.te]. 
+
+Update/Todo
+~~~~~~~~~~~
+
+Hmm, I think the policy could be tightened a bit by making sure the
+syslog-ng.pid-file is created in file context "syslogd_var_run_t" instead
+of just plain "var_run_t" as it is now. That would probably change the
+last rule from general var_t:file to be syslogd specific.
+
+
+Making new file label rules on RHEL5
+------------------------------------
+
+I'm running (IBM's) RHEL5 on my laptop. Default it has SELinux disabled, 
+but I've set it to permissive to get a feel for how much problems it 
+will be to enabled it in targeted enforcing mode. So far it's been 
+very few denials. But, one problem was that Lotus Notes 8 (beta) is
+generating some library text relocation denials. Ref:
+http://people.redhat.com/drepper/selinux-mem.html[] The Notes library files
+are not stored in /lib/ folders, so the default labeling rules has labeled
+them as "usr_t". The "setroubleshoot" tool says that I should run "chcon -t
+textrel_shlib_t" on each of these files, but that will just work until
+the next time I relabel the file system.
+
+The not very well documented way of adding local file context definitions that
+will survive a relabel is to use "semanage fcontext". I did a:
+
+--------------------------------------------
+# /usr/sbin/semanage fcontext -a -t textrel_shlib_t /opt/ibm/Lotus/Notes/libaldaemn.so
+# /usr/sbin/semanage fcontext -a -t textrel_shlib_t /opt/ibm/Lotus/Notes/libnoteswc.so
+# /usr/sbin/semanage fcontext -a -t textrel_shlib_t "/opt/ibm/Lotus/Notes/framework/shared/eclipse/plugins/(.*)/libvcl645li.so"
+--------------------------------------------
+
+and afterwards I see these rules are added to
+/etc/selinux/targeted/contexts/files/file_contexts.local. "restorecon -R
+/opt/ibm/Lotus" will now set the correct security labels on these.
+
+
+Allowing OpenVPN on non-standard ports.
+---------------------------------------
+
+Next problem is that I'm running OpenVPN to connect to several
+networks, and none are using the default port 1194/udp. They're on 
+1194/tcp or the firewall penetrating 443/tcp. Initially I'm disabling
+SELinux protection of openvpn using "setsebool openvpn_disable_trans=on",
+but plan on modifying the policy to support these non-standard ports
+later..
+
+
+Building googleearth policy
+---------------------------
+
+When running google-earth, I'm getting denials about it trying to
+"change the access protection of memory on the heap", and a
+suggestion from setroubleshoot to turn on the boolean to allow it:
+
+-------------------------------
+# setsebool -P allow_execheap=1
+-------------------------------
+
+That's clearly the easy way out, but as usual the setroubleshoot-advice
+is too coarse, and would allow all unconfined_t processes to bypass this
+memoryprotection of executable heap. So, to only allow google-earth this
+additional right, I'll need to build a new policy domain for it.
+
+First I create the basics using policygentool:
+
+--------------------------------------------------------------------------
+% /usr/share/selinux/devel/policygentool googleearth /usr/local/google-earth/googleearth
+This tool generate three files for policy development, A Type Enforcement (te)
+file, a File Context (fc), and a Interface File(if).  Most of the policy rules
+will be written in the te file.  Use the File Context file to associate file
+paths with security context.  Use the interface rules to allow other protected
+domains to interact with the newly defined domains.
+
+After generating these files use the /usr/share/selinux/devel/Makefile to
+compile your policy package.  Then use the semodule tool to load it.
+
+# /usr/share/selinux/devel/policygentool myapp /usr/bin/myapp
+# make -f /usr/share/selinux/devel/Makefile
+# semodule -l myapp.pp
+# restorecon -R -v /usr/bin/myapp "all files defined in myapp.fc"
+
+Now you can turn on permissive mode, start your application and avc messages
+will be generated.  You can use audit2allow to help translate the avc messages
+into policy.
+
+# setenforce 0
+# service myapp start
+# audit2allow -R -i /var/log/audit/audit.log
+
+Return to continue:
+
+If the module uses pidfiles, what is the pidfile called?
+
+If the module uses logfiles, where are they stored?
+
+If the module has var/lib files, where are they stored?
+
+Does the module have a init script? [yN]
+
+Does the module use the network? [yN]
+y
+%  make -f /usr/share/selinux/devel/Makefile
+Compiling targeted googleearth module
+/usr/bin/checkmodule:  loading policy configuration from tmp/googleearth.tmp
+/usr/bin/checkmodule:  policy configuration loaded
+/usr/bin/checkmodule:  writing binary representation (version 6) to tmp/googleearth.mod
+Creating targeted googleearth.pp policy package
+rm tmp/googleearth.mod.fc tmp/googleearth.mod
+# semodule -i googleearth.pp 
+# restorecon /usr/local/google-earth/googleearth
+# ls -Z /usr/local/google-earth/googleearth
+-rwxr-xr-x  janfrode janfrode system_u:object_r:googleearth_exec_t /usr/local/google-earth/googleearth
+--------------------------------------------------------------------------
+
+This created the basic googleearth policy module, but it woun't be
+able to do much yet. The policy created seems to be more for an init-script
+type policy, and has a few init-rules we can remove:
+
+----------------------------------------------------------
+# init_daemon_domain(googleearth_t, googleearth_exec_t)
+# Init script handling
+# init_use_fds(googleearth_t)
+# init_use_script_ptys(googleearth_t)
+# domain_use_interactive_fds(googleearth_t)
+----------------------------------------------------------
+
+And we will need to make sure that when someone in domain unconfined_t
+launches googleearth, they're transitioned to googleearth_t:
+
+----------------------------------------------------------
+# Transition from unconfined_t to googleearth_t:
+type_transition unconfined_t googleearth_exec_t : process googleearth_t;
+allow unconfined_t googleearth_exec_t : file execute;
+allow unconfined_t googleearth_t : process transition;
+allow googleearth_t googleearth_exec_t : file entrypoint ;
+----------------------------------------------------------
+
+The same could possibly achieved by the single line:
+
+------------------------------------------------------------------
+domain_auto_trans(unconfined_t, googleearth_exec_t, googleearth_t)	
+------------------------------------------------------------------
+
+Then we make and reload the module:
+
+------------------------------------------------------------
+%  make -f /usr/share/selinux/devel/Makefile
+Compiling targeted googleearth module
+/usr/bin/checkmodule:  loading policy configuration from tmp/googleearth.tmp
+/usr/bin/checkmodule:  policy configuration loaded
+/usr/bin/checkmodule:  writing binary representation (version 6) to tmp/googleearth.mod
+Creating targeted googleearth.pp policy package
+rm tmp/googleearth.mod.fc tmp/googleearth.mod
+# semodule -i googleearth.pp
+--------------------------------------------------------------------------
+
+Now when we launch googleearth, a lot of denials gets logged to
+the auditd.log. I feed these to "audit2allow -m googleearth", 
+merge the new rules into googleearth.te, make and reload the 
+module. After a few iterations of this, I stop getting denials 
+when running googleearth, and I ended up with the following
+http://tanso.net/selinux/googleearth/googleearth.te[googleearth.te],
+http://tanso.net/selinux/googleearth/googleearth.fc[googleearth.fc],
+http://tanso.net/selinux/googleearth/googleearth.if[googleearth.if], and the generated
+google-earth selinux policy module http://tanso.net/selinux/googleearth/googleearth.pp[googleearth.pp].
+
+This policy is very open, but it allows us to run selinux with
+execheap enabled, while other unconfined_t processes will have
+protection from execheap abuse.
+
+This was in easier than expected!
+
+
+Update
+------
+
+It turnes out that enabling execheap for a single unconfined_t application
+is much simpler than this. Labeling the executable as
+"unconfined_execmem_exec_t" would probably be the correct solution. Too bad
+setroubleshoot didn't mention that..
+
+More
+----
+
+http://tanso.net/selinux/policyd/[SElinux policy for policyd]
+
+http://tanso.net/selinux/freenx/[FreeNX/Selinux]
+
+http://tanso.net/selinux/argus/[Building SElinux module for Argus]
+
+http://tanso.net/selinux/argus/argus-from-scratch/[Building Argus SELinux
+module manually]

@@ -1,0 +1,6 @@
+# argus labeling policy 
+# file: argus.fc
+/usr/sbin/argus   --   gen_context(system_u:object_r:argus_exec_t, s0)
+/etc/argus.conf   --   gen_context(system_u:object_r:argus_conf_t, s0)
+/var/log/argus(/.*)?   gen_context(system_u:object_r:argus_log_t, s0)
+/var/run/argus(.*)?    gen_context(system_u:object_r:argus_var_run_t, s0)

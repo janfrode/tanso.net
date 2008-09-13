@@ -1,0 +1,1279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document>
+	<name>G4.kml</name>
+	<StyleMap id="msn_grn-stars_copy15">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy15</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy15</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_grn-stars_copy10">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-stars">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars_copy8">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy8</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy8</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-stars_copy3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_grn-stars_copy4">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-stars_copy3">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-stars_copy14">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars_copy11">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy11</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy11</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-stars_copy14">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy14</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy14</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_grn-stars_copy0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars_copy9">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy9</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy9</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-stars_copy0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-stars_copy10">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy10</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_grn-stars_copy2">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-stars_copy15">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-stars">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-stars_copy13">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-stars_copy16">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars_copy6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy6</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_icon56_copy1">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal2/icon56.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="sn_grn-stars_copy10">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-stars_copy11">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_icon48_copy1">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal2/icon48.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="sn_grn-stars_copy5">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars_copy5">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy5</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_grn-stars_copy3">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-stars_copy7">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-stars_copy2">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-stars_copy0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars_copy1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_grn-stars_copy9">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-stars_copy6">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-stars_copy12">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-stars_copy9">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-stars_copy5">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_icon56">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal2/icon56.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<Style id="sh_grn-stars_copy14">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars_copy4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_grn-stars_copy12">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy12</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy12</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_grn-stars_copy1">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars_copy16">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy16</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy16</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_grn-stars_copy15">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-stars_copy11">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars_copy2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_grn-stars_copy1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_grn-stars_copy16">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-stars_copy13">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_icon56_copy1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon56_copy1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon48_copy1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_grn-stars_copy4">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-stars_copy6">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_icon48">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pal2/icon48.png</href>
+			</Icon>
+		</IconStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars_copy13">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy13</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy13</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_grn-stars_copy7">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-stars_copy12">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sh_grn-stars_copy8">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="sn_grn-stars_copy8">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-stars-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_grn-stars_copy7">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_grn-stars_copy7</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_grn-stars_copy7</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_icon56">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_icon56</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_icon48</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder>
+		<name>G4</name>
+		<open>1</open>
+		<description>Waypoints from our Greenland expedition in 2004. The expedition members were Jan-Frode Myklebust, Ståle Grimen, Per Ove Oppedal, Arnt Flatmo, Torstein Skage and expedition leader Petter Bjørstad.</description>
+		<Placemark>
+			<name>Landing strip on departure.</name>
+			<LookAt>
+				<longitude>-29.26964302347298</longitude>
+				<latitude>68.94378179762722</latitude>
+				<altitude>0</altitude>
+				<range>63088.83590873361</range>
+				<tilt>2.115191725503938</tilt>
+				<heading>3.35074507706924e-14</heading>
+			</LookAt>
+			<styleUrl>#msn_icon56_copy1</styleUrl>
+			<Point>
+				<coordinates>-29.32181219817374,68.97863897459234,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>&quot;Landing strip&quot;</name>
+			<LookAt>
+				<longitude>-29.26964544194692</longitude>
+				<latitude>68.94378173475737</latitude>
+				<altitude>0</altitude>
+				<range>63087.11035910407</range>
+				<tilt>2.115191152908804</tilt>
+				<heading>-0.296551804001561</heading>
+			</LookAt>
+			<styleUrl>#msn_icon56</styleUrl>
+			<Point>
+				<coordinates>-29.70796543864732,68.95140436849181,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Skjærseggi</name>
+			<description><![CDATA[Skjærseggi<br></br>
+Name: Skjærseggi<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): (2225-2250) m<br></br>
+Elevation measured by GPS: 2232 m<br></br>
+Location: N68:59.585, W029:16.451<br></br>
+Primary factor: 119 m<br></br>
+Saddle elevation (map): (2100-2125) m<br></br>
+Saddle elevation (GPS): Not measured<br></br>
+Saddle coordinates: N68:59.301, W029:15.606<br></br>
+Ascent: This was a first ascent by Arnt Flatmo on May 30. 2004.]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy15</styleUrl>
+			<Point>
+				<coordinates>-29.27944166666667,68.99968888888888,2232</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Point 2263</name>
+			<description><![CDATA[Point 2263<br></br>
+Name: Unknown<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): (2250-2275) m<br></br>
+Elevation measured by GPS: 2263 m<br></br>
+Location: N69:01.739, W029:25.618<br></br>
+Primary factor: 100 m<br></br>
+Saddle elevation (map): (2150-2175)<br></br>
+Saddle elevation (GPS): Not measured<br></br>
+Saddle coordinates: N69:02.043, W029:25.000<br></br>
+Ascent: First ascent by Hans Christian Florian, the 2nd. ascent by Petter Bjørstad, Arnt Flatmo
+and Jan-Frode Myklebust, May 27. 2004.<br></br>
+Additional comments: This (snow) summit had a cairn on a nearby rock.<br></br>]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy16</styleUrl>
+			<Point>
+				<coordinates>-29.43333055555556,69.0333,2263</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Skorsteinseggi</name>
+			<description><![CDATA[Skorsteinseggi<br></br>
+Name: Skorsteinseggi<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): 2275 m<br></br>
+Elevation measured by GPS: 2270 m<br></br>
+Location: N68:59.228, W029:14.921<br></br>
+Primary factor: 160 m<br></br>
+Saddle elevation (map): (2100-2125) m<br></br>
+Saddle elevation (GPS): 2115 m<br></br>
+Saddle coordinates: N68:59.213, W029:12.914<br></br>
+Ascent: This was a first ascent by Arnt Flatmo, Torstein Skage and Petter Bjørstad, on May 30.
+2004.]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy14</styleUrl>
+			<Point>
+				<coordinates>-29.24999722222222,68.98968888888889,2275</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Rabben</name>
+			<description><![CDATA[Rabben<br></br>
+Name: Rabben<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): (2350-2375) m<br></br>
+Elevation measured by GPS: 2378 m<br></br>
+Location: N68:58.597, W029:09.285<br></br>
+Primary factor: 108 m<br></br>
+Saddle elevation (map): (2250-2275) m<br></br>
+Saddle elevation (GPS): 2270 m<br></br>
+Saddle coordinates: N68:58.748, W029:08.742<br></br>
+Ascent: This was a first ascent by
+Arnt Flatmo, Ståle Grimen, Torstein Skage and Per Ove Oppedal, on May 29. 2004. The
+second ascent by Petter Bjørstad on May 30. 2004.<br></br>
+Descent: The first ski descent from the summit (Telemark
+by Per Ove Oppedal on May 29. 2004.<br></br>
+Additional comments: A cairn was built on the summit.]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy13</styleUrl>
+			<Point>
+				<coordinates>-29.15805277777778,68.9833,2378</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Kristine Fjeld</name>
+			<description><![CDATA[Kristine Fjeld<br></br>
+Name: Kristine Fjeld<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): (2400-2425) m<br></br>
+Elevation measured by GPS: 2449 m<br></br>
+Location: N69:00.202, W029:09.040<br></br>
+Primary factor: 141 m<br></br>
+Saddle elevation (map): (2300-2325) m<br></br>
+Saddle elevation (GPS): 2308 m<br></br>
+Saddle coordinates: N69:00.108, W029:08.343<br></br>
+Ascent: This was a first ascent by Torstein Skage, Arnt Flatmo, Ståle Grimen,
+Per Ove Oppedal, Jan-Frode Myklebust og Petter Bjørstad, on May 29. 2004.<br></br>
+Additional comments: A cairn was built on the summit.]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy12</styleUrl>
+			<Point>
+				<coordinates>-29.15138611111111,69.00579999999999,2449</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Anita Fjeld</name>
+			<description><![CDATA[Anita Fjeld<br></br>
+Name: Anita Fjeld<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): 2466 m<br></br>
+Elevation measured by GPS: 2467 m<br></br>
+Location: N68:59.342, W029:24.435<br></br>
+Primary factor: 178 m<br></br>
+Saddle elevation (map): (2275-2300) m<br></br>
+Saddle elevation (GPS): Not measured<br></br>
+Saddle coordinates: N68:59:086, W029:24.697<br></br>
+Ascent: This was a first ascent by<br></br>
+Per Ove Oppedal and Torstein Skage on May 27. 2004.]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy11</styleUrl>
+			<Point>
+				<coordinates>-29.41221944444444,68.99302222222222,2466</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Lille Snefjeld</name>
+			<description><![CDATA[Lille Snefjeld<br></br>
+Name: Lille Snefjeld<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): (2500-2525) m<br></br>
+Elevation measured by GPS: 2511 m<br></br>
+Location: N68:59.488, W029:04.705<br></br>
+Primary factor: 118 m<br></br>
+Saddle elevation (map): (2375-2400) m<br></br>
+Saddle elevation (GPS): 2393 m<br></br>
+Saddle coordinates: N68:59.247, W029:04.362<br></br>
+Ascent: This was a first ascent by Torstein Skage, Arnt Flatmo, Ståle Grimen,
+Per Ove Oppedal, Jan-Frode Myklebust og Petter Bjørstad, on May 28. 2004.<br></br>
+Descent: A first ski descent from the summit (Telemark skis)
+down the steep west side by Per Ove Oppedal on May 28. 2004.]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy10</styleUrl>
+			<Point>
+				<coordinates>-29.08333055555556,68.99691111111112,2511</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Ebeth</name>
+			<description><![CDATA[Ebeth<br></br>
+Name: Ebeth<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): 2628 m<br></br>
+Elevation measured by GPS: 2641 m<br></br>
+Location: N68:59.086, W029:02.879<br></br>
+Primary factor: 228 m<br></br>
+Saddle elevation (map): (2375-2400) m<br></br>
+Saddle elevation (GPS): 2409 m<br></br>
+Saddle coordinates: N68:58.739, W029:04.458<br></br>
+Ascent: This was a first ascent by
+Torstein Skage and Per Ove Oppedal on May 28. 2004.<br></br>
+Descent: A first ski descent from the summit (Telemark skis)
+by Per Ove Oppedal on May 28. 2004.<br></br>
+Additional comments: A (small) cairn was built on the summit.]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy9</styleUrl>
+			<Point>
+				<coordinates>-29.04999722222222,68.9858,2628</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Snefjeld</name>
+			<description><![CDATA[Snefjeld<br></br>
+Name: Snefjeld<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): 3650 m<br></br>
+Elevation measured by GPS: 2648 m<br></br>
+Location: N68:59.899, W029:06.459<br></br>
+Primary factor: 323 m<br></br>
+Saddle elevation (map): (2325-2350) m<br></br>
+Saddle elevation (GPS): 2327 m<br></br>
+Saddle coordinates: N68:59.557, W029:06.312<br></br>
+Ascent: This was a first ascent by
+Jan-Frode Myklebust and Petter Bjørstad on May 29. 2004.]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy8</styleUrl>
+			<Point>
+				<coordinates>-29.112775,68.99996666666667,2650</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Brekruna</name>
+			<description><![CDATA[Brekruna<br></br>
+Name: Unknown<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): 2824 m<br></br>
+Elevation measured by GPS: 2815 m<br></br>
+Location: N68:58.186, W029:26.830<br></br>
+Primary factor: 331 m<br></br>
+Saddle elevation (map): (2600-2625) m<br></br>
+Saddle elevation (GPS): 2605 m<br></br>
+Saddle coordinates: N68:58.425, W029:27.514<br></br>
+Ascent: First ascent by a Tangent team in 2002. The second ascent by
+Arnt Flatmo and Petter Bjørstad on May 26. 2004,
+the 3rd. ascent the next day by Per Ove Oppedal, Ståle Grimen and Torstein Skage on May
+27.<br></br>
+Descent: This was a first ski descent from the summit (Telemark skis)
+by Per Ove Oppedal, Ståle Grimen and Torstein Skage on May 27. 2004.]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy7</styleUrl>
+			<Point>
+				<coordinates>-29.44999722222223,68.97191111111111,2824</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Point 3266</name>
+			<description><![CDATA[Point 3266<br></br>
+Name: Unknown<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): 3266 m<br></br>
+Elevation measured by GPS: Not measured<br></br>
+Location: N68:52.456, W029:36.684<br></br>
+Primary factor: 103 m<br></br>
+Saddle elevation (map): (3150-3175) m<br></br>
+Saddle elevation (GPS): Not measured<br></br>
+Saddle coordinates: N68:51.828, W029:36.212<br></br>
+Additional comments: First ascent by Hans Christian Florian, our climb was the 3rd. ascent.
+The second ascent took place on May 14. by a team from Tromsø lead by Espen Nordahl.]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy1</styleUrl>
+			<Point>
+				<coordinates>-29.61666388888889,68.87941111111111,3266</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Bergen</name>
+			<description><![CDATA[Bergen<br></br>
+Name: Peak Ostereike<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): (3275-3300) m<br></br>
+Elevation measured by GPS: Not measured<br></br>
+Location: N68:53.871, W029:49.091<br></br>
+Primary factor: 125 m<br></br>
+Saddle elevation (map): (3150-3175) m<br></br>
+Saddle elevation (GPS): Not measured<br></br>
+Saddle coordinates: N68:53.710, W029:49.848<br></br>
+Ascent: First climbed by an Austrian team.]]></description>
+			<LookAt>
+				<longitude>-28.87722061910661</longitude>
+				<latitude>68.84580108350774</latitude>
+				<altitude>0</altitude>
+				<range>168857.335577979</range>
+				<tilt>2.115406354987776</tilt>
+				<heading>0.06908922219337248</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy2</styleUrl>
+			<Point>
+				<coordinates>-29.81944166666667,68.91663333333334,3288</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Stygghorn</name>
+			<description><![CDATA[Styggehorn<br></br>
+Name: Styggehorn<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): 3503 m<br></br>
+Elevation measured by GPS: Not measured<br></br>
+Location: N68:52.077, W030:00.000<br></br>
+Primary factor: 140 m<br></br>
+Saddle elevation (map): (3350-3375) m<br></br>
+Saddle elevation (GPS): Not measured<br></br>
+Saddle coordinates: N68:52.077, W029:59.394<br></br>
+Additional comments: This climb was a first ascent. The summit has two horns pointing slightly
+outwards above a very large vertical wall, the peak is named after this very characteristic feature.]]></description>
+			<LookAt>
+				<longitude>-28.86815820795005</longitude>
+				<latitude>68.84266236181315</latitude>
+				<altitude>0</altitude>
+				<range>168885.9041453962</range>
+				<tilt>2.115415836667944</tilt>
+				<heading>0.07750681737822632</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy0</styleUrl>
+			<Point>
+				<coordinates>-30,68.86861111111111,3503</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Point 3535</name>
+			<description><![CDATA[Point 3535<br></br>
+Name: Unknown<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): 3535 m<br></br>
+Elevation measured by GPS: 3533 m<br></br>
+Location: N68:53.541, W029:54.465<br></br>
+Primary factor: 172 m<br></br>
+Saddle elevation (map): (3350-3375) m<br></br>
+Saddle elevation (GPS): Not measured<br></br>
+Saddle coordinates: N68:53.065, W029:55.300<br></br>
+Additional comments: Climbing history is not not yet known, but the peak has been climbed. This
+is the sixth highest peak on Greenland.]]></description>
+			<LookAt>
+				<longitude>-28.86815818554284</longitude>
+				<latitude>68.84266834044722</latitude>
+				<altitude>0</altitude>
+				<range>168903.9178208442</range>
+				<tilt>2.11542181530748</tilt>
+				<heading>0.07750681737822632</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy3</styleUrl>
+			<Point>
+				<coordinates>-29.91277777777777,68.89833333333333,3535</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Istind</name>
+			<description><![CDATA[Istind<br></br>
+Name: Istind<br></br>
+Alternate name(s): None<br></br>
+Elevation (map): 2667 m<br></br>
+Elevation measured by GPS: 2675 m<br></br>
+Location: N68:58.513, W029:05.029<br></br>
+Primary factor: 429 m<br></br>
+Saddle elevation (map): (2225-2250) m<br></br>
+Saddle elevation (GPS): Not measured<br></br>
+Saddle coordinates: N69:00.538, W029:09.848<br></br>
+Ascent: This was a first ascent by<br></br>
+Per Ove Oppedal and Jan-Frode Myklebust on May 30. 2004.<br></br>
+Additional comments: A cairn was built near the (snow) summit.]]></description>
+			<LookAt>
+				<longitude>-28.95129477456553</longitude>
+				<latitude>68.82763150675554</latitude>
+				<altitude>0</altitude>
+				<range>168735.1393553806</range>
+				<tilt>2.115365799990151</tilt>
+				<heading>11.8848864833187</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy4</styleUrl>
+			<Point>
+				<coordinates>-29.08388888888889,68.98083333333334,2667</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Cone</name>
+			<description><![CDATA[Cone<br></br>
+Name: Qaqqaq Johnson<br></br>
+Alternate name(s): Cone<br></br>
+Elevation (map): 3669 m<br></br>
+Elevation measured by GPS: 3663 m<br></br>
+Location: N68:52.283, W029:57.009<br></br>
+Primary factor: 331 m<br></br>
+Saddle elevation (map): (3325-3350) m<br></br>
+Saddle elevation (GPS): Not measured<br></br>
+Saddle coordinates: N68:54.194, W029:55.303<br></br>
+Descent: The second ski descent from the summit (Telemark skis)
+by Per Ove Oppedal and Torstein Skage on May 20. 2004.
+The first ski descent took place the day before on May 19. 2004.<br></br>
+Additional comments: This is the third highest peak north of the Arctic Circle.]]></description>
+			<LookAt>
+				<longitude>-29.01201759207027</longitude>
+				<latitude>68.64514464909377</latitude>
+				<altitude>0</altitude>
+				<range>168827.1878668113</range>
+				<tilt>2.115396349316591</tilt>
+				<heading>11.8285716218586</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy5</styleUrl>
+			<Point>
+				<coordinates>-29.95,68.87444444444445,3669</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Dome</name>
+			<description><![CDATA[Dome<br></br>
+Name: Qaqqaq Kershaw<br></br>
+Alternate name(s): Dome<br></br>
+Elevation (map): 3683 m<br></br>
+Elevation measured by GPS: 3686 m<br></br>
+Location: N68:50.372, W029:55.418<br></br>
+Primary factor: 645 m<br></br>
+Saddle elevation (map): (3025-3050) m<br></br>
+Saddle elevation (GPS): Not measured<br></br>
+Saddle coordinates: N68:51.075, W029:56.061<br></br>
+Descent: The first ski descent from the summit (Telemark skis)
+by Per Ove Oppedal and Torstein Skage on May 20. 2004.<br></br>
+Additional comments: This is the second highest peak north of the Arctic Circle.]]></description>
+			<LookAt>
+				<longitude>-29.01201759207027</longitude>
+				<latitude>68.64514464909377</latitude>
+				<altitude>0</altitude>
+				<range>168827.1878668113</range>
+				<tilt>2.115396349316591</tilt>
+				<heading>11.8285716218586</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars</styleUrl>
+			<Point>
+				<coordinates>-29.92827777777778,68.84361111111112,4683</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Hvitserk</name>
+			<description><![CDATA[Name: Gunnbjørnfjeld<br></br>
+<img src="http://www.westcoastpeaks.com/thumb/G4/g04_54gunnbjornHT.jpg" alt="Hvitserk">&nbsp;<br></br>
+Alternate name(s): Hvitserk<br></br>
+Elevation (map): 3694 m<br></br>
+Elevation measured by GPS: 3695 m<br></br>
+Location: N68:55.170, W029:53.912<br></br>
+Primary factor: 3694 m<br></br>
+Saddle elevation (map): Greenland HP<br></br>
+Saddle elevation (GPS): NA<br></br>
+Saddle coordinates: NA<br></br>
+Descent: The first ski descent from the summit (Telemark skis)
+by Per Ove Oppedal and Torstein Skage on May 17. 2004.<br></br>
+Additional comments: This is the highest peak north of the Arctic Circle.]]></description>
+			<LookAt>
+				<longitude>-37.86073519394696</longitude>
+				<latitude>66.43936313181305</latitude>
+				<altitude>0</altitude>
+				<range>169487.2331686632</range>
+				<tilt>2.11561543525986</tilt>
+				<heading>3.657541543667752</heading>
+			</LookAt>
+			<styleUrl>#msn_grn-stars_copy6</styleUrl>
+			<Point>
+				<coordinates>-29.89414166666667,68.92254722222222,3694</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

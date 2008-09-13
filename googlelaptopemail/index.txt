@@ -1,0 +1,64 @@
+Using gmail for pop and smtp on the go.
+=======================================
+
+I have google as mail exchanger for my domain tanso.net, trough http://www.google.com/a/org/[Google Apps],
+but prefer http://mutt.org/[mutt] as a mail user agent and also like to be
+able to use email while offline, so I've configured my laptop to fetch mail
+from google using fetchmail, and relay outgoing email trough smtp.google.com.
+
+Fetchmail configuration
+-----------------------
+
+For pop'ing email, I use the .fetchmailrc:
+
+------------------------------------------------------------
+set daemon 900
+poll pop.gmail.com protocol POP3 user janfrode@tanso.net with password IllNeverTell is janfrode here ssl mda '/usr/bin/procmail -m /home/janfrode/.procmailrc'
+------------------------------------------------------------
+
+and .procmailrc:
+
+------------------------------------------------------------
+PATH=$HOME/bin:/usr/bin:/bin:/usr/local/bin
+MAILDIR=$HOME/Mail      # You'd better make sure it exists
+DEFAULT=/var/spool/mail/janfrode
+LOGFILE=$HOME/Mail/maillog
+LOCKFILE=$HOME/.lockmail
+
+:0
+$MAILDIR/inbox/
+------------------------------------------------------------
+
+Sendmail configuration
+----------------------
+
+To make sendmail relay all email trough smtp.gmail.com, it needs to
+authenticate when sending email, so I have in the /etc/mail/access:
+
+------------------------------------------------------------
+Connect:localhost.localdomain           RELAY
+Connect:localhost                       RELAY
+Connect:127.0.0.1                       RELAY
+AuthInfo:smtp.gmail.com "U:janfrode@tanso.net" "I:janfrode@tanso.net" "P:IllNeverTell" "M:LOGIN PLAIN"
+------------------------------------------------------------
+
+and /etc/mail/sendmail.mc:
+
+------------------------------------------------------------
+define(`SMART_HOST', `smtp.gmail.com')
+MASQUERADE_AS(`tanso.net')
+MASQUERADE_DOMAIN(lc4eb6380248654.ibm.com)
+MASQUERADE_DOMAIN(localhost)
+MASQUERADE_DOMAIN(localhost.localdomain)
+------------------------------------------------------------
+
+
+Then "cd /etc/mail ; make ; /etc/init.d/sendmail restart" and I can send email
+relayed trough smtp.gmail.com.
+
+
+Todo
+----
+
+Authenticate SSL certificates both on POP and SMTP, to remove the risk of
+revealing the password to a rouge server.

@@ -1,0 +1,358 @@
+Building Argus SELinux module manually
+======================================
+
+Here I'll document the procedure for building an selinux module for argus
+without using the policygentool. i.e. I'll build it from scratch using
+http://www.tresys.com/selinux/selinux-book.html[SELinux by Example: Using
+Security Enhanced Linux] as a guide.
+
+Module goal:
+------------
+
+* argus daemon should be confined to only have access to the minimum required to work properly.
+* argus configuration files must be protected from being modified by argus domain.
+* argus should be allowed to bind to argus port.
+
+Additionally using booleans to enable/disable binding to port, going
+promiscous and argus_disable_trans would be cool.
+
+
+Type declarations
+-----------------
+
+We'll need at least the following types:
+
+* argus_t 		-- Domain type
+* argus_exec_t		-- entry point for the argus executable (/usr/sbin/argus)
+* argus_var_run_t	-- pid file for argus (/var/run/argus.pid)
+* argus_conf_t		-- configuration file (/etc/argus.conf)
+* argus_log_t		-- argus log files (/var/log/argus/)
+* argus_port_t		-- argus listening port (561/tcp)
+
+So we define these in http://tanso.net/selinux/argus/argus-from-scratch/argus.te[argus.te]
+
+----------------------------------------------------
+#####################
+# Type declarations #
+#####################
+
+# Argus domain:
+type argus_t;
+
+# executable entry point:
+type argus_exec_t;
+
+# mark argus_t as a domain and argus_exec_t
+# as an entrypoint into that domain
+init_daemon_domain(argus_t, argus_exec_t)
+
+# PID file /var/run/argus.pid
+type argus_var_run_t;
+files_pid_file(argus_var_run_t)
+
+# configuration files
+type argus_conf_t;
+files_config_file(argus_conf_t)
+
+# log files
+type argus_log_t;
+logging_log_file(argus_log_t)
+----------------------------------------------------
+
+
+Initial restrictive access
+--------------------------
+
+Next we try try do grant the permissions we know we need:
+
+* Create, read, write, append to log files (argus_log_t).
+* Read configuration files (argus_conf_t).
+* Create, read, write pid file (argus_var_run_t).
+* Network access, bind to argus_port_t. Sniff network in promiscous mode?
+* Use shared libraries.
+* Read common directories/files like proc, /dev/null, sysctl.
+* More.. 
+
+
+----------------------------------------------------
+########################
+# argus -- core access #
+########################
+
+# Log files - create, read, and append
+allow argus_t argus_log_t : dir ra_dir_perms;
+allow argus_t argus_log_t : file { create ra_file_perms };
+#FIXME bug in book?: logging_filetrans_log(argus_t, argus_log_t, file)
+logging_log_filetrans(argus_t, argus_log_t, file)
+logging_search_logs(argus_t)
+
+
+# Configuration files - read
+allow argus_t argus_conf_t : dir r_dir_perms;
+allow argus_t argus_conf_t : file r_file_perms;
+allow argus_t argus_conf_t : lnk_file { getattr read };
+
+# PID file - create, read, and write
+allow argus_t argus_var_run_t : dir rw_dir_perms;
+allow argus_t argus_var_run_t : file create_file_perms;
+#FIXME bug in book?: files_filetrans_pid(argus_t, argus_var_run_t, file)
+files_pid_filetrans(argus_t, argus_var_run_t, file)
+
+# Network access - the argus daemon is allowed to send
+# and receive network data to all nodes and ports over
+# all network interfaces. Additionally, it can name_bind
+# to the argus port (argus_port_t)
+allow argus_t self : tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_all_if(argus_t)
+corenet_tcp_sendrecv_all_nodes(argus_t)
+corenet_tcp_sendrecv_all_ports(argus_t)
+corenet_non_ipsec_sendrecv(argus_t)
+corenet_tcp_bind_all_nodes(argus_t)
+#FIXME: corenet_tcp_bind_argus_port(argus_t)
+#sysnet_dns_name_resolve(argus_t)
+
+# use shared libraries
+libs_use_ld_so(argus_t)
+libs_use_shared_libs(argus_t)
+
+## read localization data
+#miscfiles_read_localization(argus_t)
+
+# read common directories / files including
+#       * /etc (search)
+# * system variables
+files_search_etc(argus_t)
+kernel_read_kernel_sysctls(argus_t)
+kernel_read_system_state(argus_t)
+kernel_read_all_sysctls(argus_t)
+----------------------------------------------------
+
+External interface
+------------------
+
+Next we need to create an external interface (argus.if), so that 
+f.ex. logrotate may rotate the log files.
+
+-------------------------------------------------------------------
+## <summary>argus daemon</summary>
+
+########################################
+## <summary>
+##          Read argus daemon log files.
+## </summary>
+## <param name="domain">
+##          Domain allowed access.
+## </param>
+#
+interface(`argus_read_log',`
+        gen_require(`
+                type argus_log_t;
+        ')
+
+        logging_search_logs($1)
+        allow $1 argus_log_t:dir search_dir_perms;
+        allow $1 argus_log_t:file r_file_perms;
+')
+-------------------------------------------------------------------
+
+
+Create labeling policy
+----------------------
+
+We define the labeling policy in argus.fc:
+
+-------------------------------------------------------------------
+# argus labeling policy
+# file: argus.fc
+/usr/sbin/argus   --   gen_context(system_u:object_r:argus_exec_t, s0)
+/etc/argus.conf   --   gen_context(system_u:object_r:argus_conf_t, s0)
+/var/log/argus(/.*)?   gen_context(system_u:object_r:argus_log_t, s0)
+/var/run/argus(.*)?    gen_context(system_u:object_r:argus_var_run_t, s0)
+-------------------------------------------------------------------
+
+Build module
+------------
+
+Then we build and load the module, then see if we get any failures from
+argus:
+
+-------------------------------------------------------------------
+# make -f /usr/share/selinux/devel/Makefile
+Compiling targeted argus module
+/usr/bin/checkmodule:  loading policy configuration from tmp/argus.tmp
+/usr/bin/checkmodule:  policy configuration loaded
+/usr/bin/checkmodule:  writing binary representation (version 6) to
+tmp/argus.mod
+Creating targeted argus.pp policy package
+rm tmp/argus.mod.fc tmp/argus.mod
+# setenforce 0
+# rm -f /var/log/audit/audit.log
+# /etc/init.d/auditd restart
+Stopping auditd:                                           [  OK  ]
+Starting auditd:                                           [  OK  ]
+# semodule -i argus.pp 
+# /etc/init.d/argus start
+Starting argus:                                            [  OK  ]
+# /etc/init.d/argus stop
+Shutting down argus:                                       [  OK  ]
+# cat /var/log/audit/audit.log | audit2allow -m argus
+/usr/bin/audit2allow: No AVC messages found.
+-------------------------------------------------------------------
+
+No AVCs ??? Ooops, looks like argus hasn't transitioned to the right domain:
+
+-------------------------------------------------------------------
+# ps -eZ|grep argus
+root:system_r:initrc_t           2617 ?        00:00:00 argus
+root:system_r:initrc_t           2619 ?        00:00:00 argus
+root:system_r:initrc_t           2620 ?        00:00:00 argus
+-------------------------------------------------------------------
+
+The argus executable hasn't been labeled correctly. Checking, fixing and
+retrying:
+
+-------------------------------------------------------------------
+# ls -laZ /usr/sbin/argus 
+-rwx------  root root system_u:object_r:unlabeled_t    /usr/sbin/argus
+# restorecon /usr/sbin/argus
+# ls -laZ /usr/sbin/argus 
+-rwx------  root root system_u:object_r:argus_exec_t   /usr/sbin/argus
+# /etc/init.d/argus start
+Starting argus:                                            [  OK  ]
+# /etc/init.d/argus stop
+Shutting down argus:                                       [  OK  ]
+# cat /var/log/audit/audit.log | audit2allow -m argus
+module argus 1.0;
+
+require {
+        class capability { net_bind_service net_raw setuid }; 
+        class chr_file { read write }; 
+        class fifo_file { read write }; 
+        class file { append getattr read write }; 
+        class netlink_route_socket { bind create getattr nlmsg_read read write }; 
+        class packet_socket { bind create getopt ioctl read setopt }; 
+        class process signull;
+        class sock_file write;
+        class tcp_socket name_bind;
+        class udp_socket { create ioctl }; 
+        class unix_dgram_socket { connect create sendto write }; 
+        type argus_t; 
+        type devlog_t; 
+        type devpts_t; 
+        type hi_reserved_port_t; 
+        type locale_t; 
+        type net_conf_t; 
+        type syslogd_t; 
+        role system_r; 
+};
+
+allow argus_t self:capability { net_bind_service net_raw setuid };
+allow argus_t self:fifo_file { read write };
+allow argus_t self:netlink_route_socket { bind create getattr nlmsg_read read write };
+allow argus_t self:packet_socket { bind create getopt ioctl read setopt };
+allow argus_t self:process signull;
+allow argus_t self:udp_socket { create ioctl };
+allow argus_t self:unix_dgram_socket { connect create write };
+allow argus_t devlog_t:sock_file write;
+allow argus_t devpts_t:chr_file { read write };
+allow argus_t etc_t:file { getattr read };
+allow argus_t hi_reserved_port_t:tcp_socket name_bind;
+allow argus_t locale_t:file { getattr read };
+allow argus_t net_conf_t:file { getattr read };
+allow argus_t syslogd_t:unix_dgram_socket sendto;
+allow argus_t var_log_t:file { append getattr read write };
+-------------------------------------------------------------------
+
+Hmmm, another labeling error that it wants to read and getattr etc_t:file, 
+plus read/write/append var_log_t:filevar_log_t:file:
+
+-------------------------------------------------------------------
+# ls -Z /etc/argus.conf 
+-rw-------  root root system_u:object_r:etc_t          /etc/argus.conf
+# restorecon /etc/argus.conf
+# ls -Z /etc/argus.conf 
+-rw-------  root root system_u:object_r:argus_conf_t   /etc/argus.conf
+# ls -dZ /var/log/argus /var/log/argus/*
+drwx------  root root system_u:object_r:var_log_t      /var/log/argus
+-rw-r--r--  root root root:object_r:var_log_t /var/log/argus/argus.out
+# restorecon /var/log/argus /var/log/argus/*
+# ls -dZ /var/log/argus /var/log/argus/*
+drwx------  root root system_u:object_r:argus_log_t    /var/log/argus
+-rw-r--r--  root root system_u:object_r:argus_log_t /var/log/argus/argus.out
+-------------------------------------------------------------------
+
+This changes the above audit2allow output to:
+
+-------------------------------------------------------------------
+require {
+        class capability { net_bind_service net_raw setuid }; 
+        class chr_file { read write }; 
+        class fifo_file { read write }; 
+        class file { append getattr read write }; 
+        class netlink_route_socket { bind create getattr nlmsg_read read write }; 
+        class packet_socket { bind create getopt ioctl read setopt }; 
+        class process signull;
+        class sock_file write;
+        class tcp_socket name_bind;
+        class udp_socket { create ioctl }; 
+        class unix_dgram_socket { connect create sendto write }; 
+        type argus_t; 
+        type devlog_t; 
+        type devpts_t; 
+        type hi_reserved_port_t; 
+        type locale_t; 
+        type net_conf_t; 
+        type syslogd_t; 
+        type argus_log_t; 
+        type argus_t; 
+        role system_r; 
+};
+
+allow argus_t self:capability { net_bind_service net_raw setuid };
+allow argus_t self:fifo_file { read write };
+allow argus_t self:netlink_route_socket { bind create getattr nlmsg_read read write };
+allow argus_t self:packet_socket { bind create getopt ioctl read setopt };
+allow argus_t self:process signull;
+allow argus_t self:udp_socket { create ioctl };
+allow argus_t self:unix_dgram_socket { connect create write };
+allow argus_t devlog_t:sock_file write;
+allow argus_t devpts_t:chr_file { read write };
+allow argus_t hi_reserved_port_t:tcp_socket name_bind;
+allow argus_t locale_t:file { getattr read };
+allow argus_t net_conf_t:file { getattr read };
+allow argus_t syslogd_t:unix_dgram_socket sendto;
+allow argus_t argus_log_t:file write;
+-------------------------------------------------------------------
+
+Files:
+------
+
+* http://tanso.net/selinux/argus/argus-from-scratch/argus.te[argus.te]
+* http://tanso.net/selinux/argus/argus-from-scratch/argus.fc[argus.fc]
+* http://tanso.net/selinux/argus/argus-from-scratch/argus.if[argus.if]
+* http://tanso.net/selinux/argus/argus-from-scratch/argus.pp[argus.pp] (md5sum: 2c0e8b2b836585cad0584d267f236210)
+
+Final notes:
+------------
+
+I will be running argus under this policy for a while, to check if there's any
+problems with the policy, before packaging it and offer it as a complete
+argus+selinux rpm. 
+
+Nice to see that the argus_disable_trans boolean is automatically created, so
+that it's easy to disable this module in case anybody has issues with it. This
+likely also means that it will be easy to enable/disable features using
+booleans just by packaging the features as separate modules.
+
+
+Some minor issues:
+
+* There's no argus_port_t/monitor_port_t/corenet_tcp_bind_monitor_port defined in the reference policy, so the above AVC denials are used to allow binds to hi_reserved_port_t.
+* There were a few speling errors in the SElinux by example book. Missing
+ending 's' in kernel_read*sysctls. logging_filetrans_log vs.
+logging_log_filetrans, files_filetrans_pid vs. files_pid_filetrans. Found the
+right name by grepping in the reference policy.
+* Oops, first problem.. When connecting to 561/tcp argus wants to check
+hosts.allow/hosts.deny, which are system_u:object_r:etc_t. Guess I'll need to
+allow argus_t to read etc_t. IMHO these two files should have been it's own type, so 
+that access to tcp-wrappers doesn't require read access to the whole etc_t.

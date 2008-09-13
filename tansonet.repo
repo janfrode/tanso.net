@@ -1,0 +1,5 @@
+[tanso.net]
+name=Packages from tanso.net.
+baseurl=http://repo.tanso.net/yum
+gpgcheck=1
+gpgkey=http://repo.tanso.net/janfrode.gpgkey

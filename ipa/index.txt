@@ -1,0 +1,232 @@
+
+
+On Fedora-8:
+
+# yum --enablerepo=updates-testing install ipa-server
+=============================================================================
+ Package                 Arch       Version          Repository        Size 
+=============================================================================
+Installing for dependencies:
+ TurboGears              noarch     1.0.4.3-2.fc8    updates           1.4 M
+ cyrus-sasl-gssapi       i386       2.1.22-8.fc8     updates            30 k
+ fedora-ds-base          i386       1.1.0-3.fc8      updates           1.6 M
+ ipa-admintools          i386       0.99-12.fc8      updates-testing    45 k
+ ipa-client              i386       0.99-12.fc8      updates-testing    39 k
+ ipa-python              i386       0.99-12.fc8      updates-testing    82 k
+ ipa-server              i386       0.99-12.fc8      updates-testing   456 k
+ ipa-server-selinux      i386       0.99-12.fc8      updates-testing    36 k
+ krb5-server             i386       1.6.2-14.fc8     updates           844 k
+ krb5-server-ldap        i386       1.6.2-14.fc8     updates           122 k
+ mod_auth_kerb           i386       5.3-6            fedora             18 k
+ mod_nss                 i386       1.0.7-2.fc8      updates            84 k
+ mod_python              i386       3.3.1-5          fedora            332 k
+ mozldap                 i386       6.0.5-1.fc8      updates           132 k
+ mozldap-tools           i386       6.0.5-1.fc8      updates           142 k
+ perl-Mozilla-LDAP       i386       1.5.2-2.fc8.1    fedora            181 k
+ postgresql-libs         i386       8.2.7-1.fc8      updates           198 k
+ python-cheetah          i386       2.0.1-1.fc8      updates           525 k
+ python-cherrypy         noarch     2.3.0-3.fc8      updates           294 k
+ python-configobj        noarch     4.4.0-2.fc8      fedora            182 k
+ python-decoratortools   noarch     1.6-1.fc8        updates            26 k
+ python-elixir           noarch     0.5.1-1.fc8      updates            89 k
+ python-formencode       noarch     0.7.1-2.fc8      fedora            300 k
+ python-json             noarch     3.4-3.fc7        fedora             28 k
+ python-kerberos         i386       1.0-5.fc8        updates            19 k
+ python-kid              noarch     0.9.6-2.fc8      fedora            188 k
+ python-krbV             i386       1.0.13-6.fc8     fedora             42 k
+ python-nose             noarch     0.10.0-2.fc8     updates           275 k
+ python-paste-deploy     noarch     1.3.1-2.fc8      fedora             47 k
+ python-paste-script     noarch     1.3.6-1.fc8      fedora            207 k
+ python-protocols        i386       1.0-0.6.a0dev_r2302.fc7  fedora            200 k
+ python-psycopg2         i386       2.0.6-2.fc8      fedora             91 k
+ python-pyasn1           noarch     0.0.7a-4.fc8     updates            59 k
+ python-ruledispatch     i386       0.5a0-0.7.svnr2306.fc8  fedora            224 k
+ python-simplejson       i386       1.7.3-1.fc8      fedora             82 k
+ python-sqlalchemy       noarch     0.4.5-1.fc8      updates-testing   1.4 M
+ python-sqlite2          i386       1:2.3.3-1.fc7    fedora             90 k
+ python-sqlobject        noarch     0.9.3-2.fc8      updates           468 k
+ python-tgexpandingformwidget  noarch     0.1.3-5.fc8      updates            11 k
+ python-tgfastdata       noarch     0.9a6-6.fc7      fedora             22 k
+ python-turbocheetah     noarch     1.0-1.fc8        updates           9.1 k
+ python-turbojson        noarch     1.1.2-3.fc8      updates            14 k
+ python-turbokid         noarch     1.0.4-1.fc8      updates            12 k
+ svrcore                 i386       4.0.4-1.fc7      fedora             14 k
+
+Transaction Summary
+=============================================================================
+Install     44 Package(s)         
+Update       0 Package(s)         
+Remove       0 Package(s)         
+
+Total download size: 10 M
+Is this ok [y/N]: y
+
+
+[root@thinkpadz6m ~]# ipa-server-install
+
+The log file for this installation can be found in /var/log/ipaserver-install.log
+==============================================================================
+This program will setup the FreeIPA Server.
+
+This includes:
+  * Configure the Network Time Daemon (ntpd)
+  * Create and configure an instance of Directory Server
+  * Create and configure a Kerberos Key Distribution Center (KDC)
+  * Configure Apache (httpd)
+  * Configure TurboGears
+
+To accept the default shown in brackets, press the Enter key.
+
+Enter the fully qualified domain name of the computer
+on which you're setting up server software. Using the form
+<hostname>.<domainname>
+Example: master.example.com.
+
+
+Server host name [thinkpadz6m.ormaskogen]: thinkpadz61m.tanso.net
+
+The domain name has been calculated based on the host name.
+
+Please confirm the domain name [tanso.net]: 
+
+The IPA Master Server will be configured with
+Hostname:    thinkpadz61m.tanso.net
+IP address:  172.20.4.7
+Domain name: tanso.net
+
+The server must run as a specific user in a specific group.
+It is strongly recommended that this user should have no privileges
+on the computer (i.e. a non-root user).  The setup procedure
+will give this user/group some permissions in specific paths/files
+to perform server-specific operations.
+
+The kerberos protocol requires a Realm name to be defined.
+This is typically the domain name converted to uppercase.
+
+Please provide a realm name [TANSO.NET]: 
+
+Certain directory server operations require an administrative user.
+This user is referred to as the Directory Manager and has full access
+to the Directory for system management tasks and will be added to the
+instance of directory server created for IPA.
+The password must be at least 8 characters long.
+
+Directory Manager password: 
+Password (confirm): 
+
+The IPA server requires an administrative user, named 'admin'.
+This user is a regular system account used for IPA server administration.
+
+IPA admin password: 
+Password (confirm): 
+
+
+The following operations may take some minutes to complete.
+Please wait until the prompt is returned.
+Configuring ntpd
+  [1/4]: stopping ntpd
+  [2/4]: writing configuration
+  [3/4]: configuring ntpd to start on boot
+Apr 27 02:08:25 thinkpadz6m ntpd[2418]: ntpd exiting on signal 15
+  [4/4]: starting ntpd
+Apr 27 02:08:33 thinkpadz6m ntpdate[22521]: step time server 80.239.2.146 offset 0.087455 sec
+done configuring ntpd.
+Configuring directory server:
+  [1/16]: creating directory server user
+Apr 27 02:08:34 thinkpadz6m ntpd[22529]: ntpd 4.2.4p2@1.1495-o Mon Sep 24 14:40:07 UTC 2007 (1)
+Apr 27 02:08:34 thinkpadz6m ntpd[22530]: precision = 2.000 usec
+Apr 27 02:08:34 thinkpadz6m ntpd[22530]: Listening on interface #0 wildcard, 0.0.0.0#123 Disabled
+Apr 27 02:08:34 thinkpadz6m ntpd[22530]: Listening on interface #1 wildcard, ::#123 Disabled
+Apr 27 02:08:34 thinkpadz6m ntpd[22530]: Listening on interface #2 wlan0, fe80::219:d2ff:fe03:ccdb#123 Enabled
+Apr 27 02:08:34 thinkpadz6m ntpd[22530]: Listening on interface #3 lo, ::1#123 Enabled
+Apr 27 02:08:34 thinkpadz6m ntpd[22530]: Listening on interface #4 virbr0, fe80::8c04:2aff:fe19:3656#123 Enabled
+Apr 27 02:08:34 thinkpadz6m ntpd[22530]: Listening on interface #5 lo, 127.0.0.1#123 Enabled
+  [2/16]: creating directory server instance
+Apr 27 02:08:34 thinkpadz6m ntpd[22530]: Listening on interface #6 wlan0, 172.20.4.7#123 Enabled
+Apr 27 02:08:34 thinkpadz6m ntpd[22530]: Listening on interface #7 virbr0, 192.168.122.1#123 Enabled
+Apr 27 02:08:34 thinkpadz6m ntpd[22530]: kernel time sync status 0040
+Apr 27 02:08:35 thinkpadz6m ntpd[22530]: frequency initialized 158.156 PPM from /var/lib/ntp/drift
+  [3/16]: adding default schema
+  [4/16]: enabling memberof plugin
+  [5/16]: enabling referential integrity plugin
+  [6/16]: enabling distributed numeric assignment plugin
+  [7/16]: configuring uniqueness plugin
+  [8/16]: creating indices
+  [9/16]: configuring ssl for ds instance
+  [10/16]: configuring certmap.conf
+  [11/16]: restarting directory server
+  [12/16]: adding default layout
+  [13/16]: configuring Posix uid/gid generation as first master
+  [14/16]: adding master entry as first master
+  [15/16]: initializing group membership
+  [16/16]: configuring directory to start on boot
+done configuring dirsrv.
+Configuring Kerberos KDC
+  [1/12]: setting KDC account password
+  [2/12]: adding sasl mappings to the directory
+  [3/12]: adding kerberos entries to the DS
+  [4/12]: adding default ACIs
+  [5/12]: configuring KDC
+  [6/12]: adding default keytypes
+  [7/12]: creating a keytab for the directory
+  [8/12]: creating a keytab for the machine
+  [9/12]: exporting the kadmin keytab
+  [10/12]: adding the password extenstion to the directory
+  [11/12]: starting the KDC
+  [12/12]: configuring KDC to start on boot
+done configuring krb5kdc.
+Configuring ipa_kpasswd
+  [1/2]: starting ipa_kpasswd 
+  [2/2]: configuring ipa_kpasswd to start on boot
+done configuring ipa_kpasswd.
+Configuring the web interface
+  [1/10]: disabling mod_ssl in httpd
+  [2/10]: Setting mod_nss port to 443
+  [3/10]: Adding URL rewriting rules
+  [4/10]: configuring httpd
+  [5/10]: creating a keytab for httpd
+Apr 27 02:09:32 thinkpadz6m setroubleshoot: SELinux is preventing krb5kdc (krb5kdc_t) "write" to ./context (security_t). For complete SELinux messages. run sealert -l 6837bc8c-c6e2-4391-8c0a-feaea21aa5b0
+Apr 27 02:09:32 thinkpadz6m setroubleshoot: SELinux is preventing krb5kdc (krb5kdc_t) "check_context" to <Unknown> (security_t). For complete SELinux messages. run sealert -l d7e29e10-c189-4e79-b593-a4e4768365de
+Apr 27 02:09:32 thinkpadz6m setroubleshoot: SELinux is preventing krb5kdc (krb5kdc_t) "create" to ./krb5kdc.log (krb5kdc_log_t). For complete SELinux messages. run sealert -l 0ba1f73f-c17f-4457-9ae4-f1e993c821c1
+  [6/10]: Setting up ssl
+  [7/10]: Setting up browser autoconfig
+  [8/10]: configuring SELinux for httpd
+Apr 27 02:09:52 thinkpadz6m dbus: avc:  received policyload notice (seqno=4)
+  [9/10]: restarting httpd
+Apr 27 02:09:54 thinkpadz6m dbus:last message repeated 2 times
+Apr 27 02:09:54 thinkpadz6m setsebool: The httpd_can_network_connect policy boolean was changed to true by root
+  [10/10]: configuring httpd to start on boot
+done configuring httpd.
+Configuring ipa_webgui
+  [1/2]: starting ipa_webgui 
+  [2/2]: configuring ipa_webgui to start on boot
+done configuring ipa_webgui.
+Sample zone file for bind has been created in /tmp/sample.zone.GFQ268.db
+restarting the directory server
+Apr 27 02:10:01 thinkpadz6m setroubleshoot: SELinux is preventing ipa_webgui (ipa_webgui_t) "read" to ./file_contexts (file_context_t). For complete SELinux messages. run sealert -l 1c06f7a9-3a5d-4660-870a-22897f0880c0
+Apr 27 02:10:01 thinkpadz6m setroubleshoot: SELinux is preventing ipa_webgui (ipa_webgui_t) "getattr" to /etc/selinux/targeted/contexts/files/file_contexts (file_context_t). For complete SELinux messages. run sealert -l 765a4651-6629-4018-9d40-d821c0d2a7b4
+Apr 27 02:10:01 thinkpadz6m setroubleshoot: SELinux is preventing ipa_webgui (ipa_webgui_t) "write" to ./context (security_t). For complete SELinux messages. run sealert -l 6cfbb7ec-bfeb-49ea-bbeb-a08d51617e3b
+Apr 27 02:10:01 thinkpadz6m setroubleshoot: SELinux is preventing ipa_webgui (ipa_webgui_t) "check_context" to <Unknown> (security_t). For complete SELinux messages. run sealert -l 30269bc0-0569-456c-9c65-7eda9023d6ac
+restarting the KDC
+Apr 27 02:10:06 thinkpadz6m setroubleshoot: SELinux is preventing krb5kdc (krb5kdc_t) "write" to ./context (security_t). For complete SELinux messages. run sealert -l 6837bc8c-c6e2-4391-8c0a-feaea21aa5b0
+Apr 27 02:10:06 thinkpadz6m setroubleshoot: SELinux is preventing krb5kdc (krb5kdc_t) "check_context" to <Unknown> (security_t). For complete SELinux messages. run sealert -l d7e29e10-c189-4e79-b593-a4e4768365de
+==============================================================================
+Setup complete
+
+Next steps:
+        1. You may need to open some network ports - specifically:
+                TCP Ports:
+                  * 80, 443: HTTP/HTTPS
+                  * 389, 636: LDAP/LDAPS
+                  * 88, 464: kerberos
+                UDP Ports:
+                  * 88, 464: kerberos
+                  * 123: ntp
+
+        2. You can now obtain a kerberos ticket using the command: 'kinit admin'
+           This ticket will allow you to use the IPA tools (e.g., ipa-adduser)
+           and the web user interface.
+
+Be sure to back up the CA certificate stored in /etc/dirsrv/slapd-TANSO-NET/cacert.p12
+The password for this file is in /etc/dirsrv/slapd-TANSO-NET/pwdfile.txt
+

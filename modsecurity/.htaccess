@@ -1,0 +1,8 @@
+IndexOptions HTMLTable NameWidth=* DescriptionWidth=* FoldersFirst FancyIndexing  
+IndexOptions SuppressHTMLPreamble
+AddDescription "RPM-file for i386 architecture" *i386.rpm
+AddDescription "RPM-file for x86-64 architecture" *x86_64.rpm
+AddDescription "Source RPM-file" *src.rpm
+AddDescription "RPM SPEC-file" *.spec
+HeaderName /modsecurity/HEADER.html
+IndexIgnore HEADER.html

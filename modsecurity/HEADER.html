@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>/modsecurity packages for RHEL4 and RHEL5</title>
+<script type="text/javascript"><!--
+google_ad_client = "pub-1355075937253040";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel = "";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+ </head>
+ <body>
+<p/>
+These are <a href="http://www.modsecurity.org/">modsecurity</a> packages built 
+from SPEC-file originally from 
+<a href="http://www.jackal-net.at/rpms/mod_security/">
+http://www.jackal-net.at/rpms/mod_security/</a>, with fixes to 
+work on x86_64, SElinux on Red Hat Enterprise Linux v4/5 (RHEL4 and RHEL5). 
+Packages build for RHEL5 are named *.el5.*.rpm. I'll try to get the RHEL4
+packages rebuilt and named *.el4.*.rpm too.
+
+<p/>
+All packages are signed using my 
+gpgkey <a href="/janfrode.gpgkey">CE5A02D8</a>. I'd appreciate any comments
+sent to <a href="mailto:janfrode@tanso.net">janfrode@tanso.net</a>.
+<p/>
+<strong>Changelog:</strong>
+<ul>
+	<li>2007-04-05 -- Fixed <a href="/modsecurity/SPECS/mod_security-2.1.spec">SPEC-file</a> to build on RHEL5, update to selinux context. <small><a href="/modsecurity/SRPMS/modsecurity-apache2-2.1.1-rc1.1.src.rpm">SRPM</a>, <a href="/modsecurity/RPMS/i386/modsecurity-apache2-2.1.1-rc1.1.el5.i386.rpm">i386</a></small></li>
+	<li>2007-04-03 -- Fixed libxml2.so path for x86_64, set correct selinux context for mod_security2.so</li>
+	<li>..</li>
+	<li>Put up a browsable repository at <a href="http://tanso.net/yum/repodata/repoview/M.group.html">http://tanso.net/yum/</a></li>
+</ul>
+<p/>
+<p/>

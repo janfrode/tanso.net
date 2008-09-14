@@ -1,0 +1,207 @@
+
+Install plain Fedora 9 on mac mini.
+yum -y update
+Configure ntpd to sync against local ntp-server.
+yum install ipa-server
+
+
+---------------------
+# ipa-server-install -N
+
+The log file for this installation can be found in
+/var/log/ipaserver-install.log
+==============================================================================
+This program will setup the FreeIPA Server.
+
+This includes:
+  * Create and configure an instance of Directory Server
+  * Create and configure a Kerberos Key Distribution Center (KDC)
+  * Configure Apache (httpd)
+  * Configure TurboGears
+
+Excluded by options:
+  * Configure the Network Time Daemon (ntpd)
+
+To accept the default shown in brackets, press the Enter key.
+
+Enter the fully qualified domain name of the computer
+on which you're setting up server software. Using the form
+<hostname>.<domainname>
+Example: master.example.com.
+
+
+Server host name [minimac.tanso.net]: 
+
+The domain name has been calculated based on the host name.
+
+Please confirm the domain name [tanso.net]: 
+
+The IPA Master Server will be configured with
+Hostname:    minimac.tanso.net
+IP address:  172.20.4.14
+Domain name: tanso.net
+
+The server must run as a specific user in a specific group.
+It is strongly recommended that this user should have no privileges
+on the computer (i.e. a non-root user).  The setup procedure
+will give this user/group some permissions in specific paths/files
+to perform server-specific operations.
+
+The kerberos protocol requires a Realm name to be defined.
+This is typically the domain name converted to uppercase.
+
+Please provide a realm name [TANSO.NET]: 
+
+Certain directory server operations require an administrative user.
+This user is referred to as the Directory Manager and has full access
+to the Directory for system management tasks and will be added to the
+instance of directory server created for IPA.
+The password must be at least 8 characters long.
+
+Directory Manager password: 
+Password (confirm): 
+
+The IPA server requires an administrative user, named 'admin'.
+This user is a regular system account used for IPA server administration.
+
+IPA admin password: 
+Password (confirm): 
+
+
+The following operations may take some minutes to complete.
+Please wait until the prompt is returned.
+Configuring directory server:
+  [1/16]: creating directory server user
+  [2/16]: creating directory server instance
+  [3/16]: adding default schema
+  [4/16]: enabling memberof plugin
+  [5/16]: enabling referential integrity plugin
+  [6/16]: enabling distributed numeric assignment plugin
+  [7/16]: configuring uniqueness plugin
+  [8/16]: creating indices
+  [9/16]: configuring ssl for ds instance
+  [10/16]: configuring certmap.conf
+  [11/16]: restarting directory server
+  [12/16]: adding default layout
+  [13/16]: configuring Posix uid/gid generation as first master
+  [14/16]: adding master entry as first master
+  [15/16]: initializing group membership
+  [16/16]: configuring directory to start on boot
+done configuring dirsrv.
+Configuring Kerberos KDC
+  [1/13]: setting KDC account password
+  [2/13]: adding sasl mappings to the directory
+  [3/13]: adding kerberos entries to the DS
+  [4/13]: adding default ACIs
+  [5/13]: configuring KDC
+  [6/13]: adding default keytypes
+  [7/13]: creating a keytab for the directory
+  [8/13]: creating a keytab for the machine
+  [9/13]: exporting the kadmin keytab
+  [10/13]: adding the password extension to the directory
+  [11/13]: adding the kerberos master key to the directory
+  [12/13]: starting the KDC
+  [13/13]: configuring KDC to start on boot
+done configuring krb5kdc.
+Configuring ipa_kpasswd
+  [1/2]: starting ipa_kpasswd 
+  [2/2]: configuring ipa_kpasswd to start on boot
+done configuring ipa_kpasswd.
+Configuring the web interface
+  [1/10]: disabling mod_ssl in httpd
+  [2/10]: Setting mod_nss port to 443
+  [3/10]: Adding URL rewriting rules
+  [4/10]: configuring httpd
+  [5/10]: creating a keytab for httpd
+  [6/10]: Setting up ssl
+  [7/10]: Setting up browser autoconfig
+  [8/10]: configuring SELinux for httpd
+  [9/10]: restarting httpd
+  [10/10]: configuring httpd to start on boot
+done configuring httpd.
+Configuring ipa_webgui
+  [1/2]: starting ipa_webgui 
+  [2/2]: configuring ipa_webgui to start on boot
+done configuring ipa_webgui.
+Sample zone file for bind has been created in /tmp/sample.zone.3LRpEO.db
+restarting the directory server
+restarting the KDC
+==============================================================================
+Setup complete
+
+Next steps:
+	1. You must make sure these network ports are open:
+		TCP Ports:
+		  * 80, 443: HTTP/HTTPS
+		  * 389, 636: LDAP/LDAPS
+		  * 88, 464: kerberos
+		UDP Ports:
+		  * 88, 464: kerberos
+
+	2. You can now obtain a kerberos ticket using the command: 'kinit
+admin'
+	   This ticket will allow you to use the IPA tools (e.g., ipa-adduser)
+	   and the web user interface.
+
+Be sure to back up the CA certificate stored in
+/etc/dirsrv/slapd-TANSO-NET/cacert.p12
+The password for this file is in /etc/dirsrv/slapd-TANSO-NET/pwdfile.txt
+
+---------------------
+
+---------------------
+# vi /etc/sysconfig/iptables
+	# IPA:
+	-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+	-A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+	-A INPUT -m state --state NEW -m tcp -p tcp --dport 389 -j ACCEPT
+	-A INPUT -m state --state NEW -m tcp -p tcp --dport 636 -j ACCEPT
+	-A INPUT -m state --state NEW -m tcp -p tcp --dport 88 -j ACCEPT
+	-A INPUT -m state --state NEW -m tcp -p tcp --dport 464 -j ACCEPT
+	-A INPUT -m state --state NEW -m udp -p udp --dport 88 -j ACCEPT
+	-A INPUT -m state --state NEW -m udp -p udp --dport 464 -j ACCEPT
+	# /IPA
+# /etc/init.d/iptables restart
+iptables: Flushing firewall rules:                         [  OK  ]
+iptables: Setting chains to policy ACCEPT: filter          [  OK  ]
+iptables: Unloading modules:                               [  OK  ]
+iptables: Applying firewall rules:                         [  OK  ]
+
+---------------------
+
+
+---------------------
+# kinit admin
+Password for admin@TANSO.NET: 
+# klist
+Ticket cache: FILE:/tmp/krb5cc_0
+Default principal: admin@TANSO.NET
+
+Valid starting     Expires            Service principal
+06/22/08 15:07:33  06/23/08 15:07:30  krbtgt/TANSO.NET@TANSO.NET
+
+
+Kerberos 4 ticket cache: /tmp/tkt0
+klist: You have no tickets cached
+# ipa-adduser
+First name: Jan-Frode
+Last name: Myklebust
+Login name: janfrode
+gecos []: Jan-Frode Myklebust, ipa
+home directory [/home/janfrode]: 
+shell [/bin/sh]: /bin/bash
+janfrode successfully added
+
+# ipa-passwd janfrode
+Changing password for janfrode@TANSO.NET
+  New Password: 
+  Confirm Password: 
+
+---------------------
+
+On client:
+---------------------
+# cd /etc/
+# scp minimac:/etc/krb5.conf .
+
+---------------------

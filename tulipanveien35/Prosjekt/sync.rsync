@@ -1,0 +1,3 @@
+#! /bin/sh -x
+
+rsync -v -e ssh -a --delete  /Users/janfrode/Tulipanprosjekt/ login.ii.uib.no:/net/www/htdocs/tanso.net/Tulipanveien35/Prosjekt/

@@ -1,0 +1,5 @@
+AuthType Basic
+AuthUserFile /net/www/htdocs/tanso.net/.htpasswd
+AuthName "Private prosjektdokumenter" 
+require valid-user
+Options indexes

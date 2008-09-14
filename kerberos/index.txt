@@ -1,0 +1,224 @@
+
+http://www.visolve.com/security/ssh_kerberos.php
+
+http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Deployment_Guide-en-US/s1-kerberos-server.html
+
+1 - Verify that forward and revers dns matches for all hosts
+
+[root@via ~]# yum install krb5-libs krb5-server krb5-workstation
+
+=============================================================================
+ Package                 Arch       Version          Repository        Size 
+=============================================================================
+Installing:
+ krb5-server             i386       1.6.1-17.el5_1.1  updates           900 k
+ krb5-workstation        i386       1.6.1-17.el5_1.1  updates           869 k
+
+Transaction Summary
+=============================================================================
+Install      2 Package(s)         
+Update       0 Package(s)         
+Remove       0 Package(s)         
+
+
+# vi /etc/krb5.conf /var/kerberos/krb5kdc/kdc.conf
+
+# /usr/kerberos/sbin/kdb5_util create -s
+# vi /var/kerberos/krb5kdc/kadm5.acl
+# /usr/kerberos/sbin/kadmin.local -q "addprinc janfrode/admin"
+Authenticating as principal root/admin@TANSO.NET with password.
+WARNING: no policy specified for janfrode/admin@TANSO.NET; defaulting to no policy
+Enter password for principal "janfrode/admin@TANSO.NET": 
+Re-enter password for principal "janfrode/admin@TANSO.NET": 
+Principal "janfrode/admin@TANSO.NET" created.
+# /sbin/service krb5kdc start
+Starting Kerberos 5 KDC: file_contexts:  invalid context
+system_u:object_r:krb5kdc_conf_t:s0
+file_contexts:  invalid context system_u:object_r:krb5_conf_t:s0
+file_contexts:  invalid context system_u:object_r:krb5kdc_log_t:s0
+file_contexts:  invalid context system_u:object_r:krb5kdc_log_t:s0
+file_contexts:  invalid context system_u:object_r:krb5kdc_principal_t:s0
+file_contexts:  invalid context system_u:object_r:krb5kdc_principal_t:s0
+file_contexts:  invalid context system_u:object_r:krb5kdc_conf_t:s0
+                                                           [  OK  ]
+# /sbin/service kadmin start
+Extracting kadm5 Service Keys: Authenticating as principal
+root/admin@TANSO.NET with password.
+Entry for principal kadmin/admin with kvno 3, encryption type Triple DES cbc
+mode with HMAC/sha1 added to keytab WRFILE:/var/kerberos/krb5kdc/kadm5.keytab.
+Entry for principal kadmin/admin with kvno 3, encryption type ArcFour with
+HMAC/md5 added to keytab WRFILE:/var/kerberos/krb5kdc/kadm5.keytab.
+Entry for principal kadmin/admin with kvno 3, encryption type DES with
+HMAC/sha1 added to keytab WRFILE:/var/kerberos/krb5kdc/kadm5.keytab.
+Entry for principal kadmin/admin with kvno 3, encryption type DES cbc mode
+with RSA-MD5 added to keytab WRFILE:/var/kerberos/krb5kdc/kadm5.keytab.
+Entry for principal kadmin/changepw with kvno 3, encryption type Triple DES
+cbc mode with HMAC/sha1 added to keytab
+WRFILE:/var/kerberos/krb5kdc/kadm5.keytab.
+Entry for principal kadmin/changepw with kvno 3, encryption type ArcFour with
+HMAC/md5 added to keytab WRFILE:/var/kerberos/krb5kdc/kadm5.keytab.
+Entry for principal kadmin/changepw with kvno 3, encryption type DES with
+HMAC/sha1 added to keytab WRFILE:/var/kerberos/krb5kdc/kadm5.keytab.
+Entry for principal kadmin/changepw with kvno 3, encryption type DES cbc mode
+with RSA-MD5 added to keytab WRFILE:/var/kerberos/krb5kdc/kadm5.keytab.
+Authenticating as principal root/admin@TANSO.NET with password.K  ]
+                                                           [  OK  ]
+Starting Kerberos 5 Admin Server: file_contexts:  invalid context
+system_u:object_r:krb5kdc_conf_t:s0
+file_contexts:  invalid context system_u:object_r:krb5_conf_t:s0
+file_contexts:  invalid context system_u:object_r:kadmind_log_t:s0
+file_contexts:  invalid context system_u:object_r:kadmind_log_t:s0
+file_contexts:  invalid context system_u:object_r:krb5kdc_principal_t:s0
+file_contexts:  invalid context system_u:object_r:krb5kdc_conf_t:s0
+file_contexts:  invalid context system_u:object_r:krb5kdc_conf_t:s0
+                                                           [  OK  ]
+
+# /sbin/service krb524 start
+Starting Kerberos 5-to-4 Server:                           [  OK  ]
+
+% kinit janfrode/admin@TANSO.NET
+Password for janfrode/admin@TANSO.NET: 
+janfrode@via:~$ klist
+Ticket cache: FILE:/tmp/krb5cc_1000
+Default principal: janfrode/admin@TANSO.NET
+
+Valid starting     Expires            Service principal
+05/30/08 18:27:48  05/31/08 18:27:48  krbtgt/TANSO.NET@TANSO.NET
+
+
+Kerberos 4 ticket cache: /tmp/tkt1000
+klist: You have no tickets cached
+
+
+# /usr/kerberos/sbin/kadmin.local -q "list_principals"
+Authenticating as principal root/admin@TANSO.NET with password.
+K/M@TANSO.NET
+janfrode/admin@TANSO.NET
+janfrode@TANSO.NET
+kadmin/admin@TANSO.NET
+kadmin/changepw@TANSO.NET
+kadmin/history@TANSO.NET
+kadmin/via.tanso.net@TANSO.NET
+krbtgt/TANSO.NET@TANSO.NET
+
+# /usr/kerberos/sbin/kadmin.local -q "addprinc siri"
+
+Asynkron synkronisering av brukerdatabasen bør være ok. 1x per time ?
+
+
+
+Client:
+
+[root@thinkpadz61m ~]# yum install krb5-workstation krb5-libs
+
+[root@via log]# kadmin
+Authenticating as principal janfrode/admin@TANSO.NET with password.
+Password for janfrode/admin@TANSO.NET: 
+kadmin:  addprinc -randkey host/thinkpadz61m.tanso.net
+WARNING: no policy specified for host/thinkpadz61m.tanso.net@TANSO.NET;
+defaulting to no policy
+Principal "host/thinkpadz61m.tanso.net@TANSO.NET" created.
+
+
+[root@thinkpadz61m ~]# kadmin
+Authenticating as principal janfrode/admin@TANSO.NET with password.
+Password for janfrode/admin@TANSO.NET: 
+kadmin:  ktadd -k /etc/krb5.keytab host/thinkpadz61m.tanso.net
+Entry for principal host/thinkpadz61m.tanso.net with kvno 3, encryption type
+Triple DES cbc mode with HMAC/sha1 added to keytab WRFILE:/etc/krb5.keytab.
+Entry for principal host/thinkpadz61m.tanso.net with kvno 3, encryption type
+ArcFour with HMAC/md5 added to keytab WRFILE:/etc/krb5.keytab.
+Entry for principal host/thinkpadz61m.tanso.net with kvno 3, encryption type
+DES with HMAC/sha1 added to keytab WRFILE:/etc/krb5.keytab.
+Entry for principal host/thinkpadz61m.tanso.net with kvno 3, encryption type
+DES cbc mode with RSA-MD5 added to keytab WRFILE:/etc/krb5.keytab.
+
+
+/etc/ssh/sshd_config:
+
+	GSSAPIAuthentication yes
+	GSSAPICleanupCredentials yes
+
+
+Secondary kdc -->
+http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Deployment_Guide-en-US/sec-kerberos-server2.html
+
+
+
+How to kerberize your site --> http://www.ornl.gov/~jar/HowToKerb.html
+
+kerb/ldap/NFSv4 http://www-theorie.physik.unizh.ch/~dpotter/howto/kerberos
+
+NFS:
+
+	/etc/exports:
+		/home gss/krb5(sync,rw,fsid=0,insecure,no_subtree_check,anonuid=65534,anongid=65534)
+
+	/etc/sysconfig/nfs:
+		SECURE_NFS="yes"
+
+	/etc/idmapd.conf: 
+
+
+# kadmin.local 
+Authenticating as principal janfrode/admin@TANSO.NET with password.
+kadmin.local:  addprinc -randkey host/via.tanso.net
+WARNING: no policy specified for host/via.tanso.net@TANSO.NET; defaulting to
+no policy
+Principal "host/via.tanso.net@TANSO.NET" created.
+kadmin.local:  addprinc -randkey nfs/via.tanso.net
+WARNING: no policy specified for nfs/via.tanso.net@TANSO.NET; defaulting to no
+policy
+Principal "nfs/via.tanso.net@TANSO.NET" created.
+
+
+kadmin.local:  ktadd -k /etc/krb5.keytab host/via.tanso.net
+Entry for principal host/via.tanso.net with kvno 3, encryption type Triple DES
+cbc mode with HMAC/sha1 added to keytab WRFILE:/etc/krb5.keytab.
+Entry for principal host/via.tanso.net with kvno 3, encryption type ArcFour
+with HMAC/md5 added to keytab WRFILE:/etc/krb5.keytab.
+Entry for principal host/via.tanso.net with kvno 3, encryption type DES with
+HMAC/sha1 added to keytab WRFILE:/etc/krb5.keytab.
+Entry for principal host/via.tanso.net with kvno 3, encryption type DES cbc
+mode with RSA-MD5 added to keytab WRFILE:/etc/krb5.keytab.
+kadmin.local:  ktadd -k /etc/krb5.keytab nfs/via.tanso.net
+Entry for principal nfs/via.tanso.net with kvno 3, encryption type Triple DES
+cbc mode with HMAC/sha1 added to keytab WRFILE:/etc/krb5.keytab.
+Entry for principal nfs/via.tanso.net with kvno 3, encryption type ArcFour
+with HMAC/md5 added to keytab WRFILE:/etc/krb5.keytab.
+Entry for principal nfs/via.tanso.net with kvno 3, encryption type DES with
+HMAC/sha1 added to keytab WRFILE:/etc/krb5.keytab.
+Entry for principal nfs/via.tanso.net with kvno 3, encryption type DES cbc
+mode with RSA-MD5 added to keytab WRFILE:/etc/krb5.keytab.
+
+
+
+
+
+/usr/kerberos/sbin/kadmin.local -q "list_principals"
+
+
+
+Installed centos-directory-server (owner dirsrv/dirsrv instead of
+default=nobody). instance=via
+
+kadmin:  add_principal -randkey ldap/via.tanso.net
+WARNING: no policy specified for ldap/via.tanso.net@TANSO.NET; defaulting to no policy
+Principal "ldap/via.tanso.net@TANSO.NET" created.
+
+kadmin: ktadd -k  /etc/dirsrv/slapd-via/via.keytab ldap/via.tanso.net
+Entry for principal ldap/via.tanso.net with kvno 3, encryption type ArcFour with HMAC/md5 added to keytab WRFILE:/etc/dirsrv/slapd-via/via.keytab.
+Entry for principal ldap/via.tanso.net with kvno 3, encryption type Triple DES cbc mode with HMAC/sha1 added to keytab WRFILE:/etc/dirsrv/slapd-via/via.keytab.
+Entry for principal ldap/via.tanso.net with kvno 3, encryption type DES with HMAC/sha1 added to keytab WRFILE:/etc/dirsrv/slapd-via/via.keytab.
+Entry for principal ldap/via.tanso.net with kvno 3, encryption type DES cbc mode with RSA-MD5 added to keytab WRFILE:/etc/dirsrv/slapd-via/via.keytab.
+kadmin:
+
+cd /etc/dirsrv/slapd-via/
+chown dirsrv:dirsrv via.keytab
+chmod 640 via.keytab
+
+vi /etc/dirsrv/slapd-via/via.keytab
+	KRB5_KTNAME=/etc/dirsrv/slapd-via/via.keytab
+	export KRB5_KTNAME
+
+

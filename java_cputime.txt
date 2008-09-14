@@ -2,13 +2,14 @@ Java CPUTime
 =============
 Jan-Frode Myklebust <janfrode@tanso.net>
 
-How to calculate CPUTime of a function with Java
---------------------------------------------------
+How to calculate CPUTime of a Java function
+-------------------------------------------
 
 I've wanted to know the cputime used in java functions, but it
 turned out that this was a bit too low level for java. Therefore
 I had to create a JNI (Java Native Interface) function for it. 
-The code for this example is http://tanso.net/CPUtest.tar.gz[here], 
+The code for this example is http://tanso.net/java-cputime.zip[here], or
+http://github.com/janfrode/java-cputime[here],
 and here's how to do it:
 
 
@@ -40,8 +41,8 @@ CPUtest.h in C using the POSIX times() like this:
 /* Let's try to be portable here */
 #define _POSIX_SOURCE 1
 /* System headers */
-#include &lt;sys/times.h&gt;
-#include &lt;unistd.h&gt;
+#include sys/times.h
+#include unistd.h
 
 /* Local headers */
 #include "CPUtest.h"
@@ -62,7 +63,7 @@ JNIEXPORT jlong JNICALL Java_CPUtest_cpuCount (JNIEnv *env, jobject obj)
 Then I create the library with 'cc -o libjnicputime.so -O -shared cputime.c
 -I/usr/java/include/ -I/usr/java/include/irix'. On linux this line would be
 something like 'gcc -o libjnicputime.so -O -shared -fPIC cputime.c
--I/usr/java/include/ -I/usr/java/include/linux', and on solaris it should be
+-I/usr/java/include/linux', and on solaris it should be
 'gcc -o libjnicputime.so -O -G -fPIC cputime.c -I/usr/java/include/
 -I/usr/java/include/solaris'.
 

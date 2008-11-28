@@ -1,5 +1,5 @@
-Maualer
-=======
+Manualer
+========
 
 * http://tanso.net/private/manualer/micro-matic-termostat/termostat-OJ1287.pdf[Micro Matic termostat]
 
